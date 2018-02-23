@@ -18,6 +18,18 @@ class TransfereeGroups
         return $this->TransfereeGroup;
     }
 
+    /**
+     * @param \NS\AltoBundle\Soap\Types\TransfereeGroup $TransfereeGroup
+     * @return TransfereeGroups
+     */
+    public function withTransfereeGroup($TransfereeGroup)
+    {
+        $new = clone $this;
+        $new->TransfereeGroup = $TransfereeGroup;
+
+        return $new;
+    }
+
 
 }
 

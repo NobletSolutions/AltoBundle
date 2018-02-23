@@ -29,6 +29,18 @@ class SignatorType
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $ContactGivenName
+     * @return SignatorType
+     */
+    public function withContactGivenName($ContactGivenName)
+    {
+        $new = clone $this;
+        $new->ContactGivenName = $ContactGivenName;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getContactSurname()
@@ -37,11 +49,35 @@ class SignatorType
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $ContactSurname
+     * @return SignatorType
+     */
+    public function withContactSurname($ContactSurname)
+    {
+        $new = clone $this;
+        $new->ContactSurname = $ContactSurname;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getAddress()
     {
         return $this->Address;
+    }
+
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $Address
+     * @return SignatorType
+     */
+    public function withAddress($Address)
+    {
+        $new = clone $this;
+        $new->Address = $Address;
+
+        return $new;
     }
 
 

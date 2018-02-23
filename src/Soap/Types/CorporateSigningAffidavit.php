@@ -24,11 +24,35 @@ class CorporateSigningAffidavit
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $Affidavit
+     * @return CorporateSigningAffidavit
+     */
+    public function withAffidavit($Affidavit)
+    {
+        $new = clone $this;
+        $new->Affidavit = $Affidavit;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getCommissioner()
     {
         return $this->Commissioner;
+    }
+
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $Commissioner
+     * @return CorporateSigningAffidavit
+     */
+    public function withCommissioner($Commissioner)
+    {
+        $new = clone $this;
+        $new->Commissioner = $Commissioner;
+
+        return $new;
     }
 
 

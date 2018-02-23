@@ -44,11 +44,35 @@ class TransfereePartyType
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $GivenName
+     * @return TransfereePartyType
+     */
+    public function withGivenName($GivenName)
+    {
+        $new = clone $this;
+        $new->GivenName = $GivenName;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getSurname()
     {
         return $this->Surname;
+    }
+
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $Surname
+     * @return TransfereePartyType
+     */
+    public function withSurname($Surname)
+    {
+        $new = clone $this;
+        $new->Surname = $Surname;
+
+        return $new;
     }
 
     /**
@@ -60,11 +84,35 @@ class TransfereePartyType
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $ExecutionDate
+     * @return TransfereePartyType
+     */
+    public function withExecutionDate($ExecutionDate)
+    {
+        $new = clone $this;
+        $new->ExecutionDate = $ExecutionDate;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getIndivdualToSignAffidvitReValue()
     {
         return $this->IndivdualToSignAffidvitReValue;
+    }
+
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $IndivdualToSignAffidvitReValue
+     * @return TransfereePartyType
+     */
+    public function withIndivdualToSignAffidvitReValue($IndivdualToSignAffidvitReValue)
+    {
+        $new = clone $this;
+        $new->IndivdualToSignAffidvitReValue = $IndivdualToSignAffidvitReValue;
+
+        return $new;
     }
 
     /**
@@ -76,11 +124,35 @@ class TransfereePartyType
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $Address
+     * @return TransfereePartyType
+     */
+    public function withAddress($Address)
+    {
+        $new = clone $this;
+        $new->Address = $Address;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getCorporationName()
     {
         return $this->CorporationName;
+    }
+
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $CorporationName
+     * @return TransfereePartyType
+     */
+    public function withCorporationName($CorporationName)
+    {
+        $new = clone $this;
+        $new->CorporationName = $CorporationName;
+
+        return $new;
     }
 
 

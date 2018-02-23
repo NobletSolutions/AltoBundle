@@ -44,11 +44,35 @@ class SigningPartyType
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $GivenName
+     * @return SigningPartyType
+     */
+    public function withGivenName($GivenName)
+    {
+        $new = clone $this;
+        $new->GivenName = $GivenName;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getSurname()
     {
         return $this->Surname;
+    }
+
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $Surname
+     * @return SigningPartyType
+     */
+    public function withSurname($Surname)
+    {
+        $new = clone $this;
+        $new->Surname = $Surname;
+
+        return $new;
     }
 
     /**
@@ -60,11 +84,35 @@ class SigningPartyType
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $Municipality
+     * @return SigningPartyType
+     */
+    public function withMunicipality($Municipality)
+    {
+        $new = clone $this;
+        $new->Municipality = $Municipality;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getProvinceName()
     {
         return $this->ProvinceName;
+    }
+
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $ProvinceName
+     * @return SigningPartyType
+     */
+    public function withProvinceName($ProvinceName)
+    {
+        $new = clone $this;
+        $new->ProvinceName = $ProvinceName;
+
+        return $new;
     }
 
     /**
@@ -76,11 +124,36 @@ class SigningPartyType
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $CountryName
+     * @return SigningPartyType
+     */
+    public function withCountryName($CountryName)
+    {
+        $new = clone $this;
+        $new->CountryName = $CountryName;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\CorporateSigningAffidavit
      */
     public function getCorporateSigningAffidavit()
     {
         return $this->CorporateSigningAffidavit;
+    }
+
+    /**
+     * @param \NS\AltoBundle\Soap\Types\CorporateSigningAffidavit
+     * $CorporateSigningAffidavit
+     * @return SigningPartyType
+     */
+    public function withCorporateSigningAffidavit($CorporateSigningAffidavit)
+    {
+        $new = clone $this;
+        $new->CorporateSigningAffidavit = $CorporateSigningAffidavit;
+
+        return $new;
     }
 
 

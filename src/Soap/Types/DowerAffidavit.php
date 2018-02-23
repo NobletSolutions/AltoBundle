@@ -39,11 +39,35 @@ class DowerAffidavit
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $DowerAffidavitOption
+     * @return DowerAffidavit
+     */
+    public function withDowerAffidavitOption($DowerAffidavitOption)
+    {
+        $new = clone $this;
+        $new->DowerAffidavitOption = $DowerAffidavitOption;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getJudgementDate()
     {
         return $this->JudgementDate;
+    }
+
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $JudgementDate
+     * @return DowerAffidavit
+     */
+    public function withJudgementDate($JudgementDate)
+    {
+        $new = clone $this;
+        $new->JudgementDate = $JudgementDate;
+
+        return $new;
     }
 
     /**
@@ -55,6 +79,18 @@ class DowerAffidavit
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $ReleaseRegistrationDate
+     * @return DowerAffidavit
+     */
+    public function withReleaseRegistrationDate($ReleaseRegistrationDate)
+    {
+        $new = clone $this;
+        $new->ReleaseRegistrationDate = $ReleaseRegistrationDate;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getJudgementInstrumentNumber()
@@ -63,11 +99,35 @@ class DowerAffidavit
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $JudgementInstrumentNumber
+     * @return DowerAffidavit
+     */
+    public function withJudgementInstrumentNumber($JudgementInstrumentNumber)
+    {
+        $new = clone $this;
+        $new->JudgementInstrumentNumber = $JudgementInstrumentNumber;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getReleaseOfDowerRightsInstrumentNumber()
     {
         return $this->ReleaseOfDowerRightsInstrumentNumber;
+    }
+
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $ReleaseOfDowerRightsInstrumentNumber
+     * @return DowerAffidavit
+     */
+    public function withReleaseOfDowerRightsInstrumentNumber($ReleaseOfDowerRightsInstrumentNumber)
+    {
+        $new = clone $this;
+        $new->ReleaseOfDowerRightsInstrumentNumber = $ReleaseOfDowerRightsInstrumentNumber;
+
+        return $new;
     }
 
 

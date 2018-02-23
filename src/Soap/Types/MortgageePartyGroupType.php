@@ -18,6 +18,18 @@ class MortgageePartyGroupType
         return $this->Mortgagee;
     }
 
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $Mortgagee
+     * @return MortgageePartyGroupType
+     */
+    public function withMortgagee($Mortgagee)
+    {
+        $new = clone $this;
+        $new->Mortgagee = $Mortgagee;
+
+        return $new;
+    }
+
 
 }
 

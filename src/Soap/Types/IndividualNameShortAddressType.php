@@ -39,11 +39,35 @@ class IndividualNameShortAddressType
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $GivenName
+     * @return IndividualNameShortAddressType
+     */
+    public function withGivenName($GivenName)
+    {
+        $new = clone $this;
+        $new->GivenName = $GivenName;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getSurname()
     {
         return $this->Surname;
+    }
+
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $Surname
+     * @return IndividualNameShortAddressType
+     */
+    public function withSurname($Surname)
+    {
+        $new = clone $this;
+        $new->Surname = $Surname;
+
+        return $new;
     }
 
     /**
@@ -55,6 +79,18 @@ class IndividualNameShortAddressType
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $Municipality
+     * @return IndividualNameShortAddressType
+     */
+    public function withMunicipality($Municipality)
+    {
+        $new = clone $this;
+        $new->Municipality = $Municipality;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getProvinceName()
@@ -63,11 +99,35 @@ class IndividualNameShortAddressType
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $ProvinceName
+     * @return IndividualNameShortAddressType
+     */
+    public function withProvinceName($ProvinceName)
+    {
+        $new = clone $this;
+        $new->ProvinceName = $ProvinceName;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getCountryName()
     {
         return $this->CountryName;
+    }
+
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $CountryName
+     * @return IndividualNameShortAddressType
+     */
+    public function withCountryName($CountryName)
+    {
+        $new = clone $this;
+        $new->CountryName = $CountryName;
+
+        return $new;
     }
 
 

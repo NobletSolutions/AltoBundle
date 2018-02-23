@@ -18,6 +18,18 @@ class TitlesType
         return $this->Title;
     }
 
+    /**
+     * @param \NS\AltoBundle\Soap\Types\Title $Title
+     * @return TitlesType
+     */
+    public function withTitle($Title)
+    {
+        $new = clone $this;
+        $new->Title = $Title;
+
+        return $new;
+    }
+
 
 }
 

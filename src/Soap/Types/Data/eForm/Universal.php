@@ -18,6 +18,18 @@ class Data_eForm_Universal
         return $this->CustomerFileNumber;
     }
 
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $CustomerFileNumber
+     * @return Data_eForm_Universal
+     */
+    public function withCustomerFileNumber($CustomerFileNumber)
+    {
+        $new = clone $this;
+        $new->CustomerFileNumber = $CustomerFileNumber;
+
+        return $new;
+    }
+
 
 }
 

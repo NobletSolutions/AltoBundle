@@ -18,6 +18,18 @@ class InstrumentsType
         return $this->InstrumentNumber;
     }
 
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $InstrumentNumber
+     * @return InstrumentsType
+     */
+    public function withInstrumentNumber($InstrumentNumber)
+    {
+        $new = clone $this;
+        $new->InstrumentNumber = $InstrumentNumber;
+
+        return $new;
+    }
+
 
 }
 

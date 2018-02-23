@@ -18,6 +18,18 @@ class AffidavitOfAttestations
         return $this->AffidavitOfAttestation;
     }
 
+    /**
+     * @param \NS\AltoBundle\Soap\Types\AffidavitOfAttestation $AffidavitOfAttestation
+     * @return AffidavitOfAttestations
+     */
+    public function withAffidavitOfAttestation($AffidavitOfAttestation)
+    {
+        $new = clone $this;
+        $new->AffidavitOfAttestation = $AffidavitOfAttestation;
+
+        return $new;
+    }
+
 
 }
 

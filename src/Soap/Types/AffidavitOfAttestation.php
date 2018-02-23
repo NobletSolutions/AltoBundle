@@ -39,11 +39,35 @@ class AffidavitOfAttestation
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $KnowsTransferor
+     * @return AffidavitOfAttestation
+     */
+    public function withKnowsTransferor($KnowsTransferor)
+    {
+        $new = clone $this;
+        $new->KnowsTransferor = $KnowsTransferor;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getExecution()
     {
         return $this->Execution;
+    }
+
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $Execution
+     * @return AffidavitOfAttestation
+     */
+    public function withExecution($Execution)
+    {
+        $new = clone $this;
+        $new->Execution = $Execution;
+
+        return $new;
     }
 
     /**
@@ -55,6 +79,18 @@ class AffidavitOfAttestation
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $Witness
+     * @return AffidavitOfAttestation
+     */
+    public function withWitness($Witness)
+    {
+        $new = clone $this;
+        $new->Witness = $Witness;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getAffidavit()
@@ -63,11 +99,35 @@ class AffidavitOfAttestation
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $Affidavit
+     * @return AffidavitOfAttestation
+     */
+    public function withAffidavit($Affidavit)
+    {
+        $new = clone $this;
+        $new->Affidavit = $Affidavit;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getCommissioner()
     {
         return $this->Commissioner;
+    }
+
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $Commissioner
+     * @return AffidavitOfAttestation
+     */
+    public function withCommissioner($Commissioner)
+    {
+        $new = clone $this;
+        $new->Commissioner = $Commissioner;
+
+        return $new;
     }
 
 

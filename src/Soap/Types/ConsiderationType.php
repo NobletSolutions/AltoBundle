@@ -24,11 +24,35 @@ class ConsiderationType
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $ConsiderationAmount
+     * @return ConsiderationType
+     */
+    public function withConsiderationAmount($ConsiderationAmount)
+    {
+        $new = clone $this;
+        $new->ConsiderationAmount = $ConsiderationAmount;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getConsiderationDescription()
     {
         return $this->ConsiderationDescription;
+    }
+
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $ConsiderationDescription
+     * @return ConsiderationType
+     */
+    public function withConsiderationDescription($ConsiderationDescription)
+    {
+        $new = clone $this;
+        $new->ConsiderationDescription = $ConsiderationDescription;
+
+        return $new;
     }
 
 

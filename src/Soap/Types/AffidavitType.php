@@ -39,11 +39,35 @@ class AffidavitType
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $AffidavitDate
+     * @return AffidavitType
+     */
+    public function withAffidavitDate($AffidavitDate)
+    {
+        $new = clone $this;
+        $new->AffidavitDate = $AffidavitDate;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getMunicipality()
     {
         return $this->Municipality;
+    }
+
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $Municipality
+     * @return AffidavitType
+     */
+    public function withMunicipality($Municipality)
+    {
+        $new = clone $this;
+        $new->Municipality = $Municipality;
+
+        return $new;
     }
 
     /**
@@ -55,6 +79,18 @@ class AffidavitType
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $ProvinceName
+     * @return AffidavitType
+     */
+    public function withProvinceName($ProvinceName)
+    {
+        $new = clone $this;
+        $new->ProvinceName = $ProvinceName;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getCountryName()
@@ -63,11 +99,35 @@ class AffidavitType
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $CountryName
+     * @return AffidavitType
+     */
+    public function withCountryName($CountryName)
+    {
+        $new = clone $this;
+        $new->CountryName = $CountryName;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getSworn()
     {
         return $this->Sworn;
+    }
+
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $Sworn
+     * @return AffidavitType
+     */
+    public function withSworn($Sworn)
+    {
+        $new = clone $this;
+        $new->Sworn = $Sworn;
+
+        return $new;
     }
 
 

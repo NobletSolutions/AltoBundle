@@ -49,11 +49,35 @@ class LongAddressType
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $POBox
+     * @return LongAddressType
+     */
+    public function withPOBox($POBox)
+    {
+        $new = clone $this;
+        $new->POBox = $POBox;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getAddressLine1()
     {
         return $this->AddressLine1;
+    }
+
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $AddressLine1
+     * @return LongAddressType
+     */
+    public function withAddressLine1($AddressLine1)
+    {
+        $new = clone $this;
+        $new->AddressLine1 = $AddressLine1;
+
+        return $new;
     }
 
     /**
@@ -65,11 +89,35 @@ class LongAddressType
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $AddressLine2
+     * @return LongAddressType
+     */
+    public function withAddressLine2($AddressLine2)
+    {
+        $new = clone $this;
+        $new->AddressLine2 = $AddressLine2;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getMunicipality()
     {
         return $this->Municipality;
+    }
+
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $Municipality
+     * @return LongAddressType
+     */
+    public function withMunicipality($Municipality)
+    {
+        $new = clone $this;
+        $new->Municipality = $Municipality;
+
+        return $new;
     }
 
     /**
@@ -81,6 +129,18 @@ class LongAddressType
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $ProvinceName
+     * @return LongAddressType
+     */
+    public function withProvinceName($ProvinceName)
+    {
+        $new = clone $this;
+        $new->ProvinceName = $ProvinceName;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getCountryName()
@@ -89,11 +149,35 @@ class LongAddressType
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $CountryName
+     * @return LongAddressType
+     */
+    public function withCountryName($CountryName)
+    {
+        $new = clone $this;
+        $new->CountryName = $CountryName;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getPostalCode()
     {
         return $this->PostalCode;
+    }
+
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $PostalCode
+     * @return LongAddressType
+     */
+    public function withPostalCode($PostalCode)
+    {
+        $new = clone $this;
+        $new->PostalCode = $PostalCode;
+
+        return $new;
     }
 
 

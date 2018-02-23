@@ -18,6 +18,18 @@ class CaveatorPartyGroupType
         return $this->Caveator;
     }
 
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $Caveator
+     * @return CaveatorPartyGroupType
+     */
+    public function withCaveator($Caveator)
+    {
+        $new = clone $this;
+        $new->Caveator = $Caveator;
+
+        return $new;
+    }
+
 
 }
 

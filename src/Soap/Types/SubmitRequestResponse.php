@@ -2,6 +2,7 @@
 
 namespace NS\AltoBundle\Soap\Types;
 
+
 use Phpro\SoapClient\Type\ResultInterface;
 
 class SubmitRequestResponse implements ResultInterface
@@ -10,7 +11,7 @@ class SubmitRequestResponse implements ResultInterface
     /**
      * @var string
      */
-    private $SubmitRequestResult;
+    private $SubmitRequestResult = null;
 
     /**
      * @return string
@@ -18,6 +19,18 @@ class SubmitRequestResponse implements ResultInterface
     public function getSubmitRequestResult()
     {
         return $this->SubmitRequestResult;
+    }
+
+    /**
+     * @param string $SubmitRequestResult
+     * @return SubmitRequestResponse
+     */
+    public function withSubmitRequestResult($SubmitRequestResult)
+    {
+        $new = clone $this;
+        $new->SubmitRequestResult = $SubmitRequestResult;
+
+        return $new;
     }
 
 

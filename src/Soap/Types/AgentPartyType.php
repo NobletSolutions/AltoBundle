@@ -39,11 +39,35 @@ class AgentPartyType
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $GivenName
+     * @return AgentPartyType
+     */
+    public function withGivenName($GivenName)
+    {
+        $new = clone $this;
+        $new->GivenName = $GivenName;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getSurname()
     {
         return $this->Surname;
+    }
+
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $Surname
+     * @return AgentPartyType
+     */
+    public function withSurname($Surname)
+    {
+        $new = clone $this;
+        $new->Surname = $Surname;
+
+        return $new;
     }
 
     /**
@@ -55,6 +79,18 @@ class AgentPartyType
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $ExecutionDate
+     * @return AgentPartyType
+     */
+    public function withExecutionDate($ExecutionDate)
+    {
+        $new = clone $this;
+        $new->ExecutionDate = $ExecutionDate;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getCorporationName()
@@ -63,11 +99,35 @@ class AgentPartyType
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $CorporationName
+     * @return AgentPartyType
+     */
+    public function withCorporationName($CorporationName)
+    {
+        $new = clone $this;
+        $new->CorporationName = $CorporationName;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getCorporateSeal()
     {
         return $this->CorporateSeal;
+    }
+
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $CorporateSeal
+     * @return AgentPartyType
+     */
+    public function withCorporateSeal($CorporateSeal)
+    {
+        $new = clone $this;
+        $new->CorporateSeal = $CorporateSeal;
+
+        return $new;
     }
 
 

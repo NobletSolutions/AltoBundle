@@ -1,33 +1,41 @@
 {
-    "name": "ns/alto-bundle",
-    "type": "symfony-bundle",
-    "description": "This bundle provides the a SOAP client for the ALTO Land Titles System",
-    "minimum-stability": "stable",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Nathanael David Noblet",
-            "email": "nathanael@noblet.ca"
-        }
-    ],
-    "require": {
-        "php":               ">=5.6",
-        "symfony/symfony":   "^3.0",
-	"phpro/soap-client": "^0.7"
-    },
-    "require-dev": {
-        "zendframework/zend-code": "^3.0.4",
-        "phpunit/phpunit": "^5.0|^6.0"
-    },
-    "autoload": {
-        "psr-4": { "NS\\AltoBundle\\": "src" }
-    },
-    "autoload-dev": {
-	    "psr-4": { "NS\\AltoBundle\\Tests\\": "tests" }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0.x-dev"
-        }
+  "name": "ns/alto-bundle",
+  "type": "symfony-bundle",
+  "description": "This bundle provides the a SOAP client for the ALTO Land Titles System",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Nathanael David Noblet",
+      "email": "nathanael@noblet.ca"
     }
+  ],
+  "require": {
+    "php": ">=5.6",
+    "phpro/soap-client": "^0.7",
+    "psr/log": "^1.0",
+    "symfony/console": "~2.8|~3.0|~4.0",
+    "symfony/event-dispatcher": "~2.8|~3.0|~4.0",
+    "symfony/filesystem": "~2.8|~3.0|~4.0"
+  },
+  "require-dev": {
+    "zendframework/zend-code": "^3.0.4",
+    "phpunit/phpunit": "^5.0|^6.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "NS\\AltoBundle\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "NS\\AltoBundle\\Tests\\": "tests"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    },
+    "symfony-bin-dir": "bin"
+  }
 }

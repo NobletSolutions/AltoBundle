@@ -39,11 +39,35 @@ class Data_eForm_Mortgage
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $CustomerFileNumber
+     * @return Data_eForm_Mortgage
+     */
+    public function withCustomerFileNumber($CustomerFileNumber)
+    {
+        $new = clone $this;
+        $new->CustomerFileNumber = $CustomerFileNumber;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getTitles()
     {
         return $this->Titles;
+    }
+
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $Titles
+     * @return Data_eForm_Mortgage
+     */
+    public function withTitles($Titles)
+    {
+        $new = clone $this;
+        $new->Titles = $Titles;
+
+        return $new;
     }
 
     /**
@@ -55,6 +79,18 @@ class Data_eForm_Mortgage
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $PrincipalAmount
+     * @return Data_eForm_Mortgage
+     */
+    public function withPrincipalAmount($PrincipalAmount)
+    {
+        $new = clone $this;
+        $new->PrincipalAmount = $PrincipalAmount;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getStandardMortgageNumber()
@@ -63,11 +99,35 @@ class Data_eForm_Mortgage
     }
 
     /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $StandardMortgageNumber
+     * @return Data_eForm_Mortgage
+     */
+    public function withStandardMortgageNumber($StandardMortgageNumber)
+    {
+        $new = clone $this;
+        $new->StandardMortgageNumber = $StandardMortgageNumber;
+
+        return $new;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getMortgagees()
     {
         return $this->Mortgagees;
+    }
+
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $Mortgagees
+     * @return Data_eForm_Mortgage
+     */
+    public function withMortgagees($Mortgagees)
+    {
+        $new = clone $this;
+        $new->Mortgagees = $Mortgagees;
+
+        return $new;
     }
 
 

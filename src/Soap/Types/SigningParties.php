@@ -18,6 +18,18 @@ class SigningParties
         return $this->SigningParty;
     }
 
+    /**
+     * @param \NS\AltoBundle\Soap\Types\anyType $SigningParty
+     * @return SigningParties
+     */
+    public function withSigningParty($SigningParty)
+    {
+        $new = clone $this;
+        $new->SigningParty = $SigningParty;
+
+        return $new;
+    }
+
 
 }
 
