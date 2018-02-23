@@ -1,8 +1,8 @@
 <?php
 
-namespace NS\AltoBundle\Soap\Types;
+namespace NS\AltoBundle\Soap\Types\Data\eForm;
 
-class Data_eForm_Caveat
+class Caveat
 {
 
     /**

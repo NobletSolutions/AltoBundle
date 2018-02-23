@@ -1,10 +1,9 @@
 <?php
 
-namespace NS\AltoBundle\Soap\Types;
+namespace NS\AltoBundle\Soap\Types\Data\eForm;
 
-class Data_eForm_Universal
+class Universal
 {
-
     /**
      * @var \NS\AltoBundle\Soap\Types\anyType
      */
@@ -30,7 +29,7 @@ class Data_eForm_Universal
 
     /**
      * @param \NS\AltoBundle\Soap\Types\anyType $CustomerFileNumber
-     * @return Data_eForm_Universal
+     * @return Universal
      */
     public function withCustomerFileNumber($CustomerFileNumber)
     {
@@ -39,7 +38,5 @@ class Data_eForm_Universal
 
         return $new;
     }
-
-
 }
 

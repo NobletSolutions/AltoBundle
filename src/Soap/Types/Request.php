@@ -2,59 +2,61 @@
 
 namespace NS\AltoBundle\Soap\Types;
 
-
+use NS\AltoBundle\Soap\Types\Data\eForm\Caveat;
+use NS\AltoBundle\Soap\Types\Data\eForm\Discharge;
+use NS\AltoBundle\Soap\Types\Data\eForm\Mortgage;
+use NS\AltoBundle\Soap\Types\Data\eForm\TransferOfLandType;
+use NS\AltoBundle\Soap\Types\Data\eForm\Universal;
 use Phpro\SoapClient\Type\RequestInterface;
 
 class Request implements RequestInterface
 {
-
     /**
      * @var string
      */
     private $ServiceType = 'eForm';
 
     /**
-     * @var \NS\AltoBundle\Soap\Types\EformHeaderType
+     * @var EformHeaderType
      */
     private $Header_eForm = null;
 
     /**
-     * @var \NS\AltoBundle\Soap\Types\Data_eForm_TransferOfLandType
+     * @var TransferOfLandType
      */
     private $Data_eForm_TransferOfLand = null;
 
     /**
-     * @var \NS\AltoBundle\Soap\Types\Data_eForm_Mortgage
+     * @var Mortgage
      */
     private $Data_eForm_Mortgage = null;
 
     /**
-     * @var \NS\AltoBundle\Soap\Types\Data_eForm_Caveat
+     * @var Caveat
      */
     private $Data_eForm_Caveat = null;
 
     /**
-     * @var \NS\AltoBundle\Soap\Types\Data_eForm_Discharge
+     * @var Discharge
      */
     private $Data_eForm_Discharge = null;
 
     /**
-     * @var \NS\AltoBundle\Soap\Types\Data_eForm_Universal
+     * @var Universal
      */
     private $Data_eForm_Universal = null;
 
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\EformHeaderType $Header_eForm
-     * @var \NS\AltoBundle\Soap\Types\Data_eForm_TransferOfLandType
-     * $Data_eForm_TransferOfLand
-     * @var \NS\AltoBundle\Soap\Types\Data_eForm_Mortgage $mortgage
-     * @var \NS\AltoBundle\Soap\Types\Data_eForm_Caveat $caveat
-     * @var \NS\AltoBundle\Soap\Types\Data_eForm_Discharge $discharge
-     * @var \NS\AltoBundle\Soap\Types\Data_eForm_Universal $universal
+     * @param EformHeaderType $Header_eForm
+     * @param TransferOfLandType $tfla
+     * @param Mortgage $mortgage
+     * @param Caveat $caveat
+     * @param Discharge $discharge
+     * @param Universal $universal
      */
-    public function __construct($Header_eForm, Data_eForm_TransferOfLandType $tfla = null, Data_eForm_Mortgage $mortgage = null, Data_eForm_Caveat $caveat = null, Data_eForm_Discharge $discharge = null, Data_eForm_Universal $universal = null)
+    public function __construct($Header_eForm, TransferOfLandType $tfla = null, Mortgage $mortgage = null, Caveat $caveat = null, Discharge $discharge = null, Universal $universal = null)
     {
         $this->Header_eForm = $Header_eForm;
         $this->Data_eForm_TransferOfLand = $tfla;
@@ -105,7 +107,7 @@ class Request implements RequestInterface
     }
 
     /**
-     * @return \NS\AltoBundle\Soap\Types\Data_eForm_TransferOfLandType
+     * @return TransferOfLandType
      */
     public function getData_eForm_TransferOfLand()
     {
@@ -113,7 +115,7 @@ class Request implements RequestInterface
     }
 
     /**
-     * @param \NS\AltoBundle\Soap\Types\Data_eForm_TransferOfLandType
+     * @param TransferOfLandType
      * $Data_eForm_TransferOfLand
      * @return Request
      */
@@ -126,7 +128,7 @@ class Request implements RequestInterface
     }
 
     /**
-     * @return \NS\AltoBundle\Soap\Types\Data_eForm_Mortgage
+     * @return Mortgage
      */
     public function getData_eForm_Mortgage()
     {
@@ -134,7 +136,7 @@ class Request implements RequestInterface
     }
 
     /**
-     * @param \NS\AltoBundle\Soap\Types\Data_eForm_Mortgage $Data_eForm_Mortgage
+     * @param Mortgage $Data_eForm_Mortgage
      * @return Request
      */
     public function withData_eForm_Mortgage($Data_eForm_Mortgage)
@@ -146,7 +148,7 @@ class Request implements RequestInterface
     }
 
     /**
-     * @return \NS\AltoBundle\Soap\Types\Data_eForm_Caveat
+     * @return Caveat
      */
     public function getData_eForm_Caveat()
     {
@@ -154,7 +156,7 @@ class Request implements RequestInterface
     }
 
     /**
-     * @param \NS\AltoBundle\Soap\Types\Data_eForm_Caveat $Data_eForm_Caveat
+     * @param Caveat $Data_eForm_Caveat
      * @return Request
      */
     public function withData_eForm_Caveat($Data_eForm_Caveat)
@@ -166,7 +168,7 @@ class Request implements RequestInterface
     }
 
     /**
-     * @return \NS\AltoBundle\Soap\Types\Data_eForm_Discharge
+     * @return Discharge
      */
     public function getData_eForm_Discharge()
     {
@@ -174,7 +176,7 @@ class Request implements RequestInterface
     }
 
     /**
-     * @param \NS\AltoBundle\Soap\Types\Data_eForm_Discharge $Data_eForm_Discharge
+     * @param Discharge $Data_eForm_Discharge
      * @return Request
      */
     public function withData_eForm_Discharge($Data_eForm_Discharge)
@@ -186,7 +188,7 @@ class Request implements RequestInterface
     }
 
     /**
-     * @return \NS\AltoBundle\Soap\Types\Data_eForm_Universal
+     * @return Universal
      */
     public function getData_eForm_Universal()
     {
@@ -194,7 +196,7 @@ class Request implements RequestInterface
     }
 
     /**
-     * @param \NS\AltoBundle\Soap\Types\Data_eForm_Universal $Data_eForm_Universal
+     * @param Universal $Data_eForm_Universal
      * @return Request
      */
     public function withData_eForm_Universal($Data_eForm_Universal)

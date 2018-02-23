@@ -9,7 +9,7 @@
 namespace NS\AltoBundle\Command;
 
 use NS\AltoBundle\AltoSoapClientFactory;
-use NS\AltoBundle\Soap\Types\Data_eForm_Universal;
+use NS\AltoBundle\Soap\Types\Data\eForm\Universal;
 use NS\AltoBundle\Soap\Types\EformHeaderType;
 use NS\AltoBundle\Soap\Types\Request;
 use NS\AltoBundle\Soap\Types\SubmitRequest;
@@ -58,14 +58,13 @@ class TestUniversalFormCommand extends Command
         ];
         $client = AltoSoapClientFactory::factory($wsdlUrl,$soapOptions);
 
-        $universalForm = new Data_eForm_Universal($input->getArgument('file-no'));
+        $universalForm = new Universal($input->getArgument('file-no'));
 
         $header = new EformHeaderType( 'Create','ASJT',$input->hasArgument('eForm-id')?$input->getArgument('eForm-id'):null);
 
-        $request = new Request($header,null,null,null,null, $universalForm);
+        $request = new Request($header,$universalForm);
         $submitRequest = new SubmitRequest($input->getArgument('username'),$input->getArgument('password'),$request);
         $response = $client->submitRequest($submitRequest);
         $output->writeln(print_r($response,true));
     }
-
 }
