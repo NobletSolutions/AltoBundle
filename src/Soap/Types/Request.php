@@ -66,6 +66,30 @@ class Request implements RequestInterface
         $this->Data_eForm_Universal = $universal;
     }
 
+    public function __toString()
+    {
+        if ($this->Data_eForm_Universal) {
+            return sprintf('<Request><ServiceType>eForm</ServiceType><Header_eForm>%s</Header_eForm>%s</Request>', $this->Header_eForm, $this->Data_eForm_Universal);
+        }
+
+        if ($this->Data_eForm_Discharge) {
+            return sprintf('<Request><ServiceType>eForm</ServiceType><Header_eForm>%s</Header_eForm>%s</Request>', $this->Header_eForm, $this->Data_eForm_Discharge);
+        }
+
+        if ($this->Data_eForm_Caveat) {
+            return sprintf('<Request><ServiceType>eForm</ServiceType><Header_eForm>%s</Header_eForm>%s</Request>', $this->Header_eForm, $this->Data_eForm_Caveat);
+        }
+
+        if ($this->Data_eForm_Mortgage) {
+            return sprintf('<Request><ServiceType>eForm</ServiceType><Header_eForm>%s</Header_eForm>%s</Request>', $this->Header_eForm, $this->Data_eForm_Mortgage);
+        }
+
+        if ($this->Data_eForm_TransferOfLand) {
+            return sprintf('<Request><ServiceType>eForm</ServiceType><Header_eForm>%s</Header_eForm>%s</Request>', $this->Header_eForm, $this->Data_eForm_TransferOfLand);
+        }
+    }
+
+
     /**
      * @return string
      */

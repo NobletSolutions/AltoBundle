@@ -19,6 +19,12 @@ class Universal
         $this->CustomerFileNumber = $CustomerFileNumber;
     }
 
+    public function __toString()
+    {
+        $formatStr = '<Data_eForm_Universal><CustomerFileNumber>%s</CustomerFileNumber></Data_eForm_Universal>';
+        return sprintf($formatStr, $this->CustomerFileNumber);
+    }
+
     /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
