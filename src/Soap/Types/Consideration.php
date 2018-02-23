@@ -16,6 +16,18 @@ class Consideration
     private $ConsiderationDescription = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $ConsiderationAmount
+     * @var \NS\AltoBundle\Soap\Types\anyType $ConsiderationDescription
+     */
+    public function __construct($ConsiderationAmount, $ConsiderationDescription)
+    {
+        $this->ConsiderationAmount = $ConsiderationAmount;
+        $this->ConsiderationDescription = $ConsiderationDescription;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getConsiderationAmount()

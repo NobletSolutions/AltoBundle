@@ -21,6 +21,20 @@ class ECAVEAffidavitType
     private $SigningDetail = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $JuratDetail
+     * @var \NS\AltoBundle\Soap\Types\anyType $Commissioner
+     * @var \NS\AltoBundle\Soap\Types\anyType $SigningDetail
+     */
+    public function __construct($JuratDetail, $Commissioner, $SigningDetail)
+    {
+        $this->JuratDetail = $JuratDetail;
+        $this->Commissioner = $Commissioner;
+        $this->SigningDetail = $SigningDetail;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getJuratDetail()

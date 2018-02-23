@@ -11,6 +11,16 @@ class SigningParties
     private $SigningParty = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $SigningParty
+     */
+    public function __construct($SigningParty)
+    {
+        $this->SigningParty = $SigningParty;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getSigningParty()

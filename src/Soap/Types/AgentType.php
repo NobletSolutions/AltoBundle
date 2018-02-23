@@ -31,6 +31,24 @@ class AgentType
     private $CountryName = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $GivenName
+     * @var \NS\AltoBundle\Soap\Types\anyType $Surname
+     * @var \NS\AltoBundle\Soap\Types\anyType $Municipality
+     * @var \NS\AltoBundle\Soap\Types\anyType $ProvinceName
+     * @var \NS\AltoBundle\Soap\Types\anyType $CountryName
+     */
+    public function __construct($GivenName, $Surname, $Municipality, $ProvinceName, $CountryName)
+    {
+        $this->GivenName = $GivenName;
+        $this->Surname = $Surname;
+        $this->Municipality = $Municipality;
+        $this->ProvinceName = $ProvinceName;
+        $this->CountryName = $CountryName;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getGivenName()

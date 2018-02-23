@@ -36,6 +36,26 @@ class TransfereePartyType
     private $CorporationName = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $GivenName
+     * @var \NS\AltoBundle\Soap\Types\anyType $Surname
+     * @var \NS\AltoBundle\Soap\Types\anyType $ExecutionDate
+     * @var \NS\AltoBundle\Soap\Types\anyType $IndivdualToSignAffidvitReValue
+     * @var \NS\AltoBundle\Soap\Types\anyType $Address
+     * @var \NS\AltoBundle\Soap\Types\anyType $CorporationName
+     */
+    public function __construct($GivenName, $Surname, $ExecutionDate, $IndivdualToSignAffidvitReValue, $Address, $CorporationName)
+    {
+        $this->GivenName = $GivenName;
+        $this->Surname = $Surname;
+        $this->ExecutionDate = $ExecutionDate;
+        $this->IndivdualToSignAffidvitReValue = $IndivdualToSignAffidvitReValue;
+        $this->Address = $Address;
+        $this->CorporationName = $CorporationName;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getGivenName()

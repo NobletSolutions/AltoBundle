@@ -11,6 +11,16 @@ class MortgageePartyGroupType
     private $Mortgagee = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $Mortgagee
+     */
+    public function __construct($Mortgagee)
+    {
+        $this->Mortgagee = $Mortgagee;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getMortgagee()

@@ -11,6 +11,16 @@ class CaveatorPartyGroupType
     private $Caveator = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $Caveator
+     */
+    public function __construct($Caveator)
+    {
+        $this->Caveator = $Caveator;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getCaveator()

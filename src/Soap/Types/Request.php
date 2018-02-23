@@ -2,14 +2,16 @@
 
 namespace NS\AltoBundle\Soap\Types;
 
+
 use Phpro\SoapClient\Type\RequestInterface;
 
 class Request implements RequestInterface
 {
+
     /**
      * @var string
      */
-    private $ServiceType = null;
+    private $ServiceType = 'eForm';
 
     /**
      * @var \NS\AltoBundle\Soap\Types\EformHeaderType
@@ -40,6 +42,27 @@ class Request implements RequestInterface
      * @var \NS\AltoBundle\Soap\Types\Data_eForm_Universal
      */
     private $Data_eForm_Universal = null;
+
+    /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\EformHeaderType $Header_eForm
+     * @var \NS\AltoBundle\Soap\Types\Data_eForm_TransferOfLandType
+     * $Data_eForm_TransferOfLand
+     * @var \NS\AltoBundle\Soap\Types\Data_eForm_Mortgage $mortgage
+     * @var \NS\AltoBundle\Soap\Types\Data_eForm_Caveat $caveat
+     * @var \NS\AltoBundle\Soap\Types\Data_eForm_Discharge $discharge
+     * @var \NS\AltoBundle\Soap\Types\Data_eForm_Universal $universal
+     */
+    public function __construct($Header_eForm, Data_eForm_TransferOfLandType $tfla = null, Data_eForm_Mortgage $mortgage = null, Data_eForm_Caveat $caveat = null, Data_eForm_Discharge $discharge = null, Data_eForm_Universal $universal = null)
+    {
+        $this->Header_eForm = $Header_eForm;
+        $this->Data_eForm_TransferOfLand = $tfla;
+        $this->Data_eForm_Mortgage = $mortgage;
+        $this->Data_eForm_Caveat = $caveat;
+        $this->Data_eForm_Discharge = $discharge;
+        $this->Data_eForm_Universal = $universal;
+    }
 
     /**
      * @return string

@@ -16,6 +16,18 @@ class Data_eForm_Discharge
     private $Instruments = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $CustomerFileNumber
+     * @var \NS\AltoBundle\Soap\Types\anyType $Instruments
+     */
+    public function __construct($CustomerFileNumber, $Instruments)
+    {
+        $this->CustomerFileNumber = $CustomerFileNumber;
+        $this->Instruments = $Instruments;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getCustomerFileNumber()

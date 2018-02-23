@@ -31,6 +31,24 @@ class DowerAffidavit
     private $ReleaseOfDowerRightsInstrumentNumber = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $DowerAffidavitOption
+     * @var \NS\AltoBundle\Soap\Types\anyType $JudgementDate
+     * @var \NS\AltoBundle\Soap\Types\anyType $ReleaseRegistrationDate
+     * @var \NS\AltoBundle\Soap\Types\anyType $JudgementInstrumentNumber
+     * @var \NS\AltoBundle\Soap\Types\anyType $ReleaseOfDowerRightsInstrumentNumber
+     */
+    public function __construct($DowerAffidavitOption, $JudgementDate, $ReleaseRegistrationDate, $JudgementInstrumentNumber, $ReleaseOfDowerRightsInstrumentNumber)
+    {
+        $this->DowerAffidavitOption = $DowerAffidavitOption;
+        $this->JudgementDate = $JudgementDate;
+        $this->ReleaseRegistrationDate = $ReleaseRegistrationDate;
+        $this->JudgementInstrumentNumber = $JudgementInstrumentNumber;
+        $this->ReleaseOfDowerRightsInstrumentNumber = $ReleaseOfDowerRightsInstrumentNumber;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getDowerAffidavitOption()

@@ -11,6 +11,16 @@ class AffidavitOfAttestations
     private $AffidavitOfAttestation = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\AffidavitOfAttestation $AffidavitOfAttestation
+     */
+    public function __construct($AffidavitOfAttestation)
+    {
+        $this->AffidavitOfAttestation = $AffidavitOfAttestation;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\AffidavitOfAttestation
      */
     public function getAffidavitOfAttestation()

@@ -11,6 +11,16 @@ class Data_eForm_Universal
     private $CustomerFileNumber = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $CustomerFileNumber
+     */
+    public function __construct($CustomerFileNumber)
+    {
+        $this->CustomerFileNumber = $CustomerFileNumber;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getCustomerFileNumber()

@@ -11,6 +11,16 @@ class InstrumentsType
     private $InstrumentNumber = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $InstrumentNumber
+     */
+    public function __construct($InstrumentNumber)
+    {
+        $this->InstrumentNumber = $InstrumentNumber;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getInstrumentNumber()

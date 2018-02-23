@@ -41,6 +41,28 @@ class Data_eForm_TransferOfLandType
     private $AffidavitReValue = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $CustomerFileNumber
+     * @var \NS\AltoBundle\Soap\Types\anyType $Titles
+     * @var \NS\AltoBundle\Soap\Types\anyType $Consideration
+     * @var \NS\AltoBundle\Soap\Types\AffidavitOfAttestations $AffidavitOfAttestations
+     * @var \NS\AltoBundle\Soap\Types\Transferors $Transferors
+     * @var \NS\AltoBundle\Soap\Types\TransfereeGroups $TransfereeGroups
+     * @var \NS\AltoBundle\Soap\Types\AffidavitReValue $AffidavitReValue
+     */
+    public function __construct($CustomerFileNumber, $Titles, $Consideration, $AffidavitOfAttestations, $Transferors, $TransfereeGroups, $AffidavitReValue)
+    {
+        $this->CustomerFileNumber = $CustomerFileNumber;
+        $this->Titles = $Titles;
+        $this->Consideration = $Consideration;
+        $this->AffidavitOfAttestations = $AffidavitOfAttestations;
+        $this->Transferors = $Transferors;
+        $this->TransfereeGroups = $TransfereeGroups;
+        $this->AffidavitReValue = $AffidavitReValue;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getCustomerFileNumber()

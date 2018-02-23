@@ -17,6 +17,7 @@ return Config::create()
     ->addSoapOption('features', SOAP_SINGLE_ELEMENT_ARRAYS)
     ->addRule(new Rules\AssembleRule(new Assembler\GetterAssembler(new Assembler\GetterAssemblerOptions())))
     ->addRule(new Rules\AssembleRule(new Assembler\ImmutableSetterAssembler()))
+    ->addRule(new Rules\AssembleRule(new Assembler\ConstructorAssembler()))
     ->addRule(new Rules\TypenameMatchesRule(
         new Rules\AssembleRule(new Assembler\RequestAssembler()),
         '/Request$/'

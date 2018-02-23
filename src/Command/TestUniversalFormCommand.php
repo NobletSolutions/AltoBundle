@@ -58,19 +58,12 @@ class TestUniversalFormCommand extends Command
         ];
         $client = AltoSoapClientFactory::factory($wsdlUrl,$soapOptions);
 
-        $universalForm = new Data_eForm_Universal();
-        $universalForm = $universalForm->withCustomerFileNumber($input->getArgument('file-no'));
-        $header = new EformHeaderType();
-        $header = $header->withDocumentType('ASJT')->withRequestType('Create');
-        if ($input->hasArgument('eForm-id')) {
-            $header->withEFormIdentifier($input->getArgument('eForm-id'));
-        }
+        $universalForm = new Data_eForm_Universal($input->getArgument('file-no'));
 
-        $request = new Request();
-        $request = $request->withData_eForm_Universal($universalForm)->withHeader_eForm($header);
-//
-        $submitRequest = new SubmitRequest();
-        $submitRequest = $submitRequest->withUsername($input->getArgument('username'))->withPassword($input->getArgument('password'))->withRequest($request);
+        $header = new EformHeaderType( 'Create','ASJT',$input->hasArgument('eForm-id')?$input->getArgument('eForm-id'):null);
+
+        $request = new Request($header,null,null,null,null, $universalForm);
+        $submitRequest = new SubmitRequest($input->getArgument('username'),$input->getArgument('password'),$request);
         $response = $client->submitRequest($submitRequest);
         $output->writeln(print_r($response,true));
     }

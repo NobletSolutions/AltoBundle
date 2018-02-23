@@ -24,6 +24,20 @@ class SubmitRequest implements RequestInterface
     private $request = null;
 
     /**
+     * Constructor
+     *
+     * @var string $username
+     * @var string $password
+     * @var string $request
+     */
+    public function __construct($username, $password, $request)
+    {
+        $this->username = $username;
+        $this->password = $password;
+        $this->request = $request;
+    }
+
+    /**
      * @return string
      */
     public function getUsername()

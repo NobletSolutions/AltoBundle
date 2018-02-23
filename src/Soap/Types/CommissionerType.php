@@ -36,6 +36,26 @@ class CommissionerType
     private $OtherDescription = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $GivenName
+     * @var \NS\AltoBundle\Soap\Types\anyType $Surname
+     * @var \NS\AltoBundle\Soap\Types\anyType $ExpiryDate
+     * @var \NS\AltoBundle\Soap\Types\anyType $AuthorityDescription
+     * @var \NS\AltoBundle\Soap\Types\anyType $AdditionalDescription
+     * @var \NS\AltoBundle\Soap\Types\anyType $OtherDescription
+     */
+    public function __construct($GivenName, $Surname, $ExpiryDate, $AuthorityDescription, $AdditionalDescription, $OtherDescription)
+    {
+        $this->GivenName = $GivenName;
+        $this->Surname = $Surname;
+        $this->ExpiryDate = $ExpiryDate;
+        $this->AuthorityDescription = $AuthorityDescription;
+        $this->AdditionalDescription = $AdditionalDescription;
+        $this->OtherDescription = $OtherDescription;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getGivenName()

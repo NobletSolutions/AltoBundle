@@ -31,6 +31,24 @@ class Ordertype
     private $status = null;
 
     /**
+     * Constructor
+     *
+     * @var string $customer
+     * @var string $orderdetails
+     * @var string $billto
+     * @var string $shipto
+     * @var string $status
+     */
+    public function __construct($customer, $orderdetails, $billto, $shipto, $status)
+    {
+        $this->customer = $customer;
+        $this->orderdetails = $orderdetails;
+        $this->billto = $billto;
+        $this->shipto = $shipto;
+        $this->status = $status;
+    }
+
+    /**
      * @return string
      */
     public function getCustomer()

@@ -11,6 +11,16 @@ class Transferors
     private $Transferor = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $Transferor
+     */
+    public function __construct($Transferor)
+    {
+        $this->Transferor = $Transferor;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getTransferor()

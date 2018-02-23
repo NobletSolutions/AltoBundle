@@ -31,6 +31,24 @@ class AffidavitReValue
     private $Agent = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $SigningIndividual
+     * @var \NS\AltoBundle\Soap\Types\Consideration $Consideration
+     * @var \NS\AltoBundle\Soap\Types\anyType $Affidavit
+     * @var \NS\AltoBundle\Soap\Types\anyType $Commissioner
+     * @var \NS\AltoBundle\Soap\Types\anyType $Agent
+     */
+    public function __construct($SigningIndividual, $Consideration, $Affidavit, $Commissioner, $Agent)
+    {
+        $this->SigningIndividual = $SigningIndividual;
+        $this->Consideration = $Consideration;
+        $this->Affidavit = $Affidavit;
+        $this->Commissioner = $Commissioner;
+        $this->Agent = $Agent;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getSigningIndividual()

@@ -31,6 +31,24 @@ class AffidavitType
     private $Sworn = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $AffidavitDate
+     * @var \NS\AltoBundle\Soap\Types\anyType $Municipality
+     * @var \NS\AltoBundle\Soap\Types\anyType $ProvinceName
+     * @var \NS\AltoBundle\Soap\Types\anyType $CountryName
+     * @var \NS\AltoBundle\Soap\Types\anyType $Sworn
+     */
+    public function __construct($AffidavitDate, $Municipality, $ProvinceName, $CountryName, $Sworn)
+    {
+        $this->AffidavitDate = $AffidavitDate;
+        $this->Municipality = $Municipality;
+        $this->ProvinceName = $ProvinceName;
+        $this->CountryName = $CountryName;
+        $this->Sworn = $Sworn;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getAffidavitDate()

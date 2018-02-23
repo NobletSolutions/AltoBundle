@@ -41,6 +41,28 @@ class Data_eForm_Caveat
     private $Titles = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $CustomerFileNumber
+     * @var \NS\AltoBundle\Soap\Types\anyType $Claim
+     * @var \NS\AltoBundle\Soap\Types\anyType $Ground
+     * @var \NS\AltoBundle\Soap\Types\anyType $Caveators
+     * @var \NS\AltoBundle\Soap\Types\anyType $Agent
+     * @var \NS\AltoBundle\Soap\Types\anyType $Affidavit
+     * @var \NS\AltoBundle\Soap\Types\anyType $Titles
+     */
+    public function __construct($CustomerFileNumber, $Claim, $Ground, $Caveators, $Agent, $Affidavit, $Titles)
+    {
+        $this->CustomerFileNumber = $CustomerFileNumber;
+        $this->Claim = $Claim;
+        $this->Ground = $Ground;
+        $this->Caveators = $Caveators;
+        $this->Agent = $Agent;
+        $this->Affidavit = $Affidavit;
+        $this->Titles = $Titles;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getCustomerFileNumber()

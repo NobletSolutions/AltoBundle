@@ -31,6 +31,24 @@ class Data_eForm_Mortgage
     private $Mortgagees = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $CustomerFileNumber
+     * @var \NS\AltoBundle\Soap\Types\anyType $Titles
+     * @var \NS\AltoBundle\Soap\Types\anyType $PrincipalAmount
+     * @var \NS\AltoBundle\Soap\Types\anyType $StandardMortgageNumber
+     * @var \NS\AltoBundle\Soap\Types\anyType $Mortgagees
+     */
+    public function __construct($CustomerFileNumber, $Titles, $PrincipalAmount, $StandardMortgageNumber, $Mortgagees)
+    {
+        $this->CustomerFileNumber = $CustomerFileNumber;
+        $this->Titles = $Titles;
+        $this->PrincipalAmount = $PrincipalAmount;
+        $this->StandardMortgageNumber = $StandardMortgageNumber;
+        $this->Mortgagees = $Mortgagees;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getCustomerFileNumber()

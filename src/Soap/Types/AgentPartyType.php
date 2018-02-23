@@ -31,6 +31,24 @@ class AgentPartyType
     private $CorporateSeal = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $GivenName
+     * @var \NS\AltoBundle\Soap\Types\anyType $Surname
+     * @var \NS\AltoBundle\Soap\Types\anyType $ExecutionDate
+     * @var \NS\AltoBundle\Soap\Types\anyType $CorporationName
+     * @var \NS\AltoBundle\Soap\Types\anyType $CorporateSeal
+     */
+    public function __construct($GivenName, $Surname, $ExecutionDate, $CorporationName, $CorporateSeal)
+    {
+        $this->GivenName = $GivenName;
+        $this->Surname = $Surname;
+        $this->ExecutionDate = $ExecutionDate;
+        $this->CorporationName = $CorporationName;
+        $this->CorporateSeal = $CorporateSeal;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getGivenName()

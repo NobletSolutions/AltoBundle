@@ -16,6 +16,18 @@ class CorporateSigningAffidavit
     private $Commissioner = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $Affidavit
+     * @var \NS\AltoBundle\Soap\Types\anyType $Commissioner
+     */
+    public function __construct($Affidavit, $Commissioner)
+    {
+        $this->Affidavit = $Affidavit;
+        $this->Commissioner = $Commissioner;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getAffidavit()

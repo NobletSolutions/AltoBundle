@@ -11,6 +11,16 @@ class TransfereeGroups
     private $TransfereeGroup = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\TransfereeGroup $TransfereeGroup
+     */
+    public function __construct($TransfereeGroup)
+    {
+        $this->TransfereeGroup = $TransfereeGroup;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\TransfereeGroup
      */
     public function getTransfereeGroup()

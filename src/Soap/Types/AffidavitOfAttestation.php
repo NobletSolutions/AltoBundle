@@ -31,6 +31,24 @@ class AffidavitOfAttestation
     private $Commissioner = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $KnowsTransferor
+     * @var \NS\AltoBundle\Soap\Types\anyType $Execution
+     * @var \NS\AltoBundle\Soap\Types\anyType $Witness
+     * @var \NS\AltoBundle\Soap\Types\anyType $Affidavit
+     * @var \NS\AltoBundle\Soap\Types\anyType $Commissioner
+     */
+    public function __construct($KnowsTransferor, $Execution, $Witness, $Affidavit, $Commissioner)
+    {
+        $this->KnowsTransferor = $KnowsTransferor;
+        $this->Execution = $Execution;
+        $this->Witness = $Witness;
+        $this->Affidavit = $Affidavit;
+        $this->Commissioner = $Commissioner;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getKnowsTransferor()

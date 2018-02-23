@@ -21,6 +21,20 @@ class TransfereeGroup
     private $Transferees = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $DefinedInterestText
+     * @var \NS\AltoBundle\Soap\Types\anyType $TenancyType
+     * @var \NS\AltoBundle\Soap\Types\Transferees $Transferees
+     */
+    public function __construct($DefinedInterestText, $TenancyType, $Transferees)
+    {
+        $this->DefinedInterestText = $DefinedInterestText;
+        $this->TenancyType = $TenancyType;
+        $this->Transferees = $Transferees;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getDefinedInterestText()

@@ -21,6 +21,20 @@ class SignatorType
     private $Address = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $ContactGivenName
+     * @var \NS\AltoBundle\Soap\Types\anyType $ContactSurname
+     * @var \NS\AltoBundle\Soap\Types\anyType $Address
+     */
+    public function __construct($ContactGivenName, $ContactSurname, $Address)
+    {
+        $this->ContactGivenName = $ContactGivenName;
+        $this->ContactSurname = $ContactSurname;
+        $this->Address = $Address;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getContactGivenName()

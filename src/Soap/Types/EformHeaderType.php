@@ -21,6 +21,20 @@ class EformHeaderType
     private $eFormIdentifier = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $RequestType
+     * @var \NS\AltoBundle\Soap\Types\anyType $DocumentType
+     * @var \NS\AltoBundle\Soap\Types\anyType $eFormIdentifier
+     */
+    public function __construct($RequestType, $DocumentType, $eFormIdentifier)
+    {
+        $this->RequestType = $RequestType;
+        $this->DocumentType = $DocumentType;
+        $this->eFormIdentifier = $eFormIdentifier;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getRequestType()

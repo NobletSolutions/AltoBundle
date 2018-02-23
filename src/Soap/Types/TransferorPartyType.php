@@ -71,6 +71,40 @@ class TransferorPartyType
     private $SigningParties = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $GivenName
+     * @var \NS\AltoBundle\Soap\Types\anyType $Surname
+     * @var \NS\AltoBundle\Soap\Types\anyType $SpouseGivenName
+     * @var \NS\AltoBundle\Soap\Types\anyType $SpouseSurname
+     * @var \NS\AltoBundle\Soap\Types\anyType $Municipality
+     * @var \NS\AltoBundle\Soap\Types\anyType $ProvinceName
+     * @var \NS\AltoBundle\Soap\Types\anyType $CountryName
+     * @var \NS\AltoBundle\Soap\Types\anyType $ExecutionDate
+     * @var \NS\AltoBundle\Soap\Types\anyType $MaritalStatus
+     * @var \NS\AltoBundle\Soap\Types\anyType $DowerCompliances
+     * @var \NS\AltoBundle\Soap\Types\anyType $CorporationName
+     * @var \NS\AltoBundle\Soap\Types\anyType $CorporateSeal
+     * @var \NS\AltoBundle\Soap\Types\SigningParties $SigningParties
+     */
+    public function __construct($GivenName, $Surname, $SpouseGivenName, $SpouseSurname, $Municipality, $ProvinceName, $CountryName, $ExecutionDate, $MaritalStatus, $DowerCompliances, $CorporationName, $CorporateSeal, $SigningParties)
+    {
+        $this->GivenName = $GivenName;
+        $this->Surname = $Surname;
+        $this->SpouseGivenName = $SpouseGivenName;
+        $this->SpouseSurname = $SpouseSurname;
+        $this->Municipality = $Municipality;
+        $this->ProvinceName = $ProvinceName;
+        $this->CountryName = $CountryName;
+        $this->ExecutionDate = $ExecutionDate;
+        $this->MaritalStatus = $MaritalStatus;
+        $this->DowerCompliances = $DowerCompliances;
+        $this->CorporationName = $CorporationName;
+        $this->CorporateSeal = $CorporateSeal;
+        $this->SigningParties = $SigningParties;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getGivenName()

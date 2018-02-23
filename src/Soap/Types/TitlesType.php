@@ -11,6 +11,16 @@ class TitlesType
     private $Title = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\Title $Title
+     */
+    public function __construct($Title)
+    {
+        $this->Title = $Title;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\Title
      */
     public function getTitle()

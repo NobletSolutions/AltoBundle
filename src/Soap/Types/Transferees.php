@@ -11,6 +11,16 @@ class Transferees
     private $Transferee = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $Transferee
+     */
+    public function __construct($Transferee)
+    {
+        $this->Transferee = $Transferee;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getTransferee()

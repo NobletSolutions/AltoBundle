@@ -41,6 +41,28 @@ class LongAddressType
     private $PostalCode = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $POBox
+     * @var \NS\AltoBundle\Soap\Types\anyType $AddressLine1
+     * @var \NS\AltoBundle\Soap\Types\anyType $AddressLine2
+     * @var \NS\AltoBundle\Soap\Types\anyType $Municipality
+     * @var \NS\AltoBundle\Soap\Types\anyType $ProvinceName
+     * @var \NS\AltoBundle\Soap\Types\anyType $CountryName
+     * @var \NS\AltoBundle\Soap\Types\anyType $PostalCode
+     */
+    public function __construct($POBox, $AddressLine1, $AddressLine2, $Municipality, $ProvinceName, $CountryName, $PostalCode)
+    {
+        $this->POBox = $POBox;
+        $this->AddressLine1 = $AddressLine1;
+        $this->AddressLine2 = $AddressLine2;
+        $this->Municipality = $Municipality;
+        $this->ProvinceName = $ProvinceName;
+        $this->CountryName = $CountryName;
+        $this->PostalCode = $PostalCode;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getPOBox()

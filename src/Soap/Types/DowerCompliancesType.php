@@ -26,6 +26,22 @@ class DowerCompliancesType
     private $Commissioner = null;
 
     /**
+     * Constructor
+     *
+     * @var \NS\AltoBundle\Soap\Types\anyType $Dower
+     * @var \NS\AltoBundle\Soap\Types\DowerAffidavit $DowerAffidavit
+     * @var \NS\AltoBundle\Soap\Types\anyType $DowerAffidavitDetail
+     * @var \NS\AltoBundle\Soap\Types\anyType $Commissioner
+     */
+    public function __construct($Dower, $DowerAffidavit, $DowerAffidavitDetail, $Commissioner)
+    {
+        $this->Dower = $Dower;
+        $this->DowerAffidavit = $DowerAffidavit;
+        $this->DowerAffidavitDetail = $DowerAffidavitDetail;
+        $this->Commissioner = $Commissioner;
+    }
+
+    /**
      * @return \NS\AltoBundle\Soap\Types\anyType
      */
     public function getDower()
