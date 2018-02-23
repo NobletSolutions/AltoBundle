@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<!--
+Description	Layout topologie - Common Record Layout
+Last updated  September 2017
+Version#:	1.00 (version #.yy)
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <!-- @@@@@@ Include Related Schemas @@@@@@  -->
+  <xs:include schemaLocation="simple.xsd"/>
+  <xs:include schemaLocation="complex.xsd"/>
+  <xs:include schemaLocation="etfla.xsd"/>
+  <xs:include schemaLocation="emort.xsd"/>
+  <xs:include schemaLocation="ecave.xsd"/>
+  <xs:include schemaLocation="edisc.xsd"/>
+  <xs:include schemaLocation="eform.xsd"/>
+  <xs:element name="Request">
+    <xs:complexType>
+      <xs:all>
+        <xs:element type="xs:string" name="ServiceType"/>
+        <xs:element name="Header_eForm" type="EformHeaderType" />
+        <xs:element name="Data_eForm_TransferOfLand" type="Data_eForm_TransferOfLandType" minOccurs="0" maxOccurs="1" />
+        <xs:element name="Data_eForm_Mortgage" type="Data_eForm_Mortgage" minOccurs="0" maxOccurs="1" />
+        <xs:element name="Data_eForm_Caveat" type="Data_eForm_Caveat" minOccurs="0" maxOccurs="1" />
+        <xs:element name="Data_eForm_Discharge" type="Data_eForm_Discharge" minOccurs="0" maxOccurs="1" />
+        <xs:element name="Data_eForm_Universal" type="Data_eForm_Universal" minOccurs="0" maxOccurs="1" />
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

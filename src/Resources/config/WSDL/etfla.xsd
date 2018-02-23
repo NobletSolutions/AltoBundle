@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+Last updated 	November 2017
+Version#:	1.00 (version #.yy)
+-->
+
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:group name="custGroup">
+  <xs:sequence>
+    <xs:element name="customer" type="xs:string"/>
+    <xs:element name="orderdetails" type="xs:string"/>
+    <xs:element name="billto" type="xs:string"/>
+    <xs:element name="shipto" type="xs:string"/>
+  </xs:sequence>
+</xs:group>
+
+<xs:element name="order" type="ordertype"/>
+
+<xs:complexType name="ordertype">
+  <xs:group ref="custGroup"/>
+  <xs:attribute name="status" type="xs:string"/>
+ </xs:complexType>
+
+  <xs:complexType name="ConsiderationType">
+    <xs:all>
+      <xs:element name="ConsiderationAmount" type="decimal15NotNegativeType"/>
+      <xs:element name="ConsiderationDescription" type="char0_500Type" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="DowerCompliancesType">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="Dower" type="truefalseType"/>
+      <xs:element name="DowerAffidavit">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="DowerAffidavitOption" type="dowerAffidavitOptionType"/>
+            <xs:element name="JudgementDate" type="dateType" />
+            <xs:element name="ReleaseRegistrationDate" type="dateType"/>
+            <xs:element name="JudgementInstrumentNumber" type="char0_12Type" minOccurs="0"/>
+            <xs:element name="ReleaseOfDowerRightsInstrumentNumber" type="char0_12Type" minOccurs="0"/>
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DowerAffidavitDetail" type="AffidavitType"/>
+      <xs:element name="Commissioner" type="CommissionerType" />
+    </xs:choice>
+  </xs:complexType>
+  
+  <xs:group name="TransfereeIndividualGroup">
+    <xs:sequence>
+      <xs:element name="GivenName" type="char1_255Type"/>
+      <xs:element name="Surname" type="char1_255Type"/>
+      <xs:element name="ExecutionDate" type="dateType"/>
+      <xs:element name="IndivdualToSignAffidvitReValue" type="truefalseType"/>
+      <xs:element name="Address" type="LongAddressType"/>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:group name="TransfereeCorporationGroup">
+    <xs:sequence>
+      <xs:element name="CorporationName" type="char1_512Type"/>
+      <xs:element name="ExecutionDate" type="dateType"/>
+      <xs:element name="IndivdualToSignAffidvitReValue" type="truefalseType"/>
+      <xs:element name="Address" type="LongAddressType"/>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:complexType name="TransfereePartyType">
+    <xs:choice>
+      <xs:group ref="TransfereeIndividualGroup" />
+      <xs:group ref="TransfereeCorporationGroup" />
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:group name="TransferorIndividualGroup">
+    <xs:sequence>
+      <xs:element name="GivenName" type="char1_255Type"/>
+      <xs:element name="Surname" type="char1_255Type"/>
+      <xs:element name="SpouseGivenName" type="char0_255Type" minOccurs="0"/>
+      <xs:element name="SpouseSurname" type="char0_255Type" minOccurs="0"/>
+      <xs:element name="Municipality" type="char1_255Type"/>
+      <xs:element name="ProvinceName" type="char1_255Type"/>
+      <xs:element name="CountryName" type="char1_100Type"/>
+      <xs:element name="ExecutionDate" type="dateType"/>
+      <xs:element name="MaritalStatus" type="maritalStatusType"/>
+      <xs:element name="DowerCompliances" type="DowerCompliancesType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:group name="TransferorCorporationGroup">
+    <xs:sequence>
+      <xs:element name="CorporationName" type="char1_512Type"/>
+      <xs:element name="CorporateSeal" type="truefalseType" />
+      <xs:element name="SpouseGivenName" type="char0_255Type" minOccurs="0"/>
+      <xs:element name="SpouseSurname" type="char0_255Type" minOccurs="0"/>
+      <xs:element name="Municipality" type="char1_255Type"/>
+      <xs:element name="ProvinceName" type="char1_255Type"/>
+      <xs:element name="CountryName" type="char1_100Type"/>
+      <xs:element name="ExecutionDate" type="dateType"/>
+      <xs:element name="SigningParties" minOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="SigningParty" type="SigningPartyType" minOccurs="1" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:complexType name="TransferorPartyType">
+    <xs:choice>
+      <xs:group ref="TransferorIndividualGroup" />
+      <xs:group ref="TransferorCorporationGroup" />
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="SigningPartyType">
+    <xs:all>
+      <xs:element name="GivenName" type="char1_255Type"/>
+      <xs:element name="Surname" type="char1_255Type"/>
+      <xs:element name="Municipality" type="char1_255Type"/>
+      <xs:element name="ProvinceName" type="char1_255Type"/>
+      <xs:element name="CountryName" type="char1_100Type"/>
+      <xs:element name="CorporateSigningAffidavit" minOccurs="0">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Affidavit" type="AffidavitType" />
+            <xs:element name="Commissioner" type="CommissionerType"/>
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+    </xs:all>
+  </xs:complexType>
+  
+  <xs:complexType name="AgentType">
+    <xs:sequence>
+      <xs:element name="GivenName" type="char1_255Type"/>
+      <xs:element name="Surname" type="char1_255Type"/>
+      <xs:element name="Municipality" type="char1_255Type"/>
+      <xs:element name="ProvinceName" type="char1_255Type"/>
+      <xs:element name="CountryName" type="char1_100Type"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="Data_eForm_TransferOfLandType">
+      <xs:all>
+        <xs:element name="CustomerFileNumber" type="char0_50Type" minOccurs="0"/> 
+        <xs:element name="Titles" type="TitlesType" />
+        <xs:element name="Consideration" type="ConsiderationType" />
+        <xs:element name="AffidavitOfAttestations" minOccurs="0" >
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="AffidavitOfAttestation" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:all>
+                    <xs:element name="KnowsTransferor" type="truefalseType"/>
+                    <xs:element name="Execution" type="ShortAddressType" />
+                    <xs:element name="Witness" type="IndividualNameShortAddressType" />
+                    <xs:element name="Affidavit" type="AffidavitType"/>
+                    <xs:element name="Commissioner" type="CommissionerType" />
+                  </xs:all>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="Transferors">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Transferor" type="TransferorPartyType" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="TransfereeGroups">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TransfereeGroup" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:all>
+                    <xs:element name="DefinedInterestText" type="char0_50Type" minOccurs="0"/>
+                    <xs:element name="TenancyType" type="tenancyType" />
+                    <xs:element name="Transferees">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Transferee" type="TransfereePartyType" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:all>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="AffidavitReValue">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="SigningIndividual" type="SigningIndividualType" />
+              <xs:element name="Consideration">
+              <xs:complexType>
+                <xs:all>
+                  <xs:element name="ConsiderationAmount" type="decimal15NotNegativeType"/>
+                  <xs:element name="ConsiderationDescription" type="char1_500Type" minOccurs="0"/>
+                </xs:all>
+              </xs:complexType>
+              </xs:element>
+              <xs:element name="Affidavit" type="AffidavitType" />
+              <xs:element name="Commissioner" type="CommissionerType" />
+              <xs:element name="Agent" type="AgentType"  minOccurs="0" />
+            </xs:all>
+          </xs:complexType>
+        </xs:element>       
+      </xs:all>
+    </xs:complexType>
+</xs:schema>

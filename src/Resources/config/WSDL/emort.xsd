@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+Description:	Electronic Mortgage (eMORT) document
+Last updated: September 21, 2017
+Version#:	    1.17 (version #.yy)
+-->
+
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:group name="mortgageeIndividualGroup">
+    <xs:sequence>
+      <xs:element type="char1_255Type" name="GivenName"/>
+      <xs:element type="char1_255Type" name="Surname"/>
+      <xs:element type="LongAddressType" name="Address"/>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:group name="mortgageeCorporationGroup">
+    <xs:sequence>
+      <xs:element type="char1_512Type" name="CorporationName"/>
+      <xs:element type="LongAddressType" name="Address"/>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:complexType name="mortgageePartyType">
+    <xs:choice>
+      <xs:group ref="mortgageeIndividualGroup"/>
+      <xs:group ref="mortgageeCorporationGroup"/>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="mortgageePartyGroupType">
+    <xs:sequence>
+      <xs:element type="mortgageePartyType" name="Mortgagee" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Data_eForm_Mortgage">
+      <xs:all>
+        <xs:element name="CustomerFileNumber" type="char0_50Type"  minOccurs="0"/>
+        <xs:element name="Titles" type="TitlesType" />
+        <xs:element name="PrincipalAmount" type="decimal15NotNegativeType" />
+        <xs:element name="StandardMortgageNumber" type ="integerNotNegativeOrEmptyType"/>
+        <xs:element name="Mortgagees" type="mortgageePartyGroupType" />
+      </xs:all>
+  </xs:complexType>
+
+</xs:schema>

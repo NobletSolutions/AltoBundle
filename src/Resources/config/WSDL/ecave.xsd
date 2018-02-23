@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+Description:	Electronic Caveat (eCAVE) document
+Last updated: September 21, 2017
+Version#:	    1.17 (version #.yy)
+-->
+
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  
+  <xs:group name="caveatorIndividualGroup">
+    <xs:sequence>
+      <xs:element type="char1_255Type" name="GivenName" />
+      <xs:element type="char1_255Type" name="Surname" />
+      <xs:element type="dateType" name="ExecutionDate" minOccurs="0"/>
+      <xs:element type="LongAddressType" name="Address"/>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:group name="caveatorCorporationGroup">
+    <xs:sequence>
+      <xs:element type="char1_512Type" name="CorporationName" />
+      <xs:element type="dateType" name="ExecutionDate" minOccurs="0"/>
+      <xs:element type="LongAddressType" name="Address"/>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:complexType name="caveatorPartyType">
+    <xs:choice>
+      <xs:group ref="caveatorIndividualGroup" />
+      <xs:group ref="caveatorCorporationGroup" />
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="caveatorPartyGroupType">
+    <xs:sequence>
+      <xs:element type="caveatorPartyType" name="Caveator" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:group name="agentIndividualGroup">
+    <xs:sequence>
+      <xs:element type="char1_255Type" name="GivenName"/>
+      <xs:element type="char1_255Type" name="Surname"/>
+      <xs:element type="dateType" name="ExecutionDate"/>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:group name="agentCorporationGroup">
+    <xs:sequence>
+      <xs:element type="char1_512Type" name="CorporationName"/>
+      <xs:element type="truefalseType" name="CorporateSeal" minOccurs="0"/>
+      <xs:element type="dateType" name="ExecutionDate"/>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:complexType name="agentPartyType">
+    <xs:choice>
+      <xs:group ref="agentIndividualGroup" />
+      <xs:group ref="agentCorporationGroup" />
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:group name="contactIndividualGroup">
+    <xs:sequence>
+      <xs:element type="char1_255Type" name="ContactGivenName"/>
+      <xs:element type="char1_255Type" name="ContactSurname"/>
+      <xs:element type="ShortAddressType" name="Address"/>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:complexType name="signatorType">
+    <xs:sequence>
+      <xs:group ref="contactIndividualGroup"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="eCAVEAffidavitType">
+    <xs:sequence>
+      <xs:element type="AffidavitType" name="JuratDetail"/>
+      <xs:element type="CommissionerType" name="Commissioner"/>
+      <xs:element type="signatorType" name="SigningDetail"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Data_eForm_Caveat">
+      <xs:all>
+        <xs:element type="char0_50Type" name="CustomerFileNumber" minOccurs="0"/>
+        <xs:element type="char1_1000Type" name="Claim" />
+        <xs:element type="char1_1000Type" name="Ground" />
+        <xs:element type="caveatorPartyGroupType" name="Caveators"/>
+        <xs:element type="agentPartyType" name="Agent" minOccurs="0"/>
+        <xs:element type="eCAVEAffidavitType" name="Affidavit"/>
+        <xs:element type="TitlesType" name="Titles" />
+      </xs:all>
+  </xs:complexType>
+
+</xs:schema>

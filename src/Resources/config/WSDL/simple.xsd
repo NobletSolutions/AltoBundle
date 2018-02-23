@@ -1,0 +1,296 @@
+<?xml version="1.0"?>
+
+<!--
+Description	Definition of SimpleTypes
+Last updated 	Sept 2017
+Version#:	1.00 (version #.yy)
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <!--                                                                                  -->
+  <!--                    String definitions                                            -->
+  <!--                                                                                  -->
+  <xs:simpleType name="documentType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ADJU"/>
+      <xs:enumeration value="ADJR"/>
+      <xs:enumeration value="ASJT"/>
+      <xs:enumeration value="AGRE"/>
+      <xs:enumeration value="COAP"/>
+      <xs:enumeration value="AMEA"/>
+      <xs:enumeration value="AMEN"/>
+      <xs:enumeration value="AMEL"/>
+      <xs:enumeration value="BANE"/>
+      <xs:enumeration value="BUIL"/>
+      <xs:enumeration value="CAVE"/>
+      <xs:enumeration value="COAT"/>
+      <xs:enumeration value="CERI"/>
+      <xs:enumeration value="CELP"/>
+      <xs:enumeration value="CERS"/>
+      <xs:enumeration value="CHAA"/>
+      <xs:enumeration value="CCBL"/>
+      <xs:enumeration value="CCDI"/>
+      <xs:enumeration value="CHAN"/>
+      <xs:enumeration value="CONP"/>
+      <xs:enumeration value="CONE"/>
+      <xs:enumeration value="COTI"/>
+      <xs:enumeration value="DESP"/>
+      <xs:enumeration value="DISC"/>
+      <xs:enumeration value="DISO"/>
+      <xs:enumeration value="DIST"/>
+      <xs:enumeration value="DRAO"/>
+      <xs:enumeration value="EASE"/>
+      <xs:enumeration value="eCAVE"/>
+      <xs:enumeration value="eDISC"/>
+      <xs:enumeration value="eMORT"/>
+      <xs:enumeration value="eTFLA"/>
+      <xs:enumeration value="ENCA"/>
+      <xs:enumeration value="ENCU"/>
+      <xs:enumeration value="ENRE"/>
+      <xs:enumeration value="EXPI"/>
+      <xs:enumeration value="FOLA"/>
+      <xs:enumeration value="HABC"/>
+      <xs:enumeration value="HRAB"/>
+      <xs:enumeration value="HRAC"/>
+      <xs:enumeration value="HRAN"/>
+      <xs:enumeration value="INST"/>
+      <xs:enumeration value="IRDR"/>
+      <xs:enumeration value="IRCO"/>
+      <xs:enumeration value="LAPL"/>
+      <xs:enumeration value="LAPC"/>
+      <xs:enumeration value="LAPW"/>
+      <xs:enumeration value="LEAS"/>
+      <xs:enumeration value="RENL"/>
+      <xs:enumeration value="SUBL"/>
+      <xs:enumeration value="LERA"/>
+      <xs:enumeration value="LIFE"/>
+      <xs:enumeration value="MERG"/>
+      <xs:enumeration value="PLAN"/>
+      <xs:enumeration value="MONP"/>
+      <xs:enumeration value="MONC"/>
+      <xs:enumeration value="MORT"/>
+      <xs:enumeration value="MORS"/>
+      <xs:enumeration value="MURW"/>
+      <xs:enumeration value="NPLE"/>
+      <xs:enumeration value="NOTM"/>
+      <xs:enumeration value="NEXT"/>
+      <xs:enumeration value="NHHR"/>
+      <xs:enumeration value="NEXP"/>
+      <xs:enumeration value="NOSI"/>
+      <xs:enumeration value="NOTS"/>
+      <xs:enumeration value="NOTC"/>
+      <xs:enumeration value="MUNA"/>
+      <xs:enumeration value="REVT"/>
+      <xs:enumeration value="ORDE"/>
+      <xs:enumeration value="ORDT"/>
+      <xs:enumeration value="PAWA"/>
+      <xs:enumeration value="COPP"/>
+      <xs:enumeration value="PLCB"/>
+      <xs:enumeration value="PLAT"/>
+      <xs:enumeration value="PLAC"/>
+      <xs:enumeration value="LBAP"/>
+      <xs:enumeration value="POST"/>
+      <xs:enumeration value="POWG"/>
+      <xs:enumeration value="REVP"/>
+      <xs:enumeration value="POWS"/>
+      <xs:enumeration value="PUWP"/>
+      <xs:enumeration value="RAIP"/>
+      <xs:enumeration value="REDR"/>
+      <xs:enumeration value="RERD"/>
+      <xs:enumeration value="RDAN"/>
+      <xs:enumeration value="RESC"/>
+      <xs:enumeration value="ROWP"/>
+      <xs:enumeration value="ROAC"/>
+      <xs:enumeration value="ROAP"/>
+      <xs:enumeration value="LIEN"/>
+      <xs:enumeration value="SETI"/>
+      <xs:enumeration value="STAT"/>
+      <xs:enumeration value="STRP"/>
+      <xs:enumeration value="SUBP"/>
+      <xs:enumeration value="SURL"/>
+      <xs:enumeration value="TAAL"/>
+      <xs:enumeration value="TERC"/>
+      <xs:enumeration value="TFIN"/>
+      <xs:enumeration value="TFLA"/>
+      <xs:enumeration value="TFLI"/>
+      <xs:enumeration value="TFLH"/>
+      <xs:enumeration value="TFPL"/>
+      <xs:enumeration value="TMIN"/>
+      <xs:enumeration value="TMLA"/>
+      <xs:enumeration value="TMLT"/>
+      <xs:enumeration value="UNIA"/>
+      <xs:enumeration value="UTRW"/>
+      <xs:enumeration value="WRIT"/>
+      <xs:enumeration value="ZONR"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="truefalseType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="true"/>
+      <xs:enumeration value="false"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="maritalStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Single"/>
+      <xs:enumeration value="Married"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tenancyType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="C"/>
+      <xs:enumeration value="J"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SigningIndividualType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Agent"/>
+      <xs:enumeration value="Transferee"/>
+      <xs:enumeration value="NotSure"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="dowerAffidavitOptionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Released"/>
+      <xs:enumeration value="Judgement"/>
+      <xs:enumeration value="NeverResided"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!--                                                                     -->
+  <!-- Integer definitions                                                 -->
+  <!--                                                                     -->
+  <xs:simpleType name="integerNotNegative">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="2147483647"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="integerNotNegativeOrEmptyType">
+    <xs:union memberTypes="integerNotNegative char0Type"/>
+  </xs:simpleType>
+  <!--                                                                     -->
+  <!-- Decimal definitions                                                 -->
+  <!--                                                                     -->
+  <xs:simpleType name="decimal15NotNegativeType">
+    <xs:restriction base="xs:decimal">
+      <xs:fractionDigits value="2"/>
+      <xs:maxInclusive value="922337203685477.58" />
+      <xs:minInclusive value="0.00" />
+    </xs:restriction>
+  </xs:simpleType>
+  <!--                                                                                  -->
+  <!-- Character definitions                                                            -->
+  <!--                                                                                  -->
+  <xs:simpleType name="char1_5Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="5"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="char1_12Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="12"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="char0_12Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="0"/>
+      <xs:maxLength value="12"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="char1_15Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="15"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="char1_10Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="5"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="char1_20Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="20"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="char0_20Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="0"/>
+      <xs:maxLength value="20"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="char0_50Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="0"/>
+      <xs:maxLength value="50"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="char1_100Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="char0_500Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="0"/>
+      <xs:maxLength value="500"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="char1_500Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="500"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="char0_255Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="0"/>
+      <xs:maxLength value="255"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="char1_255Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="255"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="char0_512Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="0"/>
+      <xs:maxLength value="512"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="char1_512Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="512"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="char1_1000Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="1000"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="char0Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="0"/>
+      <xs:maxLength value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!--                                                                     -->
+  <!-- DATE definitions                                                 -->
+  <!--                                                                     -->
+  <xs:simpleType name="dateType">
+    <xs:restriction base="xs:date"/>
+  </xs:simpleType>
+  <xs:simpleType name="dateOrEmptyType">
+    <xs:union memberTypes="dateType char0Type"/>
+  </xs:simpleType>
+</xs:schema>

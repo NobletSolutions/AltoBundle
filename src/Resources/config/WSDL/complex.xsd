@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+
+<!--
+Description: 	COMPLEX TYPE DEFINITIONS
+Last updated 	September 2016
+Version#:	1.00 (version #.yy)
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  
+  <xs:complexType name="EformHeaderType">
+    <xs:all>
+      <xs:element type="char1_20Type" name="RequestType"/>
+      <xs:element type="char1_5Type" name="DocumentType"/>
+      <xs:element type="char0_20Type" name="eFormIdentifier" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+  
+  <xs:complexType name="TitlesType">
+    <xs:sequence>
+      <xs:element name="Title" maxOccurs="20">
+        <xs:complexType>
+          <xs:all>
+            <xs:element type="char1_12Type" name="TitleNumber"/>
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="ShortAddressType">
+    <xs:all>
+      <xs:element name="Municipality" type="char1_255Type" />
+      <xs:element name="ProvinceName" type="char1_255Type"/>
+      <xs:element name="CountryName" type="char1_100Type" />
+    </xs:all>
+  </xs:complexType>
+  
+  <xs:complexType name="IndividualNameShortAddressType">
+    <xs:all>
+      <xs:element name="GivenName" type="char1_255Type"/>
+      <xs:element name="Surname" type="char1_255Type"/>
+      <xs:element name="Municipality" type="char1_255Type"/>
+      <xs:element name="ProvinceName" type="char1_255Type"/>
+      <xs:element name="CountryName" type="char1_100Type"/>
+    </xs:all>
+  </xs:complexType>
+  
+  <xs:complexType name="AffidavitType">
+    <xs:all>
+      <xs:element name="AffidavitDate" type="dateType" />
+      <xs:element name="Municipality" type="char1_255Type"/>
+      <xs:element name="ProvinceName" type="char1_255Type"/>
+      <xs:element name="CountryName" type="char1_255Type"/>
+      <xs:element name="Sworn" type="truefalseType"/>
+    </xs:all>
+  </xs:complexType>
+  
+  <xs:complexType name="CommissionerType">
+    <xs:all>
+      <xs:element name="GivenName" type="char1_255Type"/>
+      <xs:element name="Surname" type="char1_255Type"/>
+      <xs:element name="ExpiryDate" type="dateOrEmptyType" minOccurs="0"/>
+      <xs:element name="AuthorityDescription" type="char1_255Type" />
+      <xs:element name="AdditionalDescription" type="char0_255Type" minOccurs="0"/>
+      <xs:element name="OtherDescription" type="char0_255Type" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+  
+  <xs:complexType name="LongAddressType">
+    <xs:all>
+      <xs:element name="POBox" type="char0_255Type" minOccurs="0"/>
+      <xs:element name="AddressLine1" type="char1_255Type"/>
+      <xs:element name="AddressLine2" type="char0_255Type" minOccurs="0"/>
+      <xs:element name="Municipality" type="char1_255Type"/>
+      <xs:element name="ProvinceName" type="char1_255Type"/>
+      <xs:element name="CountryName" type="char1_255Type"/>
+      <xs:element name="PostalCode" type="char1_15Type"/>
+    </xs:all>
+  </xs:complexType>
+
+</xs:schema>
