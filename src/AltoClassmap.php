@@ -8,8 +8,7 @@ use Phpro\SoapClient\Soap\ClassMap\ClassMap;
 
 class AltoClassmap
 {
-
-    public static function getCollection() : \Phpro\SoapClient\Soap\ClassMap\ClassMapCollection
+    public static function getCollection() : ClassMapCollection
     {
         return new ClassMapCollection([
             new ClassMap('EformHeaderType', Type\EformHeaderType::class),
@@ -56,7 +55,4 @@ class AltoClassmap
             new ClassMap('SubmitRequestResponse', Type\SubmitRequestResponse::class),
         ]);
     }
-
-
 }
-
