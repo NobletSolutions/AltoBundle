@@ -2,12 +2,10 @@
 
 namespace NS\AltoBundle\Soap\Types;
 
-
 use Phpro\SoapClient\Type\RequestInterface;
 
 class Request implements RequestInterface
 {
-
     /**
      * @var string
      */
