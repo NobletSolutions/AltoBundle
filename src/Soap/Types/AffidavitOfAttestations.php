@@ -5,41 +5,22 @@ namespace NS\AltoBundle\Soap\Types;
 class AffidavitOfAttestations
 {
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\AffidavitOfAttestation
-     */
+    /** @var AffidavitOfAttestation[] */
     private $AffidavitOfAttestation = null;
 
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\AffidavitOfAttestation $AffidavitOfAttestation
+     * @var AffidavitOfAttestation[] $AffidavitOfAttestation
      */
-    public function __construct($AffidavitOfAttestation)
+    public function __construct(array $AffidavitOfAttestation)
     {
         $this->AffidavitOfAttestation = $AffidavitOfAttestation;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\AffidavitOfAttestation
-     */
-    public function getAffidavitOfAttestation()
+    public function getAffidavitOfAttestation(): array
     {
         return $this->AffidavitOfAttestation;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\AffidavitOfAttestation $AffidavitOfAttestation
-     * @return AffidavitOfAttestations
-     */
-    public function withAffidavitOfAttestation($AffidavitOfAttestation)
-    {
-        $new = clone $this;
-        $new->AffidavitOfAttestation = $AffidavitOfAttestation;
-
-        return $new;
-    }
-
-
 }
 

@@ -19,7 +19,7 @@ class CaveatorPartyGroupTypeTest extends TestCase
     {
         $address = new LongAddressType(null, '155 Hidden Spring', null, 'Calgary', 'AB', 'Canada', 'T3A5J4');
         $caveator = CaveatorPartyType::createIndividual('Nathanael', 'Noblet', new \DateTime('2018-02-22'), $address);
-        $group = new CaveatorPartyGroupType($caveator);
-        $this->assertEquals(sprintf('<Caveator><GivenName>Nathanael</GivenName><Surname>Noblet</Surname><ExecutionDate>2018-02-22</ExecutionDate>%s</Caveator>',(string)$address),(string)$group);
+        $group = new CaveatorPartyGroupType([$caveator]);
+        $this->assertEquals(sprintf('<Caveators><Caveator><GivenName>Nathanael</GivenName><Surname>Noblet</Surname><ExecutionDate>2018-02-22</ExecutionDate>%s</Caveator></Caveators>',(string)$address),(string)$group);
     }
 }

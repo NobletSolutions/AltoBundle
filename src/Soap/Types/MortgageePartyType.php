@@ -16,7 +16,6 @@ class MortgageePartyType
     /** @var string */
     private $CorporationName = null;
 
-
     public static function createPersonMortgagee(string $given, string $surname, LongAddressType $address)
     {
         $obj = new self();

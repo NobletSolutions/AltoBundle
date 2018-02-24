@@ -8,6 +8,9 @@
 
 namespace NS\AltoBundle\Console;
 
+use NS\AltoBundle\Command\TestCaveatFormCommand;
+use NS\AltoBundle\Command\TestDischargeFormCommand;
+use NS\AltoBundle\Command\TestMortgageFormCommand;
 use NS\AltoBundle\Command\TestUniversalFormCommand;
 use \Symfony\Component\Console\Application as SymfonyApplication;
 
@@ -31,6 +34,9 @@ class Application extends SymfonyApplication
     {
         $commands = parent::getDefaultCommands();
         $commands[] = new TestUniversalFormCommand();
+        $commands[] = new TestDischargeFormCommand();
+        $commands[] = new TestMortgageFormCommand();
+        $commands[] = new TestCaveatFormCommand();
 
         return $commands;
     }

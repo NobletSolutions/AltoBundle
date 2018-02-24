@@ -4,96 +4,41 @@ namespace NS\AltoBundle\Soap\Types;
 
 class ECAVEAffidavitType
 {
-
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var AffidavitType */
     private $JuratDetail = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var CommissionerType */
     private $Commissioner = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var SignatorType */
     private $SigningDetail = null;
 
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\anyType $JuratDetail
-     * @var \NS\AltoBundle\Soap\Types\anyType $Commissioner
-     * @var \NS\AltoBundle\Soap\Types\anyType $SigningDetail
+     * @param AffidavitType $JuratDetail
+     * @param CommissionerType $Commissioner
+     * @param SignatorType $SigningDetail
      */
-    public function __construct($JuratDetail, $Commissioner, $SigningDetail)
+    public function __construct(AffidavitType $JuratDetail, CommissionerType $Commissioner, SignatorType $SigningDetail)
     {
         $this->JuratDetail = $JuratDetail;
         $this->Commissioner = $Commissioner;
         $this->SigningDetail = $SigningDetail;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getJuratDetail()
+    public function getJuratDetail(): AffidavitType
     {
         return $this->JuratDetail;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $JuratDetail
-     * @return ECAVEAffidavitType
-     */
-    public function withJuratDetail($JuratDetail)
-    {
-        $new = clone $this;
-        $new->JuratDetail = $JuratDetail;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getCommissioner()
+    public function getCommissioner(): CommissionerType
     {
         return $this->Commissioner;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Commissioner
-     * @return ECAVEAffidavitType
-     */
-    public function withCommissioner($Commissioner)
-    {
-        $new = clone $this;
-        $new->Commissioner = $Commissioner;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getSigningDetail()
+    public function getSigningDetail(): SignatorType
     {
         return $this->SigningDetail;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $SigningDetail
-     * @return ECAVEAffidavitType
-     */
-    public function withSigningDetail($SigningDetail)
-    {
-        $new = clone $this;
-        $new->SigningDetail = $SigningDetail;
-
-        return $new;
-    }
-
-
 }
-

@@ -16,5 +16,6 @@ class EformHeaderTypeTest extends TestCase
     public function testObjectToString()
     {
         $header = new EformHeaderType('Create','ASJT');
+        $this->assertEquals('<RequestType>Create</RequestType><DocumentType>ASJT</DocumentType><eFormIdentifier></eFormIdentifier>',(string)$header);
     }
 }

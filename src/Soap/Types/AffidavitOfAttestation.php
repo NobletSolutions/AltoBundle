@@ -4,42 +4,31 @@ namespace NS\AltoBundle\Soap\Types;
 
 class AffidavitOfAttestation
 {
+    /** @var bool */
+    private $KnowsTransferor;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
-    private $KnowsTransferor = null;
+    /** @var ShortAddressType */
+    private $Execution;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
-    private $Execution = null;
+    /** @var IndividualNameShortAddressType */
+    private $Witness;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
-    private $Witness = null;
+    /** @var AffidavitType */
+    private $Affidavit;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
-    private $Affidavit = null;
-
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
-    private $Commissioner = null;
+    /** @var CommissionerType */
+    private $Commissioner;
 
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\anyType $KnowsTransferor
-     * @var \NS\AltoBundle\Soap\Types\anyType $Execution
-     * @var \NS\AltoBundle\Soap\Types\anyType $Witness
-     * @var \NS\AltoBundle\Soap\Types\anyType $Affidavit
-     * @var \NS\AltoBundle\Soap\Types\anyType $Commissioner
+     * @param bool $KnowsTransferor
+     * @param ShortAddressType $Execution
+     * @param IndividualNameShortAddressType $Witness
+     * @param AffidavitType $Affidavit
+     * @param CommissionerType $Commissioner
      */
-    public function __construct($KnowsTransferor, $Execution, $Witness, $Affidavit, $Commissioner)
+    public function __construct(bool $KnowsTransferor, ShortAddressType $Execution, IndividualNameShortAddressType $Witness, AffidavitType $Affidavit, CommissionerType $Commissioner)
     {
         $this->KnowsTransferor = $KnowsTransferor;
         $this->Execution = $Execution;
@@ -48,106 +37,31 @@ class AffidavitOfAttestation
         $this->Commissioner = $Commissioner;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getKnowsTransferor()
+    public function getKnowsTransferor() :bool
     {
         return $this->KnowsTransferor;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $KnowsTransferor
-     * @return AffidavitOfAttestation
-     */
-    public function withKnowsTransferor($KnowsTransferor)
-    {
-        $new = clone $this;
-        $new->KnowsTransferor = $KnowsTransferor;
 
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getExecution()
+    public function getExecution(): ShortAddressType
     {
         return $this->Execution;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Execution
-     * @return AffidavitOfAttestation
-     */
-    public function withExecution($Execution)
-    {
-        $new = clone $this;
-        $new->Execution = $Execution;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getWitness()
+    public function getWitness(): IndividualNameShortAddressType
     {
         return $this->Witness;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Witness
-     * @return AffidavitOfAttestation
-     */
-    public function withWitness($Witness)
-    {
-        $new = clone $this;
-        $new->Witness = $Witness;
 
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getAffidavit()
+    public function getAffidavit(): AffidavitType
     {
         return $this->Affidavit;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Affidavit
-     * @return AffidavitOfAttestation
-     */
-    public function withAffidavit($Affidavit)
-    {
-        $new = clone $this;
-        $new->Affidavit = $Affidavit;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getCommissioner()
+    public function getCommissioner(): CommissionerType
     {
         return $this->Commissioner;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Commissioner
-     * @return AffidavitOfAttestation
-     */
-    public function withCommissioner($Commissioner)
-    {
-        $new = clone $this;
-        $new->Commissioner = $Commissioner;
-
-        return $new;
-    }
-
-
 }
 

@@ -9,28 +9,29 @@
 namespace NS\AltoBundle\Command;
 
 use NS\AltoBundle\AltoSoapClientFactory;
-use NS\AltoBundle\Soap\Types\Data\eForm\Universal;
-use NS\AltoBundle\Soap\Types\EformHeaderType;
-use NS\AltoBundle\Soap\Types\Request;
-use NS\AltoBundle\Soap\Types\Requests\UniversalRequest;
-use NS\AltoBundle\Soap\Types\SubmitRequest;
+use NS\AltoBundle\Soap\Types\Data\eForm\Mortgage;
+use NS\AltoBundle\Soap\Types\LongAddressType;
+use NS\AltoBundle\Soap\Types\MortgageePartyGroupType;
+use NS\AltoBundle\Soap\Types\MortgageePartyType;
+use NS\AltoBundle\Soap\Types\Requests\MortgageRequest;
+use NS\AltoBundle\Soap\Types\Title;
+use NS\AltoBundle\Soap\Types\TitlesType;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
-class TestUniversalFormCommand extends Command
+class TestMortgageFormCommand extends Command
 {
     /**
      * @inheritDoc
      */
     protected function configure()
     {
-        $this->setName('alto:create:universal')
+        $this->setName('alto:create:mortgage')
             ->setDefinition([
                 new InputArgument('username', InputArgument::REQUIRED, 'Username'),
                 new InputArgument('password', InputArgument::REQUIRED, 'Password'),
@@ -64,17 +65,20 @@ class TestUniversalFormCommand extends Command
         ];
         $client = AltoSoapClientFactory::factory($wsdlUrl, $soapOptions);
 
-        $universalForm = new Universal($input->getArgument('file-no'));
+        $title = new TitlesType([new Title('123456789'),new Title('987654321')]);
+        //(string $CustomerFileNumber, TitlesType $Titles, string $PrincipalAmount, string $StandardMortgageNumber, MortgageePartyGroupType $Mortgagees)
+        $mortgagees = new MortgageePartyGroupType([MortgageePartyType::createCorporationMortgagee('corp',new LongAddressType('','123 Street',null,'Calgary','AB','Canada','T3A5J4'))]);
+        $form = new Mortgage($input->getArgument('file-no'),$title,'75000.00','12345678', $mortgagees);
 
-        $header = new EformHeaderType('Create', 'ASJT', $input->hasArgument('eForm-id') ? $input->getArgument('eForm-id') : null);
+//        $header = new EformHeaderType('Create', 'ASJT', $input->hasArgument('eForm-id') ? $input->getArgument('eForm-id') : null);
 
-        $request = UniversalRequest::createUniversalForm($universalForm,'ASJT');//new Request($header, null, null, null, null, $universalForm);
+        $request = MortgageRequest::createForm($form);//new Request($header, null, null, null, null, $universalForm);
         $serializer = new Serializer([new PropertyNormalizer()], [new XmlEncoder()]);
         $str = $serializer->serialize($request, 'xml', ['xml_root_node_name' => 'Request', 'remove_empty_tags' => true]);
         $requestStr = str_replace("<?xml version=\"1.0\"?>\n", '', $str);
 
         $output->writeln($requestStr);
-
+/*
         $submitRequest = new SubmitRequest($input->getArgument('username'),$input->getArgument('password'),$requestStr);
         try {
             $response = $client->submitRequest($submitRequest);
@@ -83,5 +87,6 @@ class TestUniversalFormCommand extends Command
         } catch (\Exception $exception) {
             $output->writeln(print_r($client->debugLastSoapRequest()));
         }
+*/
     }
 }

@@ -4,7 +4,6 @@ namespace NS\AltoBundle\Soap\Types;
 
 class DowerAffidavit
 {
-
     /**
      * @var \NS\AltoBundle\Soap\Types\anyType
      */

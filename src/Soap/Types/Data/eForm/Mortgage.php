@@ -2,44 +2,36 @@
 
 namespace NS\AltoBundle\Soap\Types\Data\eForm;
 
+use NS\AltoBundle\Soap\Types\MortgageePartyGroupType;
+use NS\AltoBundle\Soap\Types\TitlesType;
+
 class Mortgage
 {
-
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $CustomerFileNumber = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var TitlesType */
     private $Titles = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $PrincipalAmount = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $StandardMortgageNumber = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var MortgageePartyGroupType */
     private $Mortgagees = null;
 
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\anyType $CustomerFileNumber
-     * @var \NS\AltoBundle\Soap\Types\anyType $Titles
-     * @var \NS\AltoBundle\Soap\Types\anyType $PrincipalAmount
-     * @var \NS\AltoBundle\Soap\Types\anyType $StandardMortgageNumber
-     * @var \NS\AltoBundle\Soap\Types\anyType $Mortgagees
+     * @param string $CustomerFileNumber
+     * @param TitlesType $Titles
+     * @param string $PrincipalAmount
+     * @param string $StandardMortgageNumber
+     * @param MortgageePartyGroupType $Mortgagees
      */
-    public function __construct($CustomerFileNumber, $Titles, $PrincipalAmount, $StandardMortgageNumber, $Mortgagees)
+    public function __construct(string $CustomerFileNumber, TitlesType $Titles, string $PrincipalAmount, string $StandardMortgageNumber, MortgageePartyGroupType $Mortgagees)
     {
         $this->CustomerFileNumber = $CustomerFileNumber;
         $this->Titles = $Titles;

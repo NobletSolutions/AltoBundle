@@ -2,10 +2,11 @@
 
 namespace NS\AltoBundle\Soap\Types\Data\eForm;
 
+use NS\AltoBundle\Soap\Types\AffidavitType;
 use NS\AltoBundle\Soap\Types\AgentPartyType;
-use NS\AltoBundle\Soap\Types\AgentType;
 use NS\AltoBundle\Soap\Types\CaveatorPartyGroupType;
 use NS\AltoBundle\Soap\Types\ECAVEAffidavitType;
+use NS\AltoBundle\Soap\Types\TitlesType;
 
 class Caveat
 {
@@ -18,23 +19,17 @@ class Caveat
     /** @var null|string */
     private $Ground = null;
 
-    /** @var array|CaveatorPartyGroupType[]  */
+    /** @var CaveatorPartyGroupType  */
     private $Caveators = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var AgentPartyType */
     private $Agent = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var AffidavitType */
     private $Affidavit = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
-    private $Titles = null;
+    /** @var TitlesType */
+    private $Titles;
 
     /**
      * Constructor
@@ -42,12 +37,12 @@ class Caveat
      * @param string $CustomerFileNumber
      * @param string $Claim
      * @param string $Ground
-     * @param array $Caveators
-     * @param AgentType $Agent
+     * @param CaveatorPartyGroupType $Caveators
+     * @param AgentPartyType $Agent
      * @param ECAVEAffidavitType $Affidavit
-     * @param array $Titles
+     * @param TitlesType $Titles
      */
-    public function __construct(string $CustomerFileNumber, string $Claim, string $Ground, array $Caveators, AgentPartyType $Agent, ECAVEAffidavitType $Affidavit, array $Titles)
+    public function __construct(string $CustomerFileNumber, string $Claim, string $Ground, CaveatorPartyGroupType $Caveators, AgentPartyType $Agent, ECAVEAffidavitType $Affidavit, TitlesType $Titles)
     {
         $this->CustomerFileNumber = $CustomerFileNumber;
         $this->Claim = $Claim;
@@ -77,6 +72,7 @@ class Caveat
             $this->Affidavit
         );
     }
+
     public function getCustomerFileNumber(): string
     {
         return $this->CustomerFileNumber;
@@ -92,12 +88,12 @@ class Caveat
         return $this->Ground;
     }
 
-    public function getCaveators(): array
+    public function getCaveators(): CaveatorPartyGroupType
     {
         return $this->Caveators;
     }
 
-    public function getAgent(): AgentType
+    public function getAgent(): AgentPartyType
     {
         return $this->Agent;
     }
@@ -107,7 +103,7 @@ class Caveat
         return $this->Affidavit;
     }
 
-    public function getTitles(): array
+    public function getTitles(): TitlesType
     {
         return $this->Titles;
     }

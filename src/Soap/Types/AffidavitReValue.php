@@ -6,7 +6,7 @@ class AffidavitReValue
 {
 
     /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
+     * @var SigningIndividualType
      */
     private $SigningIndividual = null;
 

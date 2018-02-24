@@ -13,14 +13,12 @@ class CaveatorPartyType
     /** @var \DateTime */
     private $ExecutionDate = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var LongAddressType */
     private $Address = null;
 
     /** @var string  */
     private $CorporationName = null;
-//
+
 //    /**
 //     * Constructor
 //     *
@@ -72,11 +70,11 @@ class CaveatorPartyType
     public function __toString()
     {
         if ($this->CorporationName) {
-            $corpFormatStr = '<CorporationName>%s</CorporationName><ExecutionDate>%s</ExecutionDate>%s';
+            $corpFormatStr = '<Caveator><CorporationName>%s</CorporationName><ExecutionDate>%s</ExecutionDate>%s</Caveator>';
             return sprintf($corpFormatStr, $this->CorporationName, $this->ExecutionDate->format('Y-m-d'), $this->Address);
         }
 
-        $personFormatStr = '<GivenName>%s</GivenName><Surname>%s</Surname><ExecutionDate>%s</ExecutionDate>%s';
+        $personFormatStr = '<Caveator><GivenName>%s</GivenName><Surname>%s</Surname><ExecutionDate>%s</ExecutionDate>%s</Caveator>';
         return sprintf($personFormatStr, $this->GivenName, $this->Surname, $this->ExecutionDate->format('Y-m-d'), $this->Address);
     }
 

@@ -5,44 +5,28 @@ namespace NS\AltoBundle\Soap\Types;
 class TransferorPartyType
 {
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $GivenName = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $Surname = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $SpouseGivenName = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $SpouseSurname = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $Municipality = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $ProvinceName = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $CountryName = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var \DateTime */
     private $ExecutionDate = null;
 
     /**
@@ -55,9 +39,7 @@ class TransferorPartyType
      */
     private $DowerCompliances = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $CorporationName = null;
 
     /**
@@ -65,9 +47,7 @@ class TransferorPartyType
      */
     private $CorporateSeal = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\SigningParties
-     */
+    /** @var SigningParties|null  */
     private $SigningParties = null;
 
     /**

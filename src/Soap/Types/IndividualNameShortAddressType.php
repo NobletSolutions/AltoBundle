@@ -4,42 +4,31 @@ namespace NS\AltoBundle\Soap\Types;
 
 class IndividualNameShortAddressType
 {
-
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $GivenName = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $Surname = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $Municipality = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $ProvinceName = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $CountryName = null;
 
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\anyType $GivenName
-     * @var \NS\AltoBundle\Soap\Types\anyType $Surname
-     * @var \NS\AltoBundle\Soap\Types\anyType $Municipality
-     * @var \NS\AltoBundle\Soap\Types\anyType $ProvinceName
-     * @var \NS\AltoBundle\Soap\Types\anyType $CountryName
+     * @var string $GivenName
+     * @var string $Surname
+     * @var string $Municipality
+     * @var string $ProvinceName
+     * @var string $CountryName
      */
-    public function __construct($GivenName, $Surname, $Municipality, $ProvinceName, $CountryName)
+    public function __construct(string $GivenName, string $Surname, string $Municipality, string $ProvinceName, string $CountryName)
     {
         $this->GivenName = $GivenName;
         $this->Surname = $Surname;
@@ -48,106 +37,29 @@ class IndividualNameShortAddressType
         $this->CountryName = $CountryName;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getGivenName()
+    public function getGivenName(): string
     {
         return $this->GivenName;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $GivenName
-     * @return IndividualNameShortAddressType
-     */
-    public function withGivenName($GivenName)
-    {
-        $new = clone $this;
-        $new->GivenName = $GivenName;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getSurname()
+    public function getSurname(): string
     {
         return $this->Surname;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Surname
-     * @return IndividualNameShortAddressType
-     */
-    public function withSurname($Surname)
-    {
-        $new = clone $this;
-        $new->Surname = $Surname;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getMunicipality()
+    public function getMunicipality(): string
     {
         return $this->Municipality;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Municipality
-     * @return IndividualNameShortAddressType
-     */
-    public function withMunicipality($Municipality)
-    {
-        $new = clone $this;
-        $new->Municipality = $Municipality;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getProvinceName()
+    public function getProvinceName(): string
     {
         return $this->ProvinceName;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $ProvinceName
-     * @return IndividualNameShortAddressType
-     */
-    public function withProvinceName($ProvinceName)
-    {
-        $new = clone $this;
-        $new->ProvinceName = $ProvinceName;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getCountryName()
+    public function getCountryName(): string
     {
         return $this->CountryName;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $CountryName
-     * @return IndividualNameShortAddressType
-     */
-    public function withCountryName($CountryName)
-    {
-        $new = clone $this;
-        $new->CountryName = $CountryName;
-
-        return $new;
-    }
-
-
 }
 

@@ -4,7 +4,6 @@ namespace NS\AltoBundle\Soap\Types;
 
 class Transferors
 {
-
     /**
      * @var \NS\AltoBundle\Soap\Types\anyType
      */
@@ -27,19 +26,5 @@ class Transferors
     {
         return $this->Transferor;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Transferor
-     * @return Transferors
-     */
-    public function withTransferor($Transferor)
-    {
-        $new = clone $this;
-        $new->Transferor = $Transferor;
-
-        return $new;
-    }
-
-
 }
 
