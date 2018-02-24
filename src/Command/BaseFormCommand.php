@@ -28,10 +28,11 @@ class BaseFormCommand extends Command
         if (!$this->client) {
             $wsdlUrl = 'https://altowebservice.stg.alt.alberta.ca/altoexternalwebservice/altoexternalwebservice.svc?singleWsdl';
 
-            $chainFile = realpath(__DIR__ . '../Resources/config/chain.pem');
+            $chainFile = realpath(__DIR__ . '/../Resources/config/chain.pem');
             $contextOptions = ['ssl' => ['verify_peer' => false]];
             if (is_file($chainFile)) {
-                $contextOptions['ssl']['verify_peer'] = $chainFile;
+                $contextOptions['ssl']['verify_peer'] = true;
+                $contextOptions['ssl']['cafile'] = $chainFile;
             } else {
                 $contextOptions['ssl']['allow_self_signed'] = true;
             }

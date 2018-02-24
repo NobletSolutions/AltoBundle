@@ -8,7 +8,6 @@
 
 namespace NS\AltoBundle\Command;
 
-use NS\AltoBundle\AltoSoapClientFactory;
 use NS\AltoBundle\Soap\Types\Data\eForm\Mortgage;
 use NS\AltoBundle\Soap\Types\LongAddressType;
 use NS\AltoBundle\Soap\Types\MortgageePartyGroupType;
@@ -20,9 +19,6 @@ use NS\AltoBundle\Soap\Types\TitlesType;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Serializer\Encoder\XmlEncoder;
-use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
-use Symfony\Component\Serializer\Serializer;
 
 class TestMortgageFormCommand extends BaseFormCommand
 {
