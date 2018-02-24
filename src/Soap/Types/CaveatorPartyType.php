@@ -4,20 +4,13 @@ namespace NS\AltoBundle\Soap\Types;
 
 class CaveatorPartyType
 {
-
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $GivenName = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $Surname = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var \DateTime */
     private $ExecutionDate = null;
 
     /**
@@ -25,129 +18,90 @@ class CaveatorPartyType
      */
     private $Address = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string  */
     private $CorporationName = null;
+//
+//    /**
+//     * Constructor
+//     *
+//     * @var \NS\AltoBundle\Soap\Types\anyType $GivenName
+//     * @var \NS\AltoBundle\Soap\Types\anyType $Surname
+//     * @var \NS\AltoBundle\Soap\Types\anyType $ExecutionDate
+//     * @var \NS\AltoBundle\Soap\Types\anyType $Address
+//     * @var \NS\AltoBundle\Soap\Types\anyType $CorporationName
+//     */
+//    public function __construct($GivenName, $Surname, $ExecutionDate, LongAddressType $Address, $CorporationName)
+//    {
+//        $this->GivenName = $GivenName;
+//        $this->Surname = $Surname;
+//        $this->ExecutionDate = $ExecutionDate;
+//        $this->Address = $Address;
+//        $this->CorporationName = $CorporationName;
+//    }
 
-    /**
-     * Constructor
-     *
-     * @var \NS\AltoBundle\Soap\Types\anyType $GivenName
-     * @var \NS\AltoBundle\Soap\Types\anyType $Surname
-     * @var \NS\AltoBundle\Soap\Types\anyType $ExecutionDate
-     * @var \NS\AltoBundle\Soap\Types\anyType $Address
-     * @var \NS\AltoBundle\Soap\Types\anyType $CorporationName
-     */
-    public function __construct($GivenName, $Surname, $ExecutionDate, $Address, $CorporationName)
+    public static function createIndividual(string $given, string $surname, \DateTime $execution, LongAddressType $addressType)
+    {
+        $obj = new self();
+        $obj->initializeIndividual($given, $surname, $execution, $addressType);
+        return $obj;
+    }
+
+    public static function createCorporation(string $corporation, \DateTime $execution, LongAddressType $addressType)
+    {
+        $obj = new self();
+        $obj->initializeCorporation($corporation, $execution, $addressType);
+
+        return $obj;
+    }
+
+    public function initializeIndividual(string $GivenName, string $Surname, \DateTime $ExecutionDate, LongAddressType $Address)
     {
         $this->GivenName = $GivenName;
         $this->Surname = $Surname;
         $this->ExecutionDate = $ExecutionDate;
         $this->Address = $Address;
-        $this->CorporationName = $CorporationName;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getGivenName()
+    public function initializeCorporation(string $name, \DateTime $ExecutionDate, LongAddressType $Address)
+    {
+        $this->CorporationName = $name;
+        $this->ExecutionDate = $ExecutionDate;
+        $this->Address = $Address;
+    }
+
+    public function __toString()
+    {
+        if ($this->CorporationName) {
+            $corpFormatStr = '<CorporationName>%s</CorporationName><ExecutionDate>%s</ExecutionDate>%s';
+            return sprintf($corpFormatStr, $this->CorporationName, $this->ExecutionDate->format('Y-m-d'), $this->Address);
+        }
+
+        $personFormatStr = '<GivenName>%s</GivenName><Surname>%s</Surname><ExecutionDate>%s</ExecutionDate>%s';
+        return sprintf($personFormatStr, $this->GivenName, $this->Surname, $this->ExecutionDate->format('Y-m-d'), $this->Address);
+    }
+
+    public function getGivenName(): ?string
     {
         return $this->GivenName;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $GivenName
-     * @return CaveatorPartyType
-     */
-    public function withGivenName($GivenName)
-    {
-        $new = clone $this;
-        $new->GivenName = $GivenName;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getSurname()
+    public function getSurname(): ?string
     {
         return $this->Surname;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Surname
-     * @return CaveatorPartyType
-     */
-    public function withSurname($Surname)
-    {
-        $new = clone $this;
-        $new->Surname = $Surname;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getExecutionDate()
+    public function getExecutionDate(): \DateTime
     {
         return $this->ExecutionDate;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $ExecutionDate
-     * @return CaveatorPartyType
-     */
-    public function withExecutionDate($ExecutionDate)
-    {
-        $new = clone $this;
-        $new->ExecutionDate = $ExecutionDate;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getAddress()
+    public function getAddress(): LongAddressType
     {
         return $this->Address;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Address
-     * @return CaveatorPartyType
-     */
-    public function withAddress($Address)
-    {
-        $new = clone $this;
-        $new->Address = $Address;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getCorporationName()
+    public function getCorporationName(): ?string
     {
         return $this->CorporationName;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $CorporationName
-     * @return CaveatorPartyType
-     */
-    public function withCorporationName($CorporationName)
-    {
-        $new = clone $this;
-        $new->CorporationName = $CorporationName;
-
-        return $new;
-    }
-
-
 }
-

@@ -4,42 +4,27 @@ namespace NS\AltoBundle\Soap\Types;
 
 class TitlesType
 {
-
-    /**
-     * @var \NS\AltoBundle\Soap\Types\Title
-     */
-    private $Title = null;
+    /** @var Title[] */
+    private $Title = [];
 
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\Title $Title
+     * @var Title[] $Title
      */
-    public function __construct($Title)
+    public function __construct(array $Title)
     {
         $this->Title = $Title;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\Title
-     */
-    public function getTitle()
+    public function getTitle(): array
     {
         return $this->Title;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\Title $Title
-     * @return TitlesType
-     */
-    public function withTitle($Title)
+    public function __toString()
     {
-        $new = clone $this;
-        $new->Title = $Title;
-
-        return $new;
+        return sprintf('<Titles>%s</Titles>',implode('',$this->Title));
     }
-
-
 }
 

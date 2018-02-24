@@ -2,71 +2,41 @@
 
 namespace NS\AltoBundle\Soap\Types\Data\eForm;
 
+use NS\AltoBundle\Soap\Types\InstrumentsType;
+
 class Discharge
 {
-
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $CustomerFileNumber = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var InstrumentsType[] */
     private $Instruments = null;
 
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\anyType $CustomerFileNumber
-     * @var \NS\AltoBundle\Soap\Types\anyType $Instruments
+     * @var string $CustomerFileNumber
+     * @var InstrumentsType[] $Instruments
      */
-    public function __construct($CustomerFileNumber, $Instruments)
+    public function __construct(string $CustomerFileNumber, array $Instruments)
     {
         $this->CustomerFileNumber = $CustomerFileNumber;
         $this->Instruments = $Instruments;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getCustomerFileNumber()
+    public function __toString()
+    {
+        return sprintf('<Data_eForm_Discharge><CustomerFileNumber>%s</CustomerFileNumber><Instruments>%s</Instruments></Data_eForm_Discharge>',$this->CustomerFileNumber, implode('',$this->Instruments));
+    }
+
+    public function getCustomerFileNumber(): string
     {
         return $this->CustomerFileNumber;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $CustomerFileNumber
-     * @return Data_eForm_Discharge
-     */
-    public function withCustomerFileNumber($CustomerFileNumber)
-    {
-        $new = clone $this;
-        $new->CustomerFileNumber = $CustomerFileNumber;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getInstruments()
+    public function getInstruments(): array
     {
         return $this->Instruments;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Instruments
-     * @return Data_eForm_Discharge
-     */
-    public function withInstruments($Instruments)
-    {
-        $new = clone $this;
-        $new->Instruments = $Instruments;
-
-        return $new;
-    }
-
-
 }
 

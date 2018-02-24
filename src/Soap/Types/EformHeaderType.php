@@ -4,30 +4,23 @@ namespace NS\AltoBundle\Soap\Types;
 
 class EformHeaderType
 {
+    /** @var string */
+    private $RequestType;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
-    private $RequestType = null;
+    /** @var string */
+    private $DocumentType;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
-    private $DocumentType = null;
-
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $eFormIdentifier = null;
 
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\anyType $RequestType
-     * @var \NS\AltoBundle\Soap\Types\anyType $DocumentType
-     * @var \NS\AltoBundle\Soap\Types\anyType $eFormIdentifier
+     * @param string $RequestType
+     * @param string $DocumentType
+     * @param string $eFormIdentifier
      */
-    public function __construct($RequestType, $DocumentType, $eFormIdentifier)
+    public function __construct(string $RequestType, string $DocumentType, string $eFormIdentifier = null)
     {
         $this->RequestType = $RequestType;
         $this->DocumentType = $DocumentType;
@@ -38,66 +31,19 @@ class EformHeaderType
         return sprintf('<RequestType>%s</RequestType><DocumentType>%s</DocumentType><eFormIdentifier>%s</eFormIdentifier>',$this->RequestType,$this->DocumentType,$this->eFormIdentifier);
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getRequestType()
+    public function getRequestType(): string
     {
         return $this->RequestType;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $RequestType
-     * @return EformHeaderType
-     */
-    public function withRequestType($RequestType)
-    {
-        $new = clone $this;
-        $new->RequestType = $RequestType;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getDocumentType()
+    public function getDocumentType(): string
     {
         return $this->DocumentType;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $DocumentType
-     * @return EformHeaderType
-     */
-    public function withDocumentType($DocumentType)
-    {
-        $new = clone $this;
-        $new->DocumentType = $DocumentType;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getEFormIdentifier()
+    public function getEFormIdentifier(): ?string
     {
         return $this->eFormIdentifier;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $eFormIdentifier
-     * @return EformHeaderType
-     */
-    public function withEFormIdentifier($eFormIdentifier)
-    {
-        $new = clone $this;
-        $new->eFormIdentifier = $eFormIdentifier;
-
-        return $new;
-    }
-
-
 }
 

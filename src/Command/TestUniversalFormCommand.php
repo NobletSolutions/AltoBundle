@@ -39,6 +39,7 @@ class TestUniversalFormCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $wsdlUrl = __DIR__.'/../Resources/config/WSDL/alto-full.wsdl';
         $wsdlUrl = 'https://altowebservice.stg.alt.alberta.ca/altoexternalwebservice/altoexternalwebservice.svc?singleWsdl';
 
         $context = stream_context_create([
@@ -62,9 +63,14 @@ class TestUniversalFormCommand extends Command
 
         $header = new EformHeaderType( 'Create','ASJT',$input->hasArgument('eForm-id')?$input->getArgument('eForm-id'):null);
 
-        $request = new Request($header,$universalForm);
+        $request = new Request($header,null,null,null,null, $universalForm);
         $submitRequest = new SubmitRequest($input->getArgument('username'),$input->getArgument('password'),$request);
-        $response = $client->submitRequest($submitRequest);
-        $output->writeln(print_r($response,true));
+        try {
+            $response = $client->submitRequest($submitRequest);
+            $output->writeln(print_r($response,true));
+            $output->writeln(print_r($client->debugLastSoapRequest()));
+        } catch (\Exception $exception) {
+            $output->writeln(print_r($client->debugLastSoapRequest()));
+        }
     }
 }

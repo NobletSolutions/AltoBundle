@@ -4,69 +4,37 @@ namespace NS\AltoBundle\Soap\Types;
 
 class CorporateSigningAffidavit
 {
-
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var AffidavitType */
     private $Affidavit = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var CommissionerType */
     private $Commissioner = null;
 
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\anyType $Affidavit
-     * @var \NS\AltoBundle\Soap\Types\anyType $Commissioner
+     * @var AffidavitType $Affidavit
+     * @var CommissionerType $Commissioner
      */
-    public function __construct($Affidavit, $Commissioner)
+    public function __construct(AffidavitType $Affidavit, CommissionerType $Commissioner)
     {
         $this->Affidavit = $Affidavit;
         $this->Commissioner = $Commissioner;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getAffidavit()
+    public function __toString()
+    {
+        return sprintf('<CorporateSigningAffidavit>%s%s</CorporateSigningAffidavit>',$this->Affidavit,$this->Commissioner);
+    }
+
+    public function getAffidavit(): AffidavitType
     {
         return $this->Affidavit;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Affidavit
-     * @return CorporateSigningAffidavit
-     */
-    public function withAffidavit($Affidavit)
-    {
-        $new = clone $this;
-        $new->Affidavit = $Affidavit;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getCommissioner()
+    public function getCommissioner(): CommissionerType
     {
         return $this->Commissioner;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Commissioner
-     * @return CorporateSigningAffidavit
-     */
-    public function withCommissioner($Commissioner)
-    {
-        $new = clone $this;
-        $new->Commissioner = $Commissioner;
-
-        return $new;
-    }
-
-
 }
 

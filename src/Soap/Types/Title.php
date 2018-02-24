@@ -4,42 +4,27 @@ namespace NS\AltoBundle\Soap\Types;
 
 class Title
 {
-
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $TitleNumber = null;
 
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\anyType $TitleNumber
+     * @param string $TitleNumber
      */
-    public function __construct($TitleNumber)
+    public function __construct(string $TitleNumber)
     {
         $this->TitleNumber = $TitleNumber;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getTitleNumber()
+    public function __toString()
+    {
+        return "<Title><TitleNumber>{$this->TitleNumber}</TitleNumber></Title>";
+    }
+
+    public function getTitleNumber(): string
     {
         return $this->TitleNumber;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $TitleNumber
-     * @return Title
-     */
-    public function withTitleNumber($TitleNumber)
-    {
-        $new = clone $this;
-        $new->TitleNumber = $TitleNumber;
-
-        return $new;
-    }
-
-
 }
 

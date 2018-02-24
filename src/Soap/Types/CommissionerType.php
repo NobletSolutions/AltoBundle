@@ -2,179 +2,106 @@
 
 namespace NS\AltoBundle\Soap\Types;
 
+use NS\AltoBundle\Soap\Exceptions\InvalidOptionException;
+
 class CommissionerType
 {
-
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $GivenName = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $Surname = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var \DateTime */
     private $ExpiryDate = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $AuthorityDescription = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $AdditionalDescription = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $OtherDescription = null;
 
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\anyType $GivenName
-     * @var \NS\AltoBundle\Soap\Types\anyType $Surname
-     * @var \NS\AltoBundle\Soap\Types\anyType $ExpiryDate
-     * @var \NS\AltoBundle\Soap\Types\anyType $AuthorityDescription
-     * @var \NS\AltoBundle\Soap\Types\anyType $AdditionalDescription
-     * @var \NS\AltoBundle\Soap\Types\anyType $OtherDescription
+     * @var string $GivenName
+     * @var string $Surname
+     * @var \DateTime $ExpiryDate
+     * @var string $AuthorityDescription
+     * @var string $AdditionalDescription
+     * @var string $OtherDescription
      */
-    public function __construct($GivenName, $Surname, $ExpiryDate, $AuthorityDescription, $AdditionalDescription, $OtherDescription)
+    public function __construct(string $GivenName, string $Surname, \DateTime $ExpiryDate, string $AuthorityDescription, string $AdditionalDescription, $OtherDescription = null)
     {
         $this->GivenName = $GivenName;
         $this->Surname = $Surname;
         $this->ExpiryDate = $ExpiryDate;
+        $allowedAuthority = [
+            'Commissioner For Oaths',
+            'Commissioner for Oaths Outside AB',
+            'Lawyer (Commissioner For Oaths)',
+            'Lawyer (Notary Public)',
+            'Notary Public',
+            'Student-At-Law (Notary Public)',
+            'Student-At-Law (Commissioner For Oaths)',
+            'Other',
+        ];
+
+        if (!in_array($AuthorityDescription, $allowedAuthority)) {
+            throw new InvalidOptionException("$AuthorityDescription is an invalid authority description");
+        }
+
+        if ($AuthorityDescription == 'Other' && ($OtherDescription === null || empty($OtherDescription))) {
+            throw new InvalidOptionException("When AuthorityDescription is Other a description is required");
+        }
+
         $this->AuthorityDescription = $AuthorityDescription;
         $this->AdditionalDescription = $AdditionalDescription;
         $this->OtherDescription = $OtherDescription;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getGivenName()
+    public function __toString()
+    {
+        return sprintf('<Commissioner><GivenName>%s</GivenName><Surname>%s</Surname><ExpiryDate>%s</ExpiryDate><AuthorityDescription>%s</AuthorityDescription><AdditionalDescription>%s</AdditionalDescription><OtherDescription>%s</OtherDescription></Commissioner>',
+            $this->GivenName,
+            $this->Surname,
+            $this->ExpiryDate->format('Y-m-d'),
+            $this->AuthorityDescription,
+            $this->AdditionalDescription,
+            $this->OtherDescription);
+    }
+
+    public function getGivenName(): string
     {
         return $this->GivenName;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $GivenName
-     * @return CommissionerType
-     */
-    public function withGivenName($GivenName)
-    {
-        $new = clone $this;
-        $new->GivenName = $GivenName;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getSurname()
+    public function getSurname(): string
     {
         return $this->Surname;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Surname
-     * @return CommissionerType
-     */
-    public function withSurname($Surname)
-    {
-        $new = clone $this;
-        $new->Surname = $Surname;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getExpiryDate()
+    public function getExpiryDate(): \DateTime
     {
         return $this->ExpiryDate;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $ExpiryDate
-     * @return CommissionerType
-     */
-    public function withExpiryDate($ExpiryDate)
-    {
-        $new = clone $this;
-        $new->ExpiryDate = $ExpiryDate;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getAuthorityDescription()
+    public function getAuthorityDescription(): string
     {
         return $this->AuthorityDescription;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $AuthorityDescription
-     * @return CommissionerType
-     */
-    public function withAuthorityDescription($AuthorityDescription)
-    {
-        $new = clone $this;
-        $new->AuthorityDescription = $AuthorityDescription;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getAdditionalDescription()
+    public function getAdditionalDescription(): string
     {
         return $this->AdditionalDescription;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $AdditionalDescription
-     * @return CommissionerType
-     */
-    public function withAdditionalDescription($AdditionalDescription)
-    {
-        $new = clone $this;
-        $new->AdditionalDescription = $AdditionalDescription;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getOtherDescription()
+    public function getOtherDescription(): ?string
     {
         return $this->OtherDescription;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $OtherDescription
-     * @return CommissionerType
-     */
-    public function withOtherDescription($OtherDescription)
-    {
-        $new = clone $this;
-        $new->OtherDescription = $OtherDescription;
-
-        return $new;
-    }
-
-
 }
 

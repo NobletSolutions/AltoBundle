@@ -4,10 +4,7 @@ namespace NS\AltoBundle\Soap\Types;
 
 class SigningParties
 {
-
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var anyType|null  */
     private $SigningParty = null;
 
     /**

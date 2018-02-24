@@ -4,42 +4,26 @@ namespace NS\AltoBundle\Soap\Types;
 
 class CaveatorPartyGroupType
 {
-
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var CaveatorPartyType  */
     private $Caveator = null;
 
     /**
-     * Constructor
-     *
-     * @var \NS\AltoBundle\Soap\Types\anyType $Caveator
+     * CaveatorPartyGroupType constructor.
+     * @param CaveatorPartyType $Caveator
      */
-    public function __construct($Caveator)
+    public function __construct(CaveatorPartyType $Caveator)
     {
         $this->Caveator = $Caveator;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getCaveator()
+    public function __toString()
+    {
+        return sprintf('<Caveator>%s</Caveator>',$this->Caveator);
+    }
+
+    public function getCaveator(): CaveatorPartyType
     {
         return $this->Caveator;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Caveator
-     * @return CaveatorPartyGroupType
-     */
-    public function withCaveator($Caveator)
-    {
-        $new = clone $this;
-        $new->Caveator = $Caveator;
-
-        return $new;
-    }
-
-
 }
 

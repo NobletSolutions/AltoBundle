@@ -89,7 +89,6 @@ class Request implements RequestInterface
         }
     }
 
-
     /**
      * @return string
      */

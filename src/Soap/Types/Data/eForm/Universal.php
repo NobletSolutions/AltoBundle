@@ -12,9 +12,9 @@ class Universal
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\anyType $CustomerFileNumber
+     * @var $CustomerFileNumber
      */
-    public function __construct($CustomerFileNumber)
+    public function __construct(string $CustomerFileNumber)
     {
         $this->CustomerFileNumber = $CustomerFileNumber;
     }
@@ -25,24 +25,9 @@ class Universal
         return sprintf($formatStr, $this->CustomerFileNumber);
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getCustomerFileNumber()
+    public function getCustomerFileNumber(): string
     {
         return $this->CustomerFileNumber;
-    }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $CustomerFileNumber
-     * @return Universal
-     */
-    public function withCustomerFileNumber($CustomerFileNumber)
-    {
-        $new = clone $this;
-        $new->CustomerFileNumber = $CustomerFileNumber;
-
-        return $new;
     }
 }
 

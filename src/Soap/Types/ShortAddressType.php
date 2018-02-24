@@ -4,96 +4,46 @@ namespace NS\AltoBundle\Soap\Types;
 
 class ShortAddressType
 {
-
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $Municipality = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $ProvinceName = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $CountryName = null;
 
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\anyType $Municipality
-     * @var \NS\AltoBundle\Soap\Types\anyType $ProvinceName
-     * @var \NS\AltoBundle\Soap\Types\anyType $CountryName
+     * @param string $Municipality
+     * @param string $ProvinceName
+     * @param string $CountryName
      */
-    public function __construct($Municipality, $ProvinceName, $CountryName)
+    public function __construct(string $Municipality, string $ProvinceName, string $CountryName)
     {
         $this->Municipality = $Municipality;
         $this->ProvinceName = $ProvinceName;
         $this->CountryName = $CountryName;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getMunicipality()
+    public function __toString()
+    {
+        return sprintf('<Address><Municipality>%s</Municipality><ProvinceName>%s</ProvinceName><CountryName>%s</CountryName></Address>', $this->Municipality, $this->ProvinceName, $this->CountryName);
+    }
+
+    public function getMunicipality(): string
     {
         return $this->Municipality;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Municipality
-     * @return ShortAddressType
-     */
-    public function withMunicipality($Municipality)
-    {
-        $new = clone $this;
-        $new->Municipality = $Municipality;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getProvinceName()
+    public function getProvinceName(): string
     {
         return $this->ProvinceName;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $ProvinceName
-     * @return ShortAddressType
-     */
-    public function withProvinceName($ProvinceName)
-    {
-        $new = clone $this;
-        $new->ProvinceName = $ProvinceName;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getCountryName()
+    public function getCountryName(): string
     {
         return $this->CountryName;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $CountryName
-     * @return ShortAddressType
-     */
-    public function withCountryName($CountryName)
-    {
-        $new = clone $this;
-        $new->CountryName = $CountryName;
-
-        return $new;
-    }
-
-
 }
-

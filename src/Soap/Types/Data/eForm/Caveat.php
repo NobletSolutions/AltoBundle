@@ -2,27 +2,23 @@
 
 namespace NS\AltoBundle\Soap\Types\Data\eForm;
 
+use NS\AltoBundle\Soap\Types\AgentPartyType;
+use NS\AltoBundle\Soap\Types\AgentType;
+use NS\AltoBundle\Soap\Types\CaveatorPartyGroupType;
+use NS\AltoBundle\Soap\Types\ECAVEAffidavitType;
+
 class Caveat
 {
-
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var null|string */
     private $CustomerFileNumber = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var null|string */
     private $Claim = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var null|string */
     private $Ground = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var array|CaveatorPartyGroupType[]  */
     private $Caveators = null;
 
     /**
@@ -43,15 +39,15 @@ class Caveat
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\anyType $CustomerFileNumber
-     * @var \NS\AltoBundle\Soap\Types\anyType $Claim
-     * @var \NS\AltoBundle\Soap\Types\anyType $Ground
-     * @var \NS\AltoBundle\Soap\Types\anyType $Caveators
-     * @var \NS\AltoBundle\Soap\Types\anyType $Agent
-     * @var \NS\AltoBundle\Soap\Types\anyType $Affidavit
-     * @var \NS\AltoBundle\Soap\Types\anyType $Titles
+     * @param string $CustomerFileNumber
+     * @param string $Claim
+     * @param string $Ground
+     * @param array $Caveators
+     * @param AgentType $Agent
+     * @param ECAVEAffidavitType $Affidavit
+     * @param array $Titles
      */
-    public function __construct($CustomerFileNumber, $Claim, $Ground, $Caveators, $Agent, $Affidavit, $Titles)
+    public function __construct(string $CustomerFileNumber, string $Claim, string $Ground, array $Caveators, AgentPartyType $Agent, ECAVEAffidavitType $Affidavit, array $Titles)
     {
         $this->CustomerFileNumber = $CustomerFileNumber;
         $this->Claim = $Claim;
@@ -62,146 +58,58 @@ class Caveat
         $this->Titles = $Titles;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getCustomerFileNumber()
+    public function __toString()
+    {
+        $formatStr = '<Data_eForm_Caveat>
+    <CustomerFileNumber>%s</CustomerFileNumber>
+    <Claim>%s</Claim>
+    <Ground>%s</Ground>
+    <Caveators>%s</Caveators>
+    %s
+    %s
+</Data_eForm_Caveat>';
+        return sprintf($formatStr,
+            $this->CustomerFileNumber,
+            $this->Claim,
+            $this->Ground,
+            implode('',$this->Caveators),
+            $this->Agent,
+            $this->Affidavit
+        );
+    }
+    public function getCustomerFileNumber(): string
     {
         return $this->CustomerFileNumber;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $CustomerFileNumber
-     * @return Data_eForm_Caveat
-     */
-    public function withCustomerFileNumber($CustomerFileNumber)
-    {
-        $new = clone $this;
-        $new->CustomerFileNumber = $CustomerFileNumber;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getClaim()
+    public function getClaim(): string
     {
         return $this->Claim;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Claim
-     * @return Data_eForm_Caveat
-     */
-    public function withClaim($Claim)
-    {
-        $new = clone $this;
-        $new->Claim = $Claim;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getGround()
+    public function getGround(): string
     {
         return $this->Ground;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Ground
-     * @return Data_eForm_Caveat
-     */
-    public function withGround($Ground)
-    {
-        $new = clone $this;
-        $new->Ground = $Ground;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getCaveators()
+    public function getCaveators(): array
     {
         return $this->Caveators;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Caveators
-     * @return Data_eForm_Caveat
-     */
-    public function withCaveators($Caveators)
-    {
-        $new = clone $this;
-        $new->Caveators = $Caveators;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getAgent()
+    public function getAgent(): AgentType
     {
         return $this->Agent;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Agent
-     * @return Data_eForm_Caveat
-     */
-    public function withAgent($Agent)
-    {
-        $new = clone $this;
-        $new->Agent = $Agent;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getAffidavit()
+    public function getAffidavit(): ECAVEAffidavitType
     {
         return $this->Affidavit;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Affidavit
-     * @return Data_eForm_Caveat
-     */
-    public function withAffidavit($Affidavit)
-    {
-        $new = clone $this;
-        $new->Affidavit = $Affidavit;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getTitles()
+    public function getTitles(): array
     {
         return $this->Titles;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Titles
-     * @return Data_eForm_Caveat
-     */
-    public function withTitles($Titles)
-    {
-        $new = clone $this;
-        $new->Titles = $Titles;
-
-        return $new;
-    }
-
-
 }
 

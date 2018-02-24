@@ -4,42 +4,29 @@ namespace NS\AltoBundle\Soap\Types;
 
 class InstrumentsType
 {
-
     /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
+     * @var string
      */
     private $InstrumentNumber = null;
 
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\anyType $InstrumentNumber
+     * @param string $InstrumentNumber
      */
-    public function __construct($InstrumentNumber)
+    public function __construct(string $InstrumentNumber)
     {
         $this->InstrumentNumber = $InstrumentNumber;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getInstrumentNumber()
+    public function __toString()
+    {
+        return sprintf('<Instrument><InstrumentNumber>%s</InstrumentNumber></Instrument>',$this->InstrumentNumber);
+    }
+
+    public function getInstrumentNumber(): string
     {
         return $this->InstrumentNumber;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $InstrumentNumber
-     * @return InstrumentsType
-     */
-    public function withInstrumentNumber($InstrumentNumber)
-    {
-        $new = clone $this;
-        $new->InstrumentNumber = $InstrumentNumber;
-
-        return $new;
-    }
-
-
 }
 

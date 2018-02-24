@@ -4,150 +4,83 @@ namespace NS\AltoBundle\Soap\Types;
 
 class AgentPartyType
 {
-
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $GivenName = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $Surname = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var \DateTime */
     private $ExecutionDate = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $CorporationName = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $CorporateSeal = null;
 
-    /**
-     * Constructor
-     *
-     * @var \NS\AltoBundle\Soap\Types\anyType $GivenName
-     * @var \NS\AltoBundle\Soap\Types\anyType $Surname
-     * @var \NS\AltoBundle\Soap\Types\anyType $ExecutionDate
-     * @var \NS\AltoBundle\Soap\Types\anyType $CorporationName
-     * @var \NS\AltoBundle\Soap\Types\anyType $CorporateSeal
-     */
-    public function __construct($GivenName, $Surname, $ExecutionDate, $CorporationName, $CorporateSeal)
+    public static function createIndividual(string $given, string $surname, \DateTime $execution)
     {
-        $this->GivenName = $GivenName;
-        $this->Surname = $Surname;
-        $this->ExecutionDate = $ExecutionDate;
-        $this->CorporationName = $CorporationName;
-        $this->CorporateSeal = $CorporateSeal;
+        $obj = new self();
+        $obj->initializeIndividual($given, $surname, $execution);
+
+        return $obj;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getGivenName()
+    private function initializeIndividual(string $given, string $surname, \DateTime $execution)
+    {
+        $this->GivenName = $given;
+        $this->Surname = $surname;
+        $this->ExecutionDate = $execution;
+    }
+
+    public static function createCorporation(string $corporationName, bool $corporateSeal, \DateTime $execution)
+    {
+        $obj = new self();
+        $obj->initializeCorporation($corporationName, $corporateSeal, $execution);
+
+        return $obj;
+    }
+
+    private function initializeCorporation(string $corporationName, bool $corporateSeal, \DateTime $execution)
+    {
+        $this->CorporationName = $corporationName;
+        $this->CorporateSeal = $corporateSeal;
+        $this->ExecutionDate = $execution;
+    }
+
+    public function __toString()
+    {
+        if ($this->CorporationName) {
+            return sprintf('<Agent><ExecutionDate>%s</ExecutionDate><CorporationName>%s</CorporationName><CorporateSeal>%s</CorporateSeal></Agent>', $this->ExecutionDate->format('Y-m-d'), $this->CorporationName, $this->CorporateSeal ? 'true':'false');
+        }
+
+        return sprintf('<Agent><ExecutionDate>%s</ExecutionDate><GivenName>%s</GivenName><Surname>%s</Surname></Agent>', $this->ExecutionDate->format('Y-m-d'), $this->GivenName, $this->Surname);
+    }
+
+    public function getGivenName(): ?string
     {
         return $this->GivenName;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $GivenName
-     * @return AgentPartyType
-     */
-    public function withGivenName($GivenName)
-    {
-        $new = clone $this;
-        $new->GivenName = $GivenName;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getSurname()
+    public function getSurname(): ?string
     {
         return $this->Surname;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Surname
-     * @return AgentPartyType
-     */
-    public function withSurname($Surname)
-    {
-        $new = clone $this;
-        $new->Surname = $Surname;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getExecutionDate()
+    public function getExecutionDate(): \DateTime
     {
         return $this->ExecutionDate;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $ExecutionDate
-     * @return AgentPartyType
-     */
-    public function withExecutionDate($ExecutionDate)
-    {
-        $new = clone $this;
-        $new->ExecutionDate = $ExecutionDate;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getCorporationName()
+    public function getCorporationName(): ?string
     {
         return $this->CorporationName;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $CorporationName
-     * @return AgentPartyType
-     */
-    public function withCorporationName($CorporationName)
-    {
-        $new = clone $this;
-        $new->CorporationName = $CorporationName;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getCorporateSeal()
+    public function getCorporateSeal(): bool
     {
         return $this->CorporateSeal;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $CorporateSeal
-     * @return AgentPartyType
-     */
-    public function withCorporateSeal($CorporateSeal)
-    {
-        $new = clone $this;
-        $new->CorporateSeal = $CorporateSeal;
-
-        return $new;
-    }
-
-
 }
 

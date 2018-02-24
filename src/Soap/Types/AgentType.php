@@ -4,42 +4,31 @@ namespace NS\AltoBundle\Soap\Types;
 
 class AgentType
 {
-
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $GivenName = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $Surname = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $Municipality = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $ProvinceName = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $CountryName = null;
 
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\anyType $GivenName
-     * @var \NS\AltoBundle\Soap\Types\anyType $Surname
-     * @var \NS\AltoBundle\Soap\Types\anyType $Municipality
-     * @var \NS\AltoBundle\Soap\Types\anyType $ProvinceName
-     * @var \NS\AltoBundle\Soap\Types\anyType $CountryName
+     * @param string $GivenName
+     * @param string $Surname
+     * @param string $Municipality
+     * @param string $ProvinceName
+     * @param string $CountryName
      */
-    public function __construct($GivenName, $Surname, $Municipality, $ProvinceName, $CountryName)
+    public function __construct(string $GivenName, string $Surname, string $Municipality, string $ProvinceName, string $CountryName)
     {
         $this->GivenName = $GivenName;
         $this->Surname = $Surname;
@@ -48,106 +37,34 @@ class AgentType
         $this->CountryName = $CountryName;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getGivenName()
+    public function __toString()
+    {
+        return sprintf('<GivenName>%s</GivenName><Surname>%s</Surname><Municipality>%s</Municipality><ProvinceName>%s</ProvinceName><CountryName>%s</CountryName>',$this->GivenName,$this->Surname,$this->Municipality,$this->ProvinceName,$this->CountryName);
+    }
+
+    public function getGivenName(): string
     {
         return $this->GivenName;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $GivenName
-     * @return AgentType
-     */
-    public function withGivenName($GivenName)
-    {
-        $new = clone $this;
-        $new->GivenName = $GivenName;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getSurname()
+    public function getSurname(): string
     {
         return $this->Surname;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Surname
-     * @return AgentType
-     */
-    public function withSurname($Surname)
-    {
-        $new = clone $this;
-        $new->Surname = $Surname;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getMunicipality()
+    public function getMunicipality(): string
     {
         return $this->Municipality;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Municipality
-     * @return AgentType
-     */
-    public function withMunicipality($Municipality)
-    {
-        $new = clone $this;
-        $new->Municipality = $Municipality;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getProvinceName()
+    public function getProvinceName(): string
     {
         return $this->ProvinceName;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $ProvinceName
-     * @return AgentType
-     */
-    public function withProvinceName($ProvinceName)
-    {
-        $new = clone $this;
-        $new->ProvinceName = $ProvinceName;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getCountryName()
+    public function getCountryName(): string
     {
         return $this->CountryName;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $CountryName
-     * @return AgentType
-     */
-    public function withCountryName($CountryName)
-    {
-        $new = clone $this;
-        $new->CountryName = $CountryName;
-
-        return $new;
-    }
-
-
 }
 
