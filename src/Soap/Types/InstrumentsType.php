@@ -4,27 +4,25 @@ namespace NS\AltoBundle\Soap\Types;
 
 class InstrumentsType
 {
-    /**
-     * @var string
-     */
-    private $InstrumentNumber = null;
+    /** @var array */
+    private $InstrumentNumber = [];
 
     /**
      * Constructor
      *
-     * @param string $InstrumentNumber
+     * @param array $InstrumentNumber
      */
-    public function __construct(string $InstrumentNumber)
+    public function __construct(array $InstrumentNumber)
     {
         $this->InstrumentNumber = $InstrumentNumber;
     }
 
     public function __toString()
     {
-        return sprintf('<Instrument><InstrumentNumber>%s</InstrumentNumber></Instrument>',$this->InstrumentNumber);
+        return sprintf('<InstrumentNumber>%s</InstrumentNumber>',implode('</InstrumentNumber><InstrumentNumber>',$this->InstrumentNumber));
     }
 
-    public function getInstrumentNumber(): string
+    public function getInstrumentNumber(): array
     {
         return $this->InstrumentNumber;
     }

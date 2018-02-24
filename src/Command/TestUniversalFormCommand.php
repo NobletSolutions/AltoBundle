@@ -8,22 +8,17 @@
 
 namespace NS\AltoBundle\Command;
 
-use NS\AltoBundle\AltoSoapClientFactory;
 use NS\AltoBundle\Soap\Types\Data\eForm\Universal;
-use NS\AltoBundle\Soap\Types\EformHeaderType;
-use NS\AltoBundle\Soap\Types\Request;
 use NS\AltoBundle\Soap\Types\Requests\UniversalRequest;
 use NS\AltoBundle\Soap\Types\SubmitRequest;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
-class TestUniversalFormCommand extends Command
+class TestUniversalFormCommand extends BaseFormCommand
 {
     /**
      * @inheritDoc
@@ -44,38 +39,15 @@ class TestUniversalFormCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $wsdlUrl = __DIR__ . '/../Resources/config/WSDL/alto-full.wsdl';
-        $wsdlUrl = 'https://altowebservice.stg.alt.alberta.ca/altoexternalwebservice/altoexternalwebservice.svc?singleWsdl';
-
-        $context = stream_context_create([
-            'ssl' => [
-                // set some SSL/TLS specific options
-                'verify_peer' => false,
-                'verify_peer_name' => false,
-                'allow_self_signed' => true,
-            ],
-        ]);
-
-        $soapOptions = [
-            'trace' => true,
-            'stream_context' => $context,
-            'location' => "https://altowebservice.stg.alt.alberta.ca/altoexternalwebservice/altoexternalwebservice.svc",
-            'cache_wsdl' => WSDL_CACHE_NONE,
-        ];
-        $client = AltoSoapClientFactory::factory($wsdlUrl, $soapOptions);
-
         $universalForm = new Universal($input->getArgument('file-no'));
-
-        $header = new EformHeaderType('Create', 'ASJT', $input->hasArgument('eForm-id') ? $input->getArgument('eForm-id') : null);
-
-        $request = UniversalRequest::createUniversalForm($universalForm,'ASJT');//new Request($header, null, null, null, null, $universalForm);
-        $serializer = new Serializer([new PropertyNormalizer()], [new XmlEncoder()]);
-        $str = $serializer->serialize($request, 'xml', ['xml_root_node_name' => 'Request', 'remove_empty_tags' => true]);
-        $requestStr = str_replace("<?xml version=\"1.0\"?>\n", '', $str);
+        $request = UniversalRequest::createForm($universalForm,'ASJT');
+        $requestStr = $this->serializeRequest($request);
 
         $output->writeln($requestStr);
 
         $submitRequest = new SubmitRequest($input->getArgument('username'),$input->getArgument('password'),$requestStr);
+        $client = $this->getClient();
+
         try {
             $response = $client->submitRequest($submitRequest);
             $output->writeln(print_r($response,true));

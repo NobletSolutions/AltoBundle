@@ -16,7 +16,7 @@ class DischargeTest extends TestCase
 {
     public function testClassToString()
     {
-        $discharge = new Discharge('FileNo',[new InstrumentsType('123456789'),new InstrumentsType('987654321')]);
-        $this->assertEquals('<Data_eForm_Discharge><CustomerFileNumber>FileNo</CustomerFileNumber><Instruments><Instrument><InstrumentNumber>123456789</InstrumentNumber></Instrument><Instrument><InstrumentNumber>987654321</InstrumentNumber></Instrument></Instruments></Data_eForm_Discharge>',(string)$discharge);
+        $discharge = new Discharge('FileNo',new InstrumentsType(['123456789','987654321']));
+        $this->assertEquals('<Data_eForm_Discharge><CustomerFileNumber>FileNo</CustomerFileNumber><Instruments><InstrumentNumber>123456789</InstrumentNumber><InstrumentNumber>987654321</InstrumentNumber></Instruments></Data_eForm_Discharge>',(string)$discharge);
     }
 }

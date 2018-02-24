@@ -7,18 +7,18 @@ use NS\AltoBundle\Soap\Types\InstrumentsType;
 class Discharge
 {
     /** @var string */
-    private $CustomerFileNumber = null;
+    private $CustomerFileNumber;
 
-    /** @var InstrumentsType[] */
-    private $Instruments = null;
+    /** @var InstrumentsType */
+    private $Instruments;
 
     /**
      * Constructor
      *
      * @var string $CustomerFileNumber
-     * @var InstrumentsType[] $Instruments
+     * @var InstrumentsType $Instruments
      */
-    public function __construct(string $CustomerFileNumber, array $Instruments)
+    public function __construct(string $CustomerFileNumber, InstrumentsType $Instruments)
     {
         $this->CustomerFileNumber = $CustomerFileNumber;
         $this->Instruments = $Instruments;
@@ -26,7 +26,7 @@ class Discharge
 
     public function __toString()
     {
-        return sprintf('<Data_eForm_Discharge><CustomerFileNumber>%s</CustomerFileNumber><Instruments>%s</Instruments></Data_eForm_Discharge>',$this->CustomerFileNumber, implode('',$this->Instruments));
+        return sprintf('<Data_eForm_Discharge><CustomerFileNumber>%s</CustomerFileNumber><Instruments>%s</Instruments></Data_eForm_Discharge>',$this->CustomerFileNumber, $this->Instruments);
     }
 
     public function getCustomerFileNumber(): string
@@ -34,7 +34,7 @@ class Discharge
         return $this->CustomerFileNumber;
     }
 
-    public function getInstruments(): array
+    public function getInstruments(): InstrumentsType
     {
         return $this->Instruments;
     }

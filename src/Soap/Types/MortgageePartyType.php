@@ -11,10 +11,10 @@ class MortgageePartyType
     private $Surname = null;
 
     /** @var string */
-    private $Address = null;
+    private $CorporationName = null;
 
     /** @var string */
-    private $CorporationName = null;
+    private $Address;
 
     public static function createPersonMortgagee(string $given, string $surname, LongAddressType $address)
     {

@@ -8,8 +8,7 @@
 
 namespace NS\AltoBundle\Soap;
 
-
-use NS\AltoBundle\Soap\Types\Request;
+use NS\AltoBundle\Soap\Types\Requests\AbstractRequest;
 use Symfony\Component\Serializer\Serializer;
 
 class RequestSerializer
@@ -26,9 +25,9 @@ class RequestSerializer
         $this->serializer = $serializer;
     }
 
-    public function serialize(Request $request)
+    public function serialize(AbstractRequest $request)
     {
-        $str = $this->serializer->serialize($request, 'xml', ['xml_root_node_name' => 'Request', 'remove_empty_tags' => true]);
+        $str = $this->serializer->serialize($request, 'xml', ['xml_root_node_name' => 'Request', 'remove_empty_tags' => true, 'xml_format_output' => true]);
         return str_replace("<?xml version=\"1.0\"?>\n", '', $str);
     }
 }
