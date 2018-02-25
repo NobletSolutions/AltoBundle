@@ -94,7 +94,7 @@ class BaseFormCommand extends Command
         }
     }
 
-    private $serializer;// = new Serializer([new PropertyNormalizer()], [new XmlEncoder()]);
+    private $serializer;
 
     protected function serializeRequest(AbstractRequest $request)
     {
