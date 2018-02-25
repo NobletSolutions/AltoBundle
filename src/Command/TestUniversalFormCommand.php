@@ -13,6 +13,7 @@ use NS\AltoBundle\Soap\Types\Requests\UniversalRequest;
 use NS\AltoBundle\Soap\Types\SubmitRequest;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
@@ -25,13 +26,8 @@ class TestUniversalFormCommand extends BaseFormCommand
      */
     protected function configure()
     {
-        $this->setName('alto:create:universal')
-            ->setDefinition([
-                new InputArgument('username', InputArgument::REQUIRED, 'Username'),
-                new InputArgument('password', InputArgument::REQUIRED, 'Password'),
-                new InputArgument('file-no', InputArgument::REQUIRED, 'File No'),
-                new InputArgument('eForm-id', InputArgument::OPTIONAL, 'The eform identifier')
-            ]);
+        parent::configure();
+        $this->setName('alto:create:universal');
     }
 
     /**
@@ -43,17 +39,11 @@ class TestUniversalFormCommand extends BaseFormCommand
         $request = UniversalRequest::createForm($universalForm,'ASJT');
         $requestStr = $this->serializeRequest($request);
 
-        $output->writeln($requestStr);
+        if ($input->getOption('debug')) {
+            $output->writeln($requestStr);
+        }
 
         $submitRequest = new SubmitRequest($input->getArgument('username'),$input->getArgument('password'),$requestStr);
-        $client = $this->getClient();
-
-        try {
-            $response = $client->submitRequest($submitRequest);
-            $output->writeln(print_r($response,true));
-            $output->writeln(print_r($client->debugLastSoapRequest()));
-        } catch (\Exception $exception) {
-            $output->writeln(print_r($client->debugLastSoapRequest()));
-        }
+        $this->submitRequest($submitRequest,$output,$input->getOption('debug'));
     }
 }
