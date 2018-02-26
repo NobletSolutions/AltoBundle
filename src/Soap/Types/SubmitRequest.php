@@ -6,19 +6,13 @@ use Phpro\SoapClient\Type\RequestInterface;
 
 class SubmitRequest implements RequestInterface
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $username = null;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $password = null;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $request = null;
 
     /**
@@ -28,73 +22,26 @@ class SubmitRequest implements RequestInterface
      * @var string $password
      * @var string $request
      */
-    public function __construct($username, $password, $request)
+    public function __construct(string $username, string $password, string $request)
     {
         $this->username = $username;
         $this->password = $password;
         $this->request = $request;
     }
 
-    /**
-     * @return string
-     */
-    public function getUsername()
+    public function getUsername(): string
     {
         return $this->username;
     }
 
-    /**
-     * @param string $username
-     * @return SubmitRequest
-     */
-    public function withUsername($username)
-    {
-        $new = clone $this;
-        $new->username = $username;
-
-        return $new;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPassword()
+    public function getPassword(): string
     {
         return $this->password;
     }
 
-    /**
-     * @param string $password
-     * @return SubmitRequest
-     */
-    public function withPassword($password)
-    {
-        $new = clone $this;
-        $new->password = $password;
-
-        return $new;
-    }
-
-    /**
-     * @return string
-     */
-    public function getRequest()
+    public function getRequest(): string
     {
         return $this->request;
     }
-
-    /**
-     * @param string $request
-     * @return SubmitRequest
-     */
-    public function withRequest($request)
-    {
-        $new = clone $this;
-        $new->request = $request;
-
-        return $new;
-    }
-
-
 }
 

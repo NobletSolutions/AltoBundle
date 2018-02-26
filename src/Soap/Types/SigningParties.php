@@ -4,39 +4,22 @@ namespace NS\AltoBundle\Soap\Types;
 
 class SigningParties
 {
-    /** @var anyType|null  */
-    private $SigningParty = null;
+    /** @var SigningPartyType */
+    private $SigningParty;
 
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\anyType $SigningParty
+     * @param SigningPartyType $SigningParty
      */
-    public function __construct($SigningParty)
+    public function __construct(SigningPartyType $SigningParty)
     {
         $this->SigningParty = $SigningParty;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getSigningParty()
+    public function getSigningParty(): SigningPartyType
     {
         return $this->SigningParty;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $SigningParty
-     * @return SigningParties
-     */
-    public function withSigningParty($SigningParty)
-    {
-        $new = clone $this;
-        $new->SigningParty = $SigningParty;
-
-        return $new;
-    }
-
-
 }
 

@@ -19,7 +19,18 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('ns_alto');
-
+        $rootNode
+            ->children()
+                ->scalarNode('wsdl')->isRequired()->end()
+                ->arrayNode('soap_options')
+                    ->children()
+                        ->scalarNode('verify_ssl')->defaultTrue()->end()
+                        ->scalarNode('location')->defaultTrue()->end()
+                        ->scalarNode('trace')->defaultFalse()->end()
+                        ->scalarNode('cache_wsdl')->end()
+                    ->end()
+                ->end()
+            ->end();
         return $treeBuilder;
     }
 }

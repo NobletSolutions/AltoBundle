@@ -11,11 +11,12 @@ namespace NS\AltoBundle\Tests\Soap\Types;
 use NS\AltoBundle\Soap\Types\AffidavitType;
 use PHPUnit\Framework\TestCase;
 
-class AffidavitTypeTest extends TestCase
+class AffidavitTypeTest extends AbstractSoapTest
 {
     public function testObject()
     {
         $affidavit = new AffidavitType(new \DateTime('2018-02-22'),'Calgary','AB','Canada',true);
-        $this->assertEquals('<Affidavit><AffidavitDate>2018-02-22</AffidavitDate><Sworn>True</Sworn><Municipality>Calgary</Municipality><ProvinceName>AB</ProvinceName><CountryName>Canada</CountryName></Affidavit>',(string)$affidavit);
+        $this->assertEquals('<Affidavit><Sworn>true</Sworn><AffidavitDate>2018-02-22</AffidavitDate><Municipality>Calgary</Municipality><ProvinceName>AB</ProvinceName><CountryName>Canada</CountryName></Affidavit>',
+            $this->serialize($affidavit,'Affidavit'));
     }
 }

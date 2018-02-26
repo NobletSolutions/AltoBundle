@@ -27,7 +27,7 @@ class AgentPartyType
         return $obj;
     }
 
-    private function initializeIndividual(string $given, string $surname, \DateTime $execution)
+    public function initializeIndividual(string $given, string $surname, \DateTime $execution)
     {
         $this->GivenName = $given;
         $this->Surname = $surname;
@@ -37,25 +37,16 @@ class AgentPartyType
     public static function createCorporation(string $corporationName, bool $corporateSeal, \DateTime $execution)
     {
         $obj = new self();
-        $obj->initializeCorporation($corporationName, $corporateSeal, $execution);
+        $obj->initializeCorporation($corporationName, $corporateSeal?'true':'false', $execution);
 
         return $obj;
     }
 
-    private function initializeCorporation(string $corporationName, bool $corporateSeal, \DateTime $execution)
+    public function initializeCorporation(string $corporationName, string $corporateSeal, \DateTime $execution)
     {
         $this->CorporationName = $corporationName;
         $this->CorporateSeal = $corporateSeal;
         $this->ExecutionDate = $execution;
-    }
-
-    public function __toString()
-    {
-        if ($this->CorporationName) {
-            return sprintf('<Agent><ExecutionDate>%s</ExecutionDate><CorporationName>%s</CorporationName><CorporateSeal>%s</CorporateSeal></Agent>', $this->ExecutionDate->format('Y-m-d'), $this->CorporationName, $this->CorporateSeal ? 'true':'false');
-        }
-
-        return sprintf('<Agent><ExecutionDate>%s</ExecutionDate><GivenName>%s</GivenName><Surname>%s</Surname></Agent>', $this->ExecutionDate->format('Y-m-d'), $this->GivenName, $this->Surname);
     }
 
     public function getGivenName(): ?string
@@ -78,7 +69,7 @@ class AgentPartyType
         return $this->CorporationName;
     }
 
-    public function getCorporateSeal(): bool
+    public function getCorporateSeal(): string
     {
         return $this->CorporateSeal;
     }

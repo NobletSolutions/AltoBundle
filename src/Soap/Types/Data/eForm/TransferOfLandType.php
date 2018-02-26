@@ -2,207 +2,100 @@
 
 namespace NS\AltoBundle\Soap\Types\Data\eForm;
 
+use NS\AltoBundle\Soap\Exceptions\InvalidOptionException;
+use NS\AltoBundle\Soap\Types\AffidavitOfAttestations;
+use NS\AltoBundle\Soap\Types\AffidavitReValue;
+use NS\AltoBundle\Soap\Types\ConsiderationType;
+use NS\AltoBundle\Soap\Types\TitlesType;
+use NS\AltoBundle\Soap\Types\TransfereeGroups;
+use NS\AltoBundle\Soap\Types\TransferorPartyType;
+use NS\AltoBundle\Soap\Types\Transferors;
+
 class TransferOfLandType
 {
-
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $CustomerFileNumber = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var TitlesType */
     private $Titles = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var ConsiderationType */
     private $Consideration = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\AffidavitOfAttestations
-     */
+    /**  @var AffidavitOfAttestations */
     private $AffidavitOfAttestations = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\Transferors
-     */
+    /** @var TransferorPartyType[] */
     private $Transferors = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\TransfereeGroups
-     */
+    /** @var TransfereeGroups */
     private $TransfereeGroups = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\AffidavitReValue
-     */
+    /** @var AffidavitReValue */
     private $AffidavitReValue = null;
 
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\anyType $CustomerFileNumber
-     * @var \NS\AltoBundle\Soap\Types\anyType $Titles
-     * @var \NS\AltoBundle\Soap\Types\anyType $Consideration
-     * @var \NS\AltoBundle\Soap\Types\AffidavitOfAttestations $AffidavitOfAttestations
-     * @var \NS\AltoBundle\Soap\Types\Transferors $Transferors
-     * @var \NS\AltoBundle\Soap\Types\TransfereeGroups $TransfereeGroups
-     * @var \NS\AltoBundle\Soap\Types\AffidavitReValue $AffidavitReValue
+     * @param string $CustomerFileNumber
+     * @param TitlesType $Titles
+     * @param ConsiderationType $Consideration
+     * @param AffidavitOfAttestations $AffidavitOfAttestations
+     * @param array $Transferors
+     * @param \NS\AltoBundle\Soap\Types\TransfereeGroups $TransfereeGroups
+     * @param \NS\AltoBundle\Soap\Types\AffidavitReValue $AffidavitReValue
      */
-    public function __construct($CustomerFileNumber, $Titles, $Consideration, $AffidavitOfAttestations, $Transferors, $TransfereeGroups, $AffidavitReValue)
+    public function __construct(string $CustomerFileNumber, TitlesType $Titles, ConsiderationType $Consideration, AffidavitOfAttestations $AffidavitOfAttestations, Transferors $Transferors, TransfereeGroups $TransfereeGroups, AffidavitReValue $AffidavitReValue)
     {
         $this->CustomerFileNumber = $CustomerFileNumber;
         $this->Titles = $Titles;
         $this->Consideration = $Consideration;
         $this->AffidavitOfAttestations = $AffidavitOfAttestations;
+
+        foreach ($Transferors as $transferor) {
+            if (!$transferor instanceof TransferorPartyType) {
+                throw new InvalidOptionException(sprintf('Expected %s got %s', TransferorPartyType::class, get_class($transferor)));
+            }
+        }
+
         $this->Transferors = $Transferors;
         $this->TransfereeGroups = $TransfereeGroups;
         $this->AffidavitReValue = $AffidavitReValue;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getCustomerFileNumber()
+    public function getCustomerFileNumber(): string
     {
         return $this->CustomerFileNumber;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $CustomerFileNumber
-     * @return Data_eForm_TransferOfLandType
-     */
-    public function withCustomerFileNumber($CustomerFileNumber)
-    {
-        $new = clone $this;
-        $new->CustomerFileNumber = $CustomerFileNumber;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getTitles()
+    public function getTitles(): TitlesType
     {
         return $this->Titles;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Titles
-     * @return Data_eForm_TransferOfLandType
-     */
-    public function withTitles($Titles)
-    {
-        $new = clone $this;
-        $new->Titles = $Titles;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getConsideration()
+    public function getConsideration(): ConsiderationType
     {
         return $this->Consideration;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Consideration
-     * @return Data_eForm_TransferOfLandType
-     */
-    public function withConsideration($Consideration)
-    {
-        $new = clone $this;
-        $new->Consideration = $Consideration;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\AffidavitOfAttestations
-     */
-    public function getAffidavitOfAttestations()
+    public function getAffidavitOfAttestations(): AffidavitOfAttestations
     {
         return $this->AffidavitOfAttestations;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\AffidavitOfAttestations
-     * $AffidavitOfAttestations
-     * @return Data_eForm_TransferOfLandType
-     */
-    public function withAffidavitOfAttestations($AffidavitOfAttestations)
-    {
-        $new = clone $this;
-        $new->AffidavitOfAttestations = $AffidavitOfAttestations;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\Transferors
-     */
-    public function getTransferors()
+    public function getTransferors(): Transferors
     {
         return $this->Transferors;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\Transferors $Transferors
-     * @return Data_eForm_TransferOfLandType
-     */
-    public function withTransferors($Transferors)
-    {
-        $new = clone $this;
-        $new->Transferors = $Transferors;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\TransfereeGroups
-     */
-    public function getTransfereeGroups()
+    public function getTransfereeGroups(): TransfereeGroups
     {
         return $this->TransfereeGroups;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\TransfereeGroups $TransfereeGroups
-     * @return Data_eForm_TransferOfLandType
-     */
-    public function withTransfereeGroups($TransfereeGroups)
-    {
-        $new = clone $this;
-        $new->TransfereeGroups = $TransfereeGroups;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\AffidavitReValue
-     */
-    public function getAffidavitReValue()
+    public function getAffidavitReValue(): AffidavitReValue
     {
         return $this->AffidavitReValue;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\AffidavitReValue $AffidavitReValue
-     * @return Data_eForm_TransferOfLandType
-     */
-    public function withAffidavitReValue($AffidavitReValue)
-    {
-        $new = clone $this;
-        $new->AffidavitReValue = $AffidavitReValue;
-
-        return $new;
-    }
-
-
 }
 

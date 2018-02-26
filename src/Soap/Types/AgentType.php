@@ -37,11 +37,6 @@ class AgentType
         $this->CountryName = $CountryName;
     }
 
-    public function __toString()
-    {
-        return sprintf('<GivenName>%s</GivenName><Surname>%s</Surname><Municipality>%s</Municipality><ProvinceName>%s</ProvinceName><CountryName>%s</CountryName>',$this->GivenName,$this->Surname,$this->Municipality,$this->ProvinceName,$this->CountryName);
-    }
-
     public function getGivenName(): string
     {
         return $this->GivenName;

@@ -22,11 +22,6 @@ class CorporateSigningAffidavit
         $this->Commissioner = $Commissioner;
     }
 
-    public function __toString()
-    {
-        return sprintf('<CorporateSigningAffidavit>%s%s</CorporateSigningAffidavit>',$this->Affidavit,$this->Commissioner);
-    }
-
     public function getAffidavit(): AffidavitType
     {
         return $this->Affidavit;

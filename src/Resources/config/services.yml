@@ -1,1 +1,7 @@
 services:
+  __defaults:
+    autowire: true
+
+  NS\AltoBundle\AltoSoapClient:
+    factory: ['NS\AltoBundle\AltoSoapClientFactory::factory', ['%ns_alto.wsdl%','%ns_alto.soap_options%'] ]
+

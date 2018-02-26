@@ -13,7 +13,7 @@ class MortgageePartyType
     /** @var string */
     private $CorporationName = null;
 
-    /** @var string */
+    /** @var LongAddressType */
     private $Address;
 
     public static function createPersonMortgagee(string $given, string $surname, LongAddressType $address)
@@ -43,14 +43,6 @@ class MortgageePartyType
         $this->Address = $address;
     }
 
-    public function __toString()
-    {
-        if ($this->CorporationName) {
-            return sprintf('<Mortgagee><CorporationName>%s</CorporationName>%s</Mortgagee>', $this->CorporationName, $this->Address);
-        }
-
-        return sprintf('<Mortgagee><GivenName>%s</GivenName><Surname>%s</Surname>%s</Mortgagee>', $this->GivenName, $this->Surname, $this->Address);
-    }
     public function getGivenName(): ?string
     {
         return $this->GivenName;
@@ -71,4 +63,3 @@ class MortgageePartyType
         return $this->CorporationName;
     }
 }
-

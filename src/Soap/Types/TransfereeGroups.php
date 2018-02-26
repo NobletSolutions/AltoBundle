@@ -4,42 +4,22 @@ namespace NS\AltoBundle\Soap\Types;
 
 class TransfereeGroups
 {
-
-    /**
-     * @var \NS\AltoBundle\Soap\Types\TransfereeGroup
-     */
-    private $TransfereeGroup = null;
+    /** @var TransfereeGroup */
+    private $TransfereeGroup;
 
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\TransfereeGroup $TransfereeGroup
+     * @var TransfereeGroup $TransfereeGroup
      */
-    public function __construct($TransfereeGroup)
+    public function __construct(TransfereeGroup $TransfereeGroup)
     {
         $this->TransfereeGroup = $TransfereeGroup;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\TransfereeGroup
-     */
-    public function getTransfereeGroup()
+    public function getTransfereeGroup(): TransfereeGroup
     {
         return $this->TransfereeGroup;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\TransfereeGroup $TransfereeGroup
-     * @return TransfereeGroups
-     */
-    public function withTransfereeGroup($TransfereeGroup)
-    {
-        $new = clone $this;
-        $new->TransfereeGroup = $TransfereeGroup;
-
-        return $new;
-    }
-
-
 }
 

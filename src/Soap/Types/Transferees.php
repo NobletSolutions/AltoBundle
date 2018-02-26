@@ -2,44 +2,31 @@
 
 namespace NS\AltoBundle\Soap\Types;
 
+use NS\AltoBundle\Soap\Exceptions\InvalidOptionException;
+
 class Transferees
 {
-
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var TransfereePartyType[] */
     private $Transferee = null;
 
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\anyType $Transferee
+     * @param TransfereePartyType[] $Transferees
      */
-    public function __construct($Transferee)
+    public function __construct(array $Transferees)
     {
-        $this->Transferee = $Transferee;
+        foreach ($Transferees as $transferee) {
+            if (!$transferee instanceof TransfereePartyType) {
+                throw new InvalidOptionException(sprintf('Expected %s got %s', TransfereePartyType::class, get_class($transferee)));
+            }
+        }
+        $this->Transferee = $Transferees;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getTransferee()
+    public function getTransferee(): array
     {
         return $this->Transferee;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Transferee
-     * @return Transferees
-     */
-    public function withTransferee($Transferee)
-    {
-        $new = clone $this;
-        $new->Transferee = $Transferee;
-
-        return $new;
-    }
-
-
 }
 

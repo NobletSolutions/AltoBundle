@@ -4,7 +4,6 @@ namespace NS\AltoBundle\Soap\Types;
 
 class AffidavitOfAttestations
 {
-
     /** @var AffidavitOfAttestation[] */
     private $AffidavitOfAttestation = null;
 

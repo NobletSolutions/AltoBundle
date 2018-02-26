@@ -27,11 +27,6 @@ class ShortAddressType
         $this->CountryName = $CountryName;
     }
 
-    public function __toString()
-    {
-        return sprintf('<Address><Municipality>%s</Municipality><ProvinceName>%s</ProvinceName><CountryName>%s</CountryName></Address>', $this->Municipality, $this->ProvinceName, $this->CountryName);
-    }
-
     public function getMunicipality(): string
     {
         return $this->Municipality;

@@ -21,10 +21,5 @@ class TitlesType
     {
         return $this->Title;
     }
-
-    public function __toString()
-    {
-        return sprintf('<Titles>%s</Titles>',implode('',$this->Title));
-    }
 }
 

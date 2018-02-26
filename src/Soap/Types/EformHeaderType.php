@@ -27,10 +27,6 @@ class EformHeaderType
         $this->eFormIdentifier = $eFormIdentifier;
     }
 
-    public function __toString() {
-        return sprintf('<RequestType>%s</RequestType><DocumentType>%s</DocumentType><eFormIdentifier>%s</eFormIdentifier>',$this->RequestType,$this->DocumentType,$this->eFormIdentifier);
-    }
-
     public function getRequestType(): string
     {
         return $this->RequestType;

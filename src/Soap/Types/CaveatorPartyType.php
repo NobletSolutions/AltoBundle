@@ -67,17 +67,6 @@ class CaveatorPartyType
         $this->Address = $Address;
     }
 
-    public function __toString()
-    {
-        if ($this->CorporationName) {
-            $corpFormatStr = '<Caveator><CorporationName>%s</CorporationName><ExecutionDate>%s</ExecutionDate>%s</Caveator>';
-            return sprintf($corpFormatStr, $this->CorporationName, $this->ExecutionDate->format('Y-m-d'), $this->Address);
-        }
-
-        $personFormatStr = '<Caveator><GivenName>%s</GivenName><Surname>%s</Surname><ExecutionDate>%s</ExecutionDate>%s</Caveator>';
-        return sprintf($personFormatStr, $this->GivenName, $this->Surname, $this->ExecutionDate->format('Y-m-d'), $this->Address);
-    }
-
     public function getGivenName(): ?string
     {
         return $this->GivenName;

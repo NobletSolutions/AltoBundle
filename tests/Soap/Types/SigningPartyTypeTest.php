@@ -14,7 +14,7 @@ use NS\AltoBundle\Soap\Types\CorporateSigningAffidavit;
 use NS\AltoBundle\Soap\Types\SigningPartyType;
 use PHPUnit\Framework\TestCase;
 
-class SigningPartyTypeTest extends TestCase
+class SigningPartyTypeTest extends AbstractSoapTest
 {
     public function testObjectToString()
     {
@@ -22,8 +22,8 @@ class SigningPartyTypeTest extends TestCase
         $affidavit = new AffidavitType(new \DateTime('2018-02-22'),'Calgary','AB','Canada',true);
 
         $signing = new CorporateSigningAffidavit($affidavit,$commissioner);
-        $signingStr = sprintf('<CorporateSigningAffidavit>%s%s</CorporateSigningAffidavit>',$affidavit,$commissioner);
+        $signingStr = sprintf('<CorporateSigningAffidavit>%s%s</CorporateSigningAffidavit>',$this->serialize($affidavit,'Affidavit'),$this->serialize($commissioner,'Commissioner'));
         $signingParty = new SigningPartyType('Gnat','Noblet','Calgary','AB','Canada', $signing);
-        $this->assertEquals("<SigningParty><GivenName>Gnat</GivenName><Surname>Noblet</Surname><Municipality>Calgary</Municipality><ProvinceName>AB</ProvinceName><CountryName>Canada</CountryName>$signingStr</SigningParty>",(string)$signingParty);
+        $this->assertEquals("<SigningParty><GivenName>Gnat</GivenName><Surname>Noblet</Surname><Municipality>Calgary</Municipality><ProvinceName>AB</ProvinceName><CountryName>Canada</CountryName>$signingStr</SigningParty>",$this->serialize($signingParty,'SigningParty'));
     }
 }

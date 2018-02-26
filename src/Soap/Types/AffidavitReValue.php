@@ -2,152 +2,73 @@
 
 namespace NS\AltoBundle\Soap\Types;
 
+use NS\AltoBundle\Soap\Exceptions\InvalidOptionException;
+
 class AffidavitReValue
 {
-
-    /**
-     * @var SigningIndividualType
-     */
+    /** @var string */
     private $SigningIndividual = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\Consideration
-     */
+    /** @var ConsiderationType */
     private $Consideration = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var AffidavitType */
     private $Affidavit = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var CommissionerType */
     private $Commissioner = null;
 
     /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
+     * In the schema, but not in a sample request
+     * @var AgentType
      */
     private $Agent = null;
 
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\anyType $SigningIndividual
-     * @var \NS\AltoBundle\Soap\Types\Consideration $Consideration
-     * @var \NS\AltoBundle\Soap\Types\anyType $Affidavit
-     * @var \NS\AltoBundle\Soap\Types\anyType $Commissioner
-     * @var \NS\AltoBundle\Soap\Types\anyType $Agent
+     *
+     * @param string $SigningIndividual
+     * @param ConsiderationType $Consideration
+     * @param AffidavitType $Affidavit
+     * @param $Commissioner
      */
-    public function __construct($SigningIndividual, $Consideration, $Affidavit, $Commissioner, $Agent)
+    public function __construct(string $SigningIndividual, ConsiderationType $Consideration, AffidavitType $Affidavit, CommissionerType $Commissioner)
     {
+        $individuals = ['Agent', 'Transferee', 'NotSure'];
+        if (!in_array($SigningIndividual, $individuals)) {
+            throw new InvalidOptionException("Invalid signing individual $SigningIndividual " . implode(', ', $individuals));
+        }
+
         $this->SigningIndividual = $SigningIndividual;
         $this->Consideration = $Consideration;
         $this->Affidavit = $Affidavit;
         $this->Commissioner = $Commissioner;
-        $this->Agent = $Agent;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getSigningIndividual()
+    public function getSigningIndividual(): string
     {
         return $this->SigningIndividual;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $SigningIndividual
-     * @return AffidavitReValue
-     */
-    public function withSigningIndividual($SigningIndividual)
-    {
-        $new = clone $this;
-        $new->SigningIndividual = $SigningIndividual;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\Consideration
-     */
-    public function getConsideration()
+    public function getConsideration(): ConsiderationType
     {
         return $this->Consideration;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\Consideration $Consideration
-     * @return AffidavitReValue
-     */
-    public function withConsideration($Consideration)
-    {
-        $new = clone $this;
-        $new->Consideration = $Consideration;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getAffidavit()
+    public function getAffidavit(): AffidavitType
     {
         return $this->Affidavit;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Affidavit
-     * @return AffidavitReValue
-     */
-    public function withAffidavit($Affidavit)
-    {
-        $new = clone $this;
-        $new->Affidavit = $Affidavit;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getCommissioner()
+    public function getCommissioner(): CommissionerType
     {
         return $this->Commissioner;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Commissioner
-     * @return AffidavitReValue
-     */
-    public function withCommissioner($Commissioner)
-    {
-        $new = clone $this;
-        $new->Commissioner = $Commissioner;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getAgent()
+    public function getAgent(): ?AgentType
     {
         return $this->Agent;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Agent
-     * @return AffidavitReValue
-     */
-    public function withAgent($Agent)
-    {
-        $new = clone $this;
-        $new->Agent = $Agent;
-
-        return $new;
-    }
-
-
 }
 

@@ -4,6 +4,9 @@ namespace NS\AltoBundle\Soap\Types;
 
 class AffidavitType
 {
+    /** @var string */
+    private $Sworn = null;
+
     /** @var \DateTime */
     private $AffidavitDate = null;
 
@@ -15,9 +18,6 @@ class AffidavitType
 
     /** @var string */
     private $CountryName = null;
-
-    /** @var bool */
-    private $Sworn = null;
 
     /**
      * Constructor
@@ -34,18 +34,7 @@ class AffidavitType
         $this->Municipality = $Municipality;
         $this->ProvinceName = $ProvinceName;
         $this->CountryName = $CountryName;
-        $this->Sworn = $Sworn;
-    }
-
-    public function __toString()
-    {
-        return sprintf('<Affidavit><AffidavitDate>%s</AffidavitDate><Sworn>%s</Sworn><Municipality>%s</Municipality><ProvinceName>%s</ProvinceName><CountryName>%s</CountryName></Affidavit>',
-            $this->AffidavitDate->format('Y-m-d'),
-            ($this->Sworn) ? 'True' : 'False',
-            $this->Municipality,
-            $this->ProvinceName,
-            $this->CountryName
-        );
+        $this->Sworn = $Sworn?'true':'false';
     }
 
     public function getAffidavitDate(): \DateTime
@@ -68,7 +57,7 @@ class AffidavitType
         return $this->CountryName;
     }
 
-    public function getSworn(): bool
+    public function getSworn(): string
     {
         return $this->Sworn;
     }

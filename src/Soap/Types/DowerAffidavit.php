@@ -2,44 +2,41 @@
 
 namespace NS\AltoBundle\Soap\Types;
 
+use NS\AltoBundle\Soap\Exceptions\InvalidOptionException;
+
 class DowerAffidavit
 {
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $DowerAffidavitOption = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var \DateTime */
     private $JudgementDate = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var \DateTime */
     private $ReleaseRegistrationDate = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $JudgementInstrumentNumber = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $ReleaseOfDowerRightsInstrumentNumber = null;
 
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\anyType $DowerAffidavitOption
-     * @var \NS\AltoBundle\Soap\Types\anyType $JudgementDate
-     * @var \NS\AltoBundle\Soap\Types\anyType $ReleaseRegistrationDate
-     * @var \NS\AltoBundle\Soap\Types\anyType $JudgementInstrumentNumber
-     * @var \NS\AltoBundle\Soap\Types\anyType $ReleaseOfDowerRightsInstrumentNumber
+     * @param string $DowerAffidavitOption
+     * @param \DateTime $JudgementDate
+     * @param \DateTime $ReleaseRegistrationDate
+     * @param string $JudgementInstrumentNumber
+     * @param string $ReleaseOfDowerRightsInstrumentNumber
      */
-    public function __construct($DowerAffidavitOption, $JudgementDate, $ReleaseRegistrationDate, $JudgementInstrumentNumber, $ReleaseOfDowerRightsInstrumentNumber)
+    public function __construct(string $DowerAffidavitOption, \DateTime $JudgementDate, \DateTime $ReleaseRegistrationDate, string $JudgementInstrumentNumber = null, string $ReleaseOfDowerRightsInstrumentNumber = null)
     {
+        $allowedOptions = ['Released', 'Judgement', 'NeverResided'];
+        if (!in_array($DowerAffidavitOption, $allowedOptions)) {
+            throw new InvalidOptionException("Invalid DowerAffidavitOption: $DowerAffidavitOption, allowed: " . implode(',', $allowedOptions));
+        }
+
         $this->DowerAffidavitOption = $DowerAffidavitOption;
         $this->JudgementDate = $JudgementDate;
         $this->ReleaseRegistrationDate = $ReleaseRegistrationDate;
@@ -47,106 +44,29 @@ class DowerAffidavit
         $this->ReleaseOfDowerRightsInstrumentNumber = $ReleaseOfDowerRightsInstrumentNumber;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getDowerAffidavitOption()
+    public function getDowerAffidavitOption(): string
     {
         return $this->DowerAffidavitOption;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $DowerAffidavitOption
-     * @return DowerAffidavit
-     */
-    public function withDowerAffidavitOption($DowerAffidavitOption)
-    {
-        $new = clone $this;
-        $new->DowerAffidavitOption = $DowerAffidavitOption;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getJudgementDate()
+    public function getJudgementDate(): \DateTime
     {
         return $this->JudgementDate;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $JudgementDate
-     * @return DowerAffidavit
-     */
-    public function withJudgementDate($JudgementDate)
-    {
-        $new = clone $this;
-        $new->JudgementDate = $JudgementDate;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getReleaseRegistrationDate()
+    public function getReleaseRegistrationDate(): \DateTime
     {
         return $this->ReleaseRegistrationDate;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $ReleaseRegistrationDate
-     * @return DowerAffidavit
-     */
-    public function withReleaseRegistrationDate($ReleaseRegistrationDate)
-    {
-        $new = clone $this;
-        $new->ReleaseRegistrationDate = $ReleaseRegistrationDate;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getJudgementInstrumentNumber()
+    public function getJudgementInstrumentNumber(): string
     {
         return $this->JudgementInstrumentNumber;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $JudgementInstrumentNumber
-     * @return DowerAffidavit
-     */
-    public function withJudgementInstrumentNumber($JudgementInstrumentNumber)
-    {
-        $new = clone $this;
-        $new->JudgementInstrumentNumber = $JudgementInstrumentNumber;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getReleaseOfDowerRightsInstrumentNumber()
+    public function getReleaseOfDowerRightsInstrumentNumber(): string
     {
         return $this->ReleaseOfDowerRightsInstrumentNumber;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $ReleaseOfDowerRightsInstrumentNumber
-     * @return DowerAffidavit
-     */
-    public function withReleaseOfDowerRightsInstrumentNumber($ReleaseOfDowerRightsInstrumentNumber)
-    {
-        $new = clone $this;
-        $new->ReleaseOfDowerRightsInstrumentNumber = $ReleaseOfDowerRightsInstrumentNumber;
-
-        return $new;
-    }
-
-
 }
 

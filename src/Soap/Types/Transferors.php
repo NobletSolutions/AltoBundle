@@ -4,27 +4,21 @@ namespace NS\AltoBundle\Soap\Types;
 
 class Transferors
 {
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var TransferorPartyType[] */
     private $Transferor = null;
 
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\anyType $Transferor
+     * @var TransferorPartyType[] $Transferor
      */
-    public function __construct($Transferor)
+    public function __construct(array $Transferor)
     {
         $this->Transferor = $Transferor;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getTransferor()
+    public function getTransferor(): array
     {
         return $this->Transferor;
     }
 }
-

@@ -17,11 +17,6 @@ class Title
         $this->TitleNumber = $TitleNumber;
     }
 
-    public function __toString()
-    {
-        return "<Title><TitleNumber>{$this->TitleNumber}</TitleNumber></Title>";
-    }
-
     public function getTitleNumber(): string
     {
         return $this->TitleNumber;

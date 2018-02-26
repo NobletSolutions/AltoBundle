@@ -4,7 +4,7 @@ namespace NS\AltoBundle\Soap\Types;
 
 class AffidavitOfAttestation
 {
-    /** @var bool */
+    /** @var string */
     private $KnowsTransferor;
 
     /** @var ShortAddressType */
@@ -30,14 +30,14 @@ class AffidavitOfAttestation
      */
     public function __construct(bool $KnowsTransferor, ShortAddressType $Execution, IndividualNameShortAddressType $Witness, AffidavitType $Affidavit, CommissionerType $Commissioner)
     {
-        $this->KnowsTransferor = $KnowsTransferor;
+        $this->KnowsTransferor = $KnowsTransferor ? 'true':'false';
         $this->Execution = $Execution;
         $this->Witness = $Witness;
         $this->Affidavit = $Affidavit;
         $this->Commissioner = $Commissioner;
     }
 
-    public function getKnowsTransferor() :bool
+    public function getKnowsTransferor() :string 
     {
         return $this->KnowsTransferor;
     }

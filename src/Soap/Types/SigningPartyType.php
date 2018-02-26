@@ -41,11 +41,6 @@ class SigningPartyType
         $this->CorporateSigningAffidavit = $CorporateSigningAffidavit;
     }
 
-    public function __toString()
-    {
-        return sprintf('<SigningParty><GivenName>%s</GivenName><Surname>%s</Surname><Municipality>%s</Municipality><ProvinceName>%s</ProvinceName><CountryName>%s</CountryName>%s</SigningParty>',$this->GivenName,$this->Surname,$this->Municipality,$this->ProvinceName,$this->CountryName,$this->CorporateSigningAffidavit);
-    }
-
     public function getGivenName(): string
     {
         return $this->GivenName;

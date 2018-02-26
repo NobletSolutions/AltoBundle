@@ -4,177 +4,105 @@ namespace NS\AltoBundle\Soap\Types;
 
 class TransfereePartyType
 {
+    /** @var string */
+    private $GivenName;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
-    private $GivenName = null;
-
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $Surname = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var \DateTime */
     private $ExecutionDate = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $IndivdualToSignAffidvitReValue = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var LongAddressType */
     private $Address = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $CorporationName = null;
 
-    /**
-     * Constructor
-     *
-     * @var \NS\AltoBundle\Soap\Types\anyType $GivenName
-     * @var \NS\AltoBundle\Soap\Types\anyType $Surname
-     * @var \NS\AltoBundle\Soap\Types\anyType $ExecutionDate
-     * @var \NS\AltoBundle\Soap\Types\anyType $IndivdualToSignAffidvitReValue
-     * @var \NS\AltoBundle\Soap\Types\anyType $Address
-     * @var \NS\AltoBundle\Soap\Types\anyType $CorporationName
-     */
-    public function __construct($GivenName, $Surname, $ExecutionDate, $IndivdualToSignAffidvitReValue, $Address, $CorporationName)
+//    /**
+//     * Constructor
+//     *
+//     * @param string $GivenName
+//     * @param string $Surname
+//     * @param \DateTime $ExecutionDate
+//     * @param bool $IndivdualToSignAffidvitReValue
+//     * @param LongAddressType $Address
+//     * @param string $CorporationName
+//     */
+//    public function __construct(string $GivenName, string $Surname, \DateTime $ExecutionDate, bool $IndivdualToSignAffidvitReValue, LongAddressType $Address, string $CorporationName)
+//    {
+//        $this->GivenName = $GivenName;
+//        $this->Surname = $Surname;
+//        $this->ExecutionDate = $ExecutionDate;
+//        $this->IndivdualToSignAffidvitReValue = $IndivdualToSignAffidvitReValue;
+//        $this->Address = $Address;
+//        $this->CorporationName = $CorporationName;
+//    }
+
+    public static function createIndividual(string $GivenName, string $Surname, \DateTime $ExecutionDate, bool $IndivdualToSignAffidvitReValue, LongAddressType $Address)
+    {
+        $obj = new self();
+        $obj->initializeIndividual($GivenName, $Surname, $ExecutionDate, $IndivdualToSignAffidvitReValue?'true':'false', $Address);
+
+        return $obj;
+    }
+
+    public static function createCorporation(string $corpName, \DateTime $ExecutionDate, bool $IndivdualToSignAffidvitReValue, LongAddressType $Address)
+    {
+        $obj = new self();
+        $obj->initializeCorporation($corpName, $ExecutionDate, $IndivdualToSignAffidvitReValue?'true':'false', $Address);
+
+        return $obj;
+    }
+
+    public function initializeIndividual(string $GivenName, string $Surname, \DateTime $ExecutionDate, string $IndivdualToSignAffidvitReValue, LongAddressType $Address)
     {
         $this->GivenName = $GivenName;
         $this->Surname = $Surname;
         $this->ExecutionDate = $ExecutionDate;
         $this->IndivdualToSignAffidvitReValue = $IndivdualToSignAffidvitReValue;
         $this->Address = $Address;
-        $this->CorporationName = $CorporationName;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getGivenName()
+    public function initializeCorporation(string $corpName, \DateTime $ExecutionDate, string $IndivdualToSignAffidvitReValue, LongAddressType $Address)
+    {
+        $this->CorporationName = $corpName;
+        $this->ExecutionDate = $ExecutionDate;
+        $this->IndivdualToSignAffidvitReValue = $IndivdualToSignAffidvitReValue;
+        $this->Address = $Address;
+    }
+
+    public function getGivenName(): ?string
     {
         return $this->GivenName;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $GivenName
-     * @return TransfereePartyType
-     */
-    public function withGivenName($GivenName)
-    {
-        $new = clone $this;
-        $new->GivenName = $GivenName;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getSurname()
+    public function getSurname(): ?string
     {
         return $this->Surname;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Surname
-     * @return TransfereePartyType
-     */
-    public function withSurname($Surname)
-    {
-        $new = clone $this;
-        $new->Surname = $Surname;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getExecutionDate()
+    public function getExecutionDate(): \DateTime
     {
         return $this->ExecutionDate;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $ExecutionDate
-     * @return TransfereePartyType
-     */
-    public function withExecutionDate($ExecutionDate)
-    {
-        $new = clone $this;
-        $new->ExecutionDate = $ExecutionDate;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getIndivdualToSignAffidvitReValue()
+    public function getIndivdualToSignAffidvitReValue(): string
     {
         return $this->IndivdualToSignAffidvitReValue;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $IndivdualToSignAffidvitReValue
-     * @return TransfereePartyType
-     */
-    public function withIndivdualToSignAffidvitReValue($IndivdualToSignAffidvitReValue)
-    {
-        $new = clone $this;
-        $new->IndivdualToSignAffidvitReValue = $IndivdualToSignAffidvitReValue;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getAddress()
+    public function getAddress(): LongAddressType
     {
         return $this->Address;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Address
-     * @return TransfereePartyType
-     */
-    public function withAddress($Address)
-    {
-        $new = clone $this;
-        $new->Address = $Address;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getCorporationName()
+    public function getCorporationName(): ?string
     {
         return $this->CorporationName;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $CorporationName
-     * @return TransfereePartyType
-     */
-    public function withCorporationName($CorporationName)
-    {
-        $new = clone $this;
-        $new->CorporationName = $CorporationName;
-
-        return $new;
-    }
-
-
 }
 

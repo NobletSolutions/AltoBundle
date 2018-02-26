@@ -11,11 +11,11 @@ namespace NS\AltoBundle\Tests\Soap\Types;
 use NS\AltoBundle\Soap\Types\Title;
 use PHPUnit\Framework\TestCase;
 
-class TitleTest extends TestCase
+class TitleTest extends AbstractSoapTest
 {
     public function testObjectToString()
     {
         $title = new Title('123155');
-        $this->assertEquals('<Title><TitleNumber>123155</TitleNumber></Title>', (string)$title);
+        $this->assertEquals('<Title><TitleNumber>123155</TitleNumber></Title>', $this->serialize($title,'Title'));
     }
 }

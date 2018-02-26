@@ -36,9 +36,9 @@ class TestMortgageFormCommand extends BaseFormCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $title = new TitlesType([new Title('131064981')]);
+        $title = new TitlesType([new Title('002000325')]);
         $mortgagees = new MortgageePartyGroupType([MortgageePartyType::createCorporationMortgagee('corp',new LongAddressType('','123 Street',null,'Calgary','AB','Canada','T3A5J4'))]);
-        $form = new Mortgage($input->getArgument('file-no'),$title,'75000.00','12345678', $mortgagees);
+        $form = new Mortgage($input->getArgument('file-no'),$title,'75000.00','', $mortgagees);
 
         $request = MortgageRequest::createForm($form);
         $requestStr = $this->serializeRequest($request);

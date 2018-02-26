@@ -2,98 +2,50 @@
 
 namespace NS\AltoBundle\Soap\Types;
 
+use NS\AltoBundle\Soap\Exceptions\InvalidOptionException;
+
 class TransfereeGroup
 {
-
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $DefinedInterestText = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var string */
     private $TenancyType = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\Transferees
-     */
+    /** @var Transferees */
     private $Transferees = null;
 
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\anyType $DefinedInterestText
-     * @var \NS\AltoBundle\Soap\Types\anyType $TenancyType
+     * @param string $DefinedInterestText
+     * @param string $TenancyType
      * @var \NS\AltoBundle\Soap\Types\Transferees $Transferees
      */
-    public function __construct($DefinedInterestText, $TenancyType, $Transferees)
+    public function __construct(?string $DefinedInterestText, ?string $TenancyType, Transferees $Transferees)
     {
         $this->DefinedInterestText = $DefinedInterestText;
+        if ($DefinedInterestText !== null && !in_array($TenancyType, ['J', 'C'])) {
+            throw new InvalidOptionException("$TenancyType is a invalid tenancy type");
+        }
+
         $this->TenancyType = $TenancyType;
         $this->Transferees = $Transferees;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getDefinedInterestText()
+    public function getDefinedInterestText(): string
     {
         return $this->DefinedInterestText;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $DefinedInterestText
-     * @return TransfereeGroup
-     */
-    public function withDefinedInterestText($DefinedInterestText)
-    {
-        $new = clone $this;
-        $new->DefinedInterestText = $DefinedInterestText;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getTenancyType()
+    public function getTenancyType(): string
     {
         return $this->TenancyType;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $TenancyType
-     * @return TransfereeGroup
-     */
-    public function withTenancyType($TenancyType)
-    {
-        $new = clone $this;
-        $new->TenancyType = $TenancyType;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\Transferees
-     */
-    public function getTransferees()
+    public function getTransferees(): Transferees
     {
         return $this->Transferees;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\Transferees $Transferees
-     * @return TransfereeGroup
-     */
-    public function withTransferees($Transferees)
-    {
-        $new = clone $this;
-        $new->Transferees = $Transferees;
-
-        return $new;
-    }
-
-
 }
 

@@ -26,7 +26,7 @@ class Response
      * @param null|ResponseError[] $Errors
      * @param null|string $eFormIdentifier
      */
-    public function __construct(int $ReturnCode, ?array $Errors = [], ?string $eFormIdentifier = null)
+    public function __construct(int $ReturnCode, $Errors, ?string $eFormIdentifier = null)
     {
         $this->ReturnCode = $ReturnCode;
 

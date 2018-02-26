@@ -27,11 +27,6 @@ class SignatorType
         $this->Address = $Address;
     }
 
-    public function __toString()
-    {
-        return sprintf('<SigningDetail><ContactGivenName>%s</ContactGivenName><ContactSurname>%s</ContactSurname>%s</SigningDetail>',$this->ContactGivenName,$this->ContactSurname,$this->Address);
-    }
-
     public function getContactGivenName(): string
     {
         return $this->ContactGivenName;

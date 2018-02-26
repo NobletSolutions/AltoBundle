@@ -40,106 +40,29 @@ class Mortgage
         $this->Mortgagees = $Mortgagees;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getCustomerFileNumber()
+    public function getCustomerFileNumber(): string
     {
         return $this->CustomerFileNumber;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $CustomerFileNumber
-     * @return Data_eForm_Mortgage
-     */
-    public function withCustomerFileNumber($CustomerFileNumber)
-    {
-        $new = clone $this;
-        $new->CustomerFileNumber = $CustomerFileNumber;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getTitles()
+    public function getTitles(): TitlesType
     {
         return $this->Titles;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Titles
-     * @return Data_eForm_Mortgage
-     */
-    public function withTitles($Titles)
-    {
-        $new = clone $this;
-        $new->Titles = $Titles;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getPrincipalAmount()
+    public function getPrincipalAmount(): string
     {
         return $this->PrincipalAmount;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $PrincipalAmount
-     * @return Data_eForm_Mortgage
-     */
-    public function withPrincipalAmount($PrincipalAmount)
-    {
-        $new = clone $this;
-        $new->PrincipalAmount = $PrincipalAmount;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getStandardMortgageNumber()
+    public function getStandardMortgageNumber(): string
     {
         return $this->StandardMortgageNumber;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $StandardMortgageNumber
-     * @return Data_eForm_Mortgage
-     */
-    public function withStandardMortgageNumber($StandardMortgageNumber)
-    {
-        $new = clone $this;
-        $new->StandardMortgageNumber = $StandardMortgageNumber;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getMortgagees()
+    public function getMortgagees(): MortgageePartyGroupType
     {
         return $this->Mortgagees;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Mortgagees
-     * @return Data_eForm_Mortgage
-     */
-    public function withMortgagees($Mortgagees)
-    {
-        $new = clone $this;
-        $new->Mortgagees = $Mortgagees;
-
-        return $new;
-    }
-
-
 }
 

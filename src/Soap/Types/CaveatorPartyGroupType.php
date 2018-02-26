@@ -17,11 +17,6 @@ class CaveatorPartyGroupType
         $this->Caveator = $Caveator;
     }
 
-    public function __toString()
-    {
-        return sprintf('<Caveators>%s</Caveators>',implode('',$this->Caveator));
-    }
-
     public function getCaveator(): array
     {
         return $this->Caveator;

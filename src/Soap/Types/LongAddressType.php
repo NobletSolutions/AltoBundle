@@ -47,11 +47,6 @@ class LongAddressType
         $this->PostalCode = $PostalCode;
     }
 
-    public function __toString()
-    {
-        return sprintf('<Address><POBox>%s</POBox><AddressLine1>%s</AddressLine1><AddressLine2>%s</AddressLine2><Municipality>%s</Municipality><ProvinceName>%s</ProvinceName><CountryName>%s</CountryName><PostalCode>%s</PostalCode></Address>', $this->POBox, $this->AddressLine1, $this->AddressLine2, $this->Municipality, $this->ProvinceName, $this->CountryName, $this->PostalCode);
-    }
-
     public function getPOBox(): string
     {
         return $this->POBox;

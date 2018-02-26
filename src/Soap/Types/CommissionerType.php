@@ -63,17 +63,6 @@ class CommissionerType
         $this->OtherDescription = $OtherDescription;
     }
 
-    public function __toString()
-    {
-        return sprintf('<Commissioner><GivenName>%s</GivenName><Surname>%s</Surname><ExpiryDate>%s</ExpiryDate><AuthorityDescription>%s</AuthorityDescription><AdditionalDescription>%s</AdditionalDescription><OtherDescription>%s</OtherDescription></Commissioner>',
-            $this->GivenName,
-            $this->Surname,
-            $this->ExpiryDate->format('Y-m-d'),
-            $this->AuthorityDescription,
-            $this->AdditionalDescription,
-            $this->OtherDescription);
-    }
-
     public function getGivenName(): string
     {
         return $this->GivenName;

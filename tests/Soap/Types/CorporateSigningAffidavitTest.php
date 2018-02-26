@@ -13,7 +13,7 @@ use NS\AltoBundle\Soap\Types\CommissionerType;
 use NS\AltoBundle\Soap\Types\CorporateSigningAffidavit;
 use PHPUnit\Framework\TestCase;
 
-class CorporateSigningAffidavitTest extends TestCase
+class CorporateSigningAffidavitTest extends AbstractSoapTest
 {
     public function testObjectToString()
     {
@@ -21,6 +21,6 @@ class CorporateSigningAffidavitTest extends TestCase
         $affidavit = new AffidavitType(new \DateTime('2018-02-22'),'Calgary','AB','Canada',true);
 
         $signing = new CorporateSigningAffidavit($affidavit,$commissioner);
-        $this->assertEquals(sprintf('<CorporateSigningAffidavit>%s%s</CorporateSigningAffidavit>',$affidavit,$commissioner),(string)$signing);
+        $this->assertEquals(sprintf('<CorporateSigningAffidavit>%s%s</CorporateSigningAffidavit>',$this->serialize($affidavit,'Affidavit'),$this->serialize($commissioner,'Commissioner')),$this->serialize($signing,'CorporateSigningAffidavit'));
     }
 }

@@ -2,125 +2,58 @@
 
 namespace NS\AltoBundle\Soap\Types;
 
+use NS\AltoBundle\Soap\Exceptions\InvalidOptionException;
+
 class DowerCompliancesType
 {
+    /** @var string */
+    private $Dower;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
-    private $Dower = null;
-
-    /**
-     * @var \NS\AltoBundle\Soap\Types\DowerAffidavit
-     */
+    /** @var DowerAffidavit */
     private $DowerAffidavit = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var AffidavitType */
     private $DowerAffidavitDetail = null;
 
-    /**
-     * @var \NS\AltoBundle\Soap\Types\anyType
-     */
+    /** @var CommissionerType */
     private $Commissioner = null;
 
     /**
      * Constructor
      *
-     * @var \NS\AltoBundle\Soap\Types\anyType $Dower
+     * @param bool $Dower
      * @var \NS\AltoBundle\Soap\Types\DowerAffidavit $DowerAffidavit
-     * @var \NS\AltoBundle\Soap\Types\anyType $DowerAffidavitDetail
-     * @var \NS\AltoBundle\Soap\Types\anyType $Commissioner
+     * @param AffidavitType $DowerAffidavitDetail
+     * @param CommissionerType $Commissioner
      */
-    public function __construct($Dower, $DowerAffidavit, $DowerAffidavitDetail, $Commissioner)
+    public function __construct(bool $Dower, DowerAffidavit $DowerAffidavit = null, AffidavitType $DowerAffidavitDetail, CommissionerType $Commissioner)
     {
-        $this->Dower = $Dower;
+        $this->Dower = $Dower?'true':'false';
+        if($Dower && ($DowerAffidavit === null || $DowerAffidavitDetail === null || $Commissioner === null)) {
+            throw new InvalidOptionException('When the dower is true, you must provide the dower affidavit, details and commissioner');
+        }
         $this->DowerAffidavit = $DowerAffidavit;
         $this->DowerAffidavitDetail = $DowerAffidavitDetail;
         $this->Commissioner = $Commissioner;
     }
 
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getDower()
+    public function getDower(): string
     {
         return $this->Dower;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Dower
-     * @return DowerCompliancesType
-     */
-    public function withDower($Dower)
-    {
-        $new = clone $this;
-        $new->Dower = $Dower;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\DowerAffidavit
-     */
-    public function getDowerAffidavit()
+    public function getDowerAffidavit(): DowerAffidavit
     {
         return $this->DowerAffidavit;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\DowerAffidavit $DowerAffidavit
-     * @return DowerCompliancesType
-     */
-    public function withDowerAffidavit($DowerAffidavit)
-    {
-        $new = clone $this;
-        $new->DowerAffidavit = $DowerAffidavit;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getDowerAffidavitDetail()
+    public function getDowerAffidavitDetail(): AffidavitType
     {
         return $this->DowerAffidavitDetail;
     }
 
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $DowerAffidavitDetail
-     * @return DowerCompliancesType
-     */
-    public function withDowerAffidavitDetail($DowerAffidavitDetail)
-    {
-        $new = clone $this;
-        $new->DowerAffidavitDetail = $DowerAffidavitDetail;
-
-        return $new;
-    }
-
-    /**
-     * @return \NS\AltoBundle\Soap\Types\anyType
-     */
-    public function getCommissioner()
+    public function getCommissioner(): CommissionerType
     {
         return $this->Commissioner;
     }
-
-    /**
-     * @param \NS\AltoBundle\Soap\Types\anyType $Commissioner
-     * @return DowerCompliancesType
-     */
-    public function withCommissioner($Commissioner)
-    {
-        $new = clone $this;
-        $new->Commissioner = $Commissioner;
-
-        return $new;
-    }
-
-
 }
-
