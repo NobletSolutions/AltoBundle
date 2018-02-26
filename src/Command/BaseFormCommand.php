@@ -77,6 +77,10 @@ class BaseFormCommand extends Command
                     $output->writeln('<error>' . $error . '</error>');
                 }
 
+                if ($debug) {
+                    $output->writeln(print_r($client->debugLastSoapRequest()));
+                }
+
                 return;
             }
 
