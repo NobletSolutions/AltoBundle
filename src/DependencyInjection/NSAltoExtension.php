@@ -24,6 +24,11 @@ class NSAltoExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $container->setParameter('ns_alto.wsdl',$config['wsdl']);
+        $container->setParameter('ns_alto.soap_options', $config['soap_options']);
+        if (!empty($config['ssl_options'])) {
+            $container->setParameter('ns_alto.stream_context_options', ['ssl' => $config['ssl_options']]);
+        }
+
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }

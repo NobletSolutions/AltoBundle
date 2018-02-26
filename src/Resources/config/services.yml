@@ -1,7 +1,15 @@
 services:
   __defaults:
     autowire: true
+    autoconfigure: true
 
   NS\AltoBundle\AltoSoapClient:
-    factory: ['NS\AltoBundle\AltoSoapClientFactory::factory', ['%ns_alto.wsdl%','%ns_alto.soap_options%'] ]
+    factory: ['NS\AltoBundle\AltoSoapClientFactory::factory', ['%ns_alto.wsdl%','%ns_alto.soap_options%','%ns_alto.stream_context_options%'] ]
 
+  Symfony\Component\Serializer\Encoder\XmlEncoder: ~
+  Symfony\Component\Serializer\Normalizer\PropertyNormalizer: ~
+  Symfony\Component\Serializer\Normalizer\DateTimeNormalizer:
+    arguments: ['Y-m-d']
+
+  Symfony\Component\Serializer\Serializer:
+    arguments: [ ['@Symfony\Component\Serializer\Normalizer\PropertyNormalizer', '@Symfony\Component\Serializer\Normalizer\DateTimeNormalizer'], ['@Symfony\Component\Serializer\Encoder\XmlEncoder']]

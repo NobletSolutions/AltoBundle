@@ -56,12 +56,11 @@ class BaseFormCommand extends Command
 
             $soapOptions = [
                 'trace' => true,
-                'stream_context' => stream_context_create($contextOptions),
                 'location' => "https://altowebservice.stg.alt.alberta.ca/altoexternalwebservice/altoexternalwebservice.svc",
                 'cache_wsdl' => WSDL_CACHE_NONE,
             ];
 
-            $this->client = AltoSoapClientFactory::factory($wsdlUrl, $soapOptions);
+            $this->client = AltoSoapClientFactory::factory($wsdlUrl, $soapOptions, $contextOptions);
         }
 
         return $this->client;

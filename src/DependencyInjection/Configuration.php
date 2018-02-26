@@ -18,16 +18,22 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
+        $cafile = realpath(__DIR__.'/../Resources/config/chain.pem');
         $rootNode = $treeBuilder->root('ns_alto');
         $rootNode
             ->children()
-                ->scalarNode('wsdl')->isRequired()->end()
+                ->scalarNode('wsdl')->defaultValue('https://altowebservice.stg.alt.alberta.ca/altoexternalwebservice/altoexternalwebservice.svc?singleWsdl')->isRequired()->end()
                 ->arrayNode('soap_options')
                     ->children()
-                        ->scalarNode('verify_ssl')->defaultTrue()->end()
-                        ->scalarNode('location')->defaultTrue()->end()
+                        ->scalarNode('location')->defaultValue('https://altowebservice.stg.alt.alberta.ca/altoexternalwebservice/altoexternalwebservice.svc')->end()
                         ->scalarNode('trace')->defaultFalse()->end()
                         ->scalarNode('cache_wsdl')->end()
+                    ->end()
+                ->end()
+                ->arrayNode('ssl_options')
+                    ->children()
+                        ->scalarNode('verify_ssl')->defaultTrue()->end()
+                        ->scalarNode('cafile')->defaultValue($cafile)->end()
                     ->end()
                 ->end()
             ->end();
